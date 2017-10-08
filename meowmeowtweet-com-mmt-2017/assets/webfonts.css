@@ -1,0 +1,46 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3438980, 2017-08-17T14:21:15-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: NewsGothicMTStd by Monotype 
+ * URL: https://www.myfonts.com/fonts/mti/news-gothic-mt/std-regular/
+ * 
+ * Webfont: NewsGothicMTStd-Bold by Monotype 
+ * URL: https://www.myfonts.com/fonts/mti/news-gothic-mt/std-bold/
+ * 
+ * Webfont: NewsGothicMTStd-BoldItalic by Monotype 
+ * URL: https://www.myfonts.com/fonts/mti/news-gothic-mt/std-bold-italic/
+ * 
+ * Webfont: NewsGothicMTStd-Italic by Monotype 
+ * URL: https://www.myfonts.com/fonts/mti/news-gothic-mt/std-italic/
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3438980
+ * Licensed pageviews: 250,000
+ * Webfonts copyright: Copyright 1996 The Monotype Corporation. All rights reserved.
+ * 
+ * © 2017 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/347984");
+
+  
+@font-face {font-family: 'NewsGothicMTStd';src: url('webfonts/347984_0_0.eot');src: url('webfonts/347984_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/347984_0_0.woff2') format('woff2'),url('webfonts/347984_0_0.woff') format('woff'),url('webfonts/347984_0_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'NewsGothicMTStd-Bold';src: url('webfonts/347984_1_0.eot');src: url('webfonts/347984_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/347984_1_0.woff2') format('woff2'),url('webfonts/347984_1_0.woff') format('woff'),url('webfonts/347984_1_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'NewsGothicMTStd-BoldItalic';src: url('webfonts/347984_2_0.eot');src: url('webfonts/347984_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/347984_2_0.woff2') format('woff2'),url('webfonts/347984_2_0.woff') format('woff'),url('webfonts/347984_2_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'NewsGothicMTStd-Italic';src: url('webfonts/347984_3_0.eot');src: url('webfonts/347984_3_0.eot?#iefix') format('embedded-opentype'),url('webfonts/347984_3_0.woff2') format('woff2'),url('webfonts/347984_3_0.woff') format('woff'),url('webfonts/347984_3_0.ttf') format('truetype');}
+ 

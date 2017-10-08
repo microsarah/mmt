@@ -1,0 +1,123 @@
+{% for product in products %}
+  {% assign collection_handles = product.collections | map: 'handle' %}
+  {% capture left_product_layout %}
+    <div class="product-{{ product.id }} section clearfix product_full" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">   
+      <div class="six columns offset-by-two alpha">
+        {% include 'product-images' %}
+      </div>
+    
+      <div class="six columns omega">
+        <h4 class="product_name title" itemprop="name"><a href="{{ product.url }}">{{ product.title }}</a></h4>
+        {% if settings.display_vendor %}
+          <p class="vendor">
+            <span itemprop="brand">{{ product.vendor | link_to_vendor }}</span>
+          </p>
+        {% endif %}
+
+        {% unless collection_handles contains 'coming-soon' %}
+          {% assign variant = product.selected_or_first_available_variant %}
+          <p class="modal_price" itemscope itemtype="http://schema.org/Offer">
+             <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+             <meta itemprop="seller" content="{{ shop.name | escape }}" />
+             <meta itemprop="availability" content="{% if product.available %}in_stock{% else %}out_of_stock{% endif %}" />
+             <meta itemprop="itemCondition" content="New" />
+
+             <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+             <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                <span class="current_price">
+                  {% if variant.available %}
+                    {% if variant.price > 0 %} 
+                      {{ variant.price | money }} 
+                    {% else %}
+                      {{ settings.free_price_text }}
+                    {% endif %}
+                  {% endif %}
+                </span>
+             </span>
+             <span class="was_price">
+              {% if variant.price < variant.compare_at_price %}
+                {{ variant.compare_at_price | money }}
+              {% endif %}
+             </span>
+          </p>
+        {% endunless %}
+
+        {% if settings.frontpage_display_description and product.description != blank %}
+          <div class="description" itemprop="description">
+            {{ product.description | split: '<!-- split -->' | first }}
+          </div>
+        {% endif %}
+
+        {% unless collection_handles contains 'coming-soon' %}
+          {% include 'product-notify-me' %}
+          {% include 'product-form' with 'product' %}
+        {% endunless %}
+
+      </div>
+    </div>
+  {% endcapture %}
+
+  {% capture right_product_layout %}
+    <div class="product-{{ product.id }} section clearfix" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">       
+     <div class="six columns offset-by-two alpha">
+      <h4 class="product_name title" itemprop="name"><a href="{{ product.url }}">{{ product.title }}</a></h4>
+      {% if settings.display_vendor %}
+        <p class="vendor">
+          <span itemprop="brand">{{ product.vendor | link_to_vendor }}</span>
+        </p>
+      {% endif %}
+
+      {% unless collection_handles contains 'coming-soon' %}
+        {% assign variant = product.selected_or_first_available_variant %}
+        <p class="modal_price" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+          <meta itemprop="seller" content="{{ shop.name | escape }}" />
+          <meta itemprop="availability" content="{% if product.available %}in_stock{% else %}out_of_stock{% endif %}" />
+          <meta itemprop="itemCondition" content="New" />
+          
+          <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+          <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+             <span class="current_price">
+               {% if variant.available %}
+                 {% if variant.price > 0 %} 
+                   {{ variant.price | money }} 
+                 {% else %}
+                   {{ settings.free_price_text }}
+                 {% endif %}
+               {% endif %}
+             </span>
+          </span>
+          <span class="was_price">
+           {% if variant.price < variant.compare_at_price %}
+             {{ variant.compare_at_price | money }}
+           {% endif %}
+          </span>
+        </p>
+      {% endunless %} 
+
+       {% if settings.frontpage_display_description and product.description != blank %}
+        <div class="description" itemprop="description">
+          {{ product.description | split: '<!-- split -->' | first }}
+        </div>
+      {% endif %}
+
+      {% unless collection_handles contains 'coming-soon' %}
+        {% include 'product-notify-me' %}
+        {% include 'product-form' with 'product' %}
+      {% endunless %}
+
+      </div>
+
+      <div class="six columns omega">
+        {% include 'product-images' %}
+      </div>
+    </div>
+  {% endcapture %}
+
+
+  {% if settings.frontpage_product_stagger %}
+    {% cycle left_product_layout, right_product_layout %}
+  {% else %}
+    {{ left_product_layout }}
+  {% endif %}
+{% endfor %}

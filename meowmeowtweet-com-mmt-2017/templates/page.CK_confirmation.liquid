@@ -1,0 +1,225 @@
+{% layout none %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping Cart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+    <style>
+      .breadcrumb li a,.breadcrumb>.active a{font-weight:700;text-transform:uppercase}body{font-size:14px;background-color:#f2f6f9}ul{list-style-type:none}a:hover{text-decoration:none}.minicart{background:url(../images/sprite.png) -156px 11px no-repeat;width:40px;height:50px;padding-right:32px}.navbar{background-color:#4ea6bc;padding:15px;border-radius:0;margin:0}.breadcrumb,.breadcrumbBox{background-color:#fff;margin-bottom:100px}.navbar-brand{color:#fff;font-family:Open Sans,sans-serif;padding-left:32px}.navbar-brand:hover{color:#fff}.breadcrumb>.active a{color:#468595}.breadcrumb li a{color:#b3d4dc}.breadcrumb>li+li:before{content:"\00BB"}.breadcrumbBox{height:100px;padding-top:32px}.container.text-center{padding:0 32px}.col-md-5.col-sm-12{padding:0}.col-md-5.col-sm-12 h1{color:#595c5f;font-size:24px;font-weight:700;margin-bottom:30px;text-align:left}.col-md-5.col-sm-12 p{color:#898e92;line-height:1.5;max-width:400px;text-align:justify}.bigcart{background:url(../images/sprite.png) 0 11px no-repeat;width:155px;height:120px;margin:0 0 40px 60px}.col-md-7.col-sm-12{padding-left:50px;margin-bottom:72px}.row{box-shadow:0 1px 0 #e1e5e8;padding-bottom:0;padding-left:15px;background-color:#fff;margin-bottom:11px}.row span{padding:20px 0 6px}.columnCaptions{color:#7e93a7;font-size:12px;text-transform:uppercase;padding:0;box-shadow:0 0 0;background-color:#f2f6f9}.columnCaptions span:first-child{padding-left:8px}.columnCaptions span{padding:0 21px 0 0}.columnCaptions span:last-child{float:right;}.itemName{color:#727578;font-size:16px;font-weight:700;float:left;padding-left:25px}.price,.quantity{font-size:18px;font-weight:700}.quantity{color:#4ea6bc;float:left;width:42px;padding-left:7px}.popbtn{background-color:#e6edf3;margin-left:25px;height:63px;width:40px;padding:32px 0 0 14px!important;float:right;cursor:pointer}.arrow{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid #858e97}.price{color:#f06953;float:right}.totals{background-color:#f2f6f9}.totals span{padding:40px 15px 40px 0}.totals .price{float:left}.totals .itemName{margin-top:1px}.totals .order{float:right;padding:0 0 0 5px;margin-top:40px;cursor:pointer}.order a{background-color:#f08573;color:#fbfffa;font-weight:700;border-radius:2px;padding:20px 30px}.popover{border-radius:3px;box-shadow:0 0 1px 1px rgba(0,0,0,.2);border:0;background-color:#fff}.popover.bottom{margin-top:-9px}.glyphicon{width:24px;font-size:24px;padding:0}.glyphicon-pencil{color:#858e97;margin:7px 12px 7px 10px}.glyphicon-remove{color:#f06953;margin-right:10px}@media (max-width:992px){.container.text-center{padding:0 15px}.breadcrumb{margin-bottom:32px}.bigcart{margin:0 auto 40px}.col-md-5.col-sm-12 h1{text-align:center}.col-md-5.col-sm-12 p{margin:0 auto 64px;text-align:justify}.col-md-7.col-sm-12{padding-left:10px;padding-right:50px}.totals{box-shadow:0 0 0}}@media (max-width:768px){.popbtn,.price{position:absolute}.navbar{padding:10px 0}.minicart{margin-right:-1px;padding-right:0}.navbar-brand{padding-left:0}.breadcrumbBox{height:80px;padding-top:21px}.col-md-5.col-sm-12 p{max-width:300px}.col-md-7.col-sm-12{padding-left:0;padding-right:15px;margin-bottom:32px}.col-md-7.col-sm-12 ul{padding-left:15px}.columnCaptions span{padding:0 21px 0 0}.columnCaptions span:last-child{float:right;padding-right:42px}.row{padding-bottom:10px}.quantity{width:23px;padding-right:40px!important}.popbtn{background-color:#fff;height:40px;right:0}.price{right:42px}.totals{padding:0}.totals .price{position:static}.popover.bottom>.arrow{left:auto;margin-left:0;right:5px}.popover.bottom{margin-top:7px;margin-left:-40px}}
+      .form-control {margin-bottom: 10px;}.header-logo {font-size: 45px;}#overlay,#popup{display:none;position:absolute}#popupclose,.popupcontent{padding:10px}#overlay{top:0;bottom:0;background:#999;width:100%;height:100%;opacity:.8;z-index:100}#popup{top:45%;left:45%;background:#fff;width:500px;height:290px;margin-left:-100px;margin-top:-100px;z-index:200}#popupclose{float:right;cursor:pointer}span.return{background:red;padding:20px}
+      .row.totals{box-shadow: none};
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid breadcrumbBox text-center">
+      <div id="header">
+        <div class="header-logo"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-md-5 col-sm-12">
+        <h1>Your Order details</h1>
+        <p>
+          {% if page.content > "" %}
+          {{ page.content }}
+          {% else %}
+          Please review your order first and click on "Place Order" to create order OR click <a href="/cart">here</a> to update your cart.
+          {% endif %}
+        </p>
+        <div class="shipping_form">
+          <h4>Shipping address</h4>
+
+          {% assign found_address = false %}
+          {% if
+                    customer.default_address.address1 > '' and
+          customer.default_address.city > '' and
+          customer.default_address.country > '' and
+          customer.default_address.first_name > '' and
+          customer.default_address.last_name > '' and
+          customer.default_address.zip > ''
+          %}
+          {% assign found_address = true %}
+          <div class="default-address">
+            <p>
+              {{ customer.default_address.name }}<br />
+
+              {{ customer.default_address.address1 }},
+
+              {% if customer.default_address.address2 > "" %}
+              {{ customer.default_address.address2 }},
+              {% endif %}
+
+              {% if customer.default_address.company > "" %}
+              <br />{{ customer.default_address.company }},
+              {% endif %}
+
+              <br />{{ customer.default_address.city }},
+
+              {% if customer.default_address.province > "" %}
+              <br />{{ customer.default_address.province }},
+              {% endif %}
+
+              {{ customer.default_address.zip | upcase }},
+
+              <br />{{ customer.default_address.country }},
+
+              {% if customer.default_address.phone > "" %}
+              <br />{{ customer.default_address.phone }}
+              {% endif %}
+            </p>
+
+            <a href="#" data-toggleaddress>Change Address</a>
+          </div>
+          {% endif %}
+
+          <form id="address-form" class="submit-address" {% if found_address == true %}style="display:none;" class="submit-address"{% endif %}>
+            <input class="form-control"  type="text" name="address[first_name]" value="{{ customer.default_address.first_name }}" placeholder="First Name" required>
+            <input class="form-control"  type="text" name="address[last_name]" value="{{ customer.default_address.last_name }}" placeholder="Surname" required>
+            <input class="form-control"  type="text" name="address[company]" value="{{ customer.default_address.company }}" placeholder="Company" >
+            <input class="form-control"  type="text" name="address[address1]" value="{{ customer.default_address.address1 }}" placeholder="Address Line 1" required>
+            <input class="form-control"  type="text" name="address[address2]" value="{{ customer.default_address.address2 }}" placeholder="Address Line 2" >
+            <input class="form-control"  type="text" name="address[city]" value="{{ customer.default_address.city }}" placeholder="City" required>
+            <select class="form-control"  id="AddressCountry" name="address[country]" data-default="{{ customer.default_address.country }}">{{ country_option_tags }}</select>
+            <div  id="AddressProvinceContainer" style="display:none">
+              <select class="form-control"  id="AddressProvince" name="address[province]" data-default="{{ form.province }}"></select>
+            </div>
+            <input id="zipCode" class="form-control"  type="text" name="address[zip]" value="{{ customer.default_address.zip }}" placeholder="Postcode" autocapitalize="characters" required>
+            <input class="form-control"  type="tel" name="address[phone]" value="{{ customer.default_address.phone }}" placeholder="Phone" >
+            <input type="hidden" name="address[shop_name]" value="{{ shop.name }}">
+            <input type="hidden" name="address[shipping_charges]" value="">
+            {% unless found_address == false %}<a href="#" data-toggleaddress>Use Default Address</a>{% endunless %}
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-7 col-sm-12 text-left">
+        <ul>
+          <li class="row list-inline columnCaptions">
+            <!-- <span>IMAGE</span> -->
+            <span>QTY</span>
+            <span>ITEM</span>
+            <span>Price</span>
+          </li>
+
+          {% for item in cart.items %}
+
+          <li class="row">
+            <!-- <span class="quantity"><img class="images" src="{{ item | img_url: 'medium' }}"></span> -->
+            <span class="quantity">{{ item.quantity }}</span>
+            <span class="itemName">
+              {{ item.product.title }}<br>
+              {% unless item.variant.title contains 'Default' %}<small>{{ item.variant.title }}</small>{% endunless %}
+            </span>
+            <span class="price">{{ item.line_price | money }}</span>
+          </li>
+          {% endfor %}
+          <li class="row shipping">
+            <span class="itemName">Shipping (<span></span>)</span>
+            <span class="price"></span>
+          </li>
+          <li class="row total">
+            <span class="itemName">Total:</span>
+            <span class="price">{{ cart.total_price | money }}</span>
+            
+          </li>
+          <li class="row totals">
+            <span class="order"> <a href="/checkout" class="trade-orders-checkout-btn text-center"class="text-center">PLACE ORDER</a></span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- JavaScript includes -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    <script>
+      new Shopify.CountryProvinceSelector(
+        'AddressCountry',
+        'AddressProvince',
+        { hideElement: 'AddressProvinceContainer' }
+      );
+
+      // calculate shipping on load
+      $(function(){
+        var shippingAddress = { country:"{{ customer.default_address.country }}", province:"{{ customer.default_address.province }}", zip : "{{ customer.default_address.zip }}" };
+        shipping(shippingAddress);
+      })
+      
+      // calculate shipping on change country OR state
+      $("#address-form").on('change', '#AddressCountry, #AddressProvince', function(){
+      	var shippingAddress = { country:$('#AddressCountry').val(), province:$('#AddressProvince').val(), zip : $('#zipCode').val() };
+        shipping(shippingAddress);
+      })
+      
+      // calculate shipping on change zip code
+      $("#address-form").on('blur', '#zipCode', function(){
+      	var shippingAddress = { country:$('#AddressCountry').val(), province:$('#AddressProvince').val(), zip : $('#zipCode').val() };
+        shipping(shippingAddress);
+      })
+      
+      var shipping = function(shippingAddress){
+        var t = {
+          type: "POST",
+          url: "/cart/prepare_shipping_rates",
+          data: jQuery.param({
+            shipping_address: shippingAddress
+          }),
+          success: function(){
+            CalculateShipping()
+          },
+        };
+        jQuery.ajax(t)
+
+        var CalculateShipping = function(){
+
+          jQuery.ajax("/cart/async_shipping_rates", {
+            dataType: "json",
+            success: function(result, n, a) {
+          		var arr = [];
+          		var max = 9999;
+          		if(result.shipping_rates){
+        		  	for(i=0; i<result.shipping_rates.length; i++){	
+          				shipPrice = parseFloat(result.shipping_rates[i].price);
+                      	// calculate lowest shipping charges
+          				if (shipPrice < max) {
+          					max = shipPrice;
+          					arr = [result.shipping_rates[i].name, result.shipping_rates[i].price];
+        				}
+          				
+          			}
+                  // set shipping in DOM and Hidden field for include in order
+                  $('.shipping .itemName span').html(arr[0]);
+                  $('.shipping .price').html(arr[1]);
+                  $('input[name="address[shipping_charges]"]').val(arr);
+                  
+                  // add shipping charges in total
+                  var totalPrice = "{{ cart.total_price | money_without_currency }}";
+                  var total = Number(totalPrice) + Number(arr[1]);
+                  $('.total .price').html(total.toFixed(2));
+        		}
+        		
+            }
+          })
+        }
+      }	;
+
+    </script>
+    {% include "CK_snippet" %}
+
+    <div id="overlay"></div>
+    <div id="popup">
+      <div class="popupcontrols">
+        <span id="popupclose" onclick="hide_popup()">X</span>
+      </div>
+      <div class="popupcontent">
+        <h1>Thank you for your order!</h1>
+        <p>An email receipt containing information about your order will soon follow. Please keep it for your records.</p>
+        <span style="margin-top: 24px;float: left;">Continue browsing <a href="/" class="text-center">here.</a></span>
+      </div>
+    </div>
+  </body>
+</html>

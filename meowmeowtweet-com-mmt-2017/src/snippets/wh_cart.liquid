@@ -1,0 +1,120 @@
+{% if cart.item_count > 0 and customer.tags.size > 0 %}
+  <script>
+
+  function sameDomainAjax (paramHash, successCallback) {
+    jQuery.ajax({
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(paramHash),
+      url: "/apps/wholesale_hero",
+      cache: false,
+      dataType: 'json',
+      data: JSON.stringify(paramHash),
+      type: 'POST',
+      success: function (data, success) {
+        successCallback(data);
+      }
+    });
+  }
+ 
+  function whCheckCart(whCart, customer){
+    var paramHash= {api_version: 3, shopify_domain: "{{shop.permanent_domain}}", cart: whCart, customer: customer};
+    sameDomainAjax(paramHash, function (data) {
+      if (data.minimums_note != "") {
+        jQuery(".wh-minimums-note").html(data.minimums_note)
+        jQuery("#note").val("")
+        jQuery("textarea[name='note']").val("")
+        return
+      }
+      var orderNote = data.order_note;
+      if (orderNote != "") {
+       jQuery("#note").val(orderNote)
+       jQuery("textarea[name='note']").val(orderNote)
+      }
+      if (data.discount_amount == 0) {
+        if ((typeof jQuery("#note").val() == "string") && (jQuery("#note").val().indexOf("% Off")) > -1) {
+          jQuery("#note").val("")
+        }
+        return
+      }
+
+      jQuery(".wh-original-cart-total").css("text-decoration", "line-through");
+      jQuery(".wh-cart-total").html(data.formatted_wh_total)
+      jQuery(".wh-discount-code").html(data.discount_code)         
+      jQuery("#discount").val(data.discount_code)
+      if (data.extra_note){jQuery(".wh-extra-note").html(data.extra_note)}
+    });
+  }
+
+    window.wh_cart = {{cart | json}}
+    window.wh_cart.items = []
+    {% for item in cart.items %}
+      {% include 'wh_calculate_discount_no_js' with item.product %}
+      {% include 'wh_variant' with item.variant %}
+
+      {% if set_price or wh_discount_value < 1 %}
+    	window.wh_cart.items.push({
+          product_id: {{item.product.id}},
+          quantity: {{item.quantity}},
+          wh_v_compare_price: {{wh_v_compare_at_price}},
+          wh_v_price: {{wh_v_price}},
+          price: {{item.variant.price}},
+          compare_at_price: {% if item.variant.compare_at_price == blank %} null {% else %} {{item.variant.compare_at_price}} {% endif %},
+          wh_discount: {{item.product.metafields.wh_discount | json}}
+        })
+      {% else %}
+        window.wh_cart.items.push({
+          quantity: {{item.quantity}},
+          price: {{item.variant.price}},
+          compare_at_price: {% if item.variant.compare_at_price == blank %} null {% else %} {{item.variant.compare_at_price}} {% endif %},
+          wh_discount: {{item.product.metafields.wh_discount | json}}
+        }) 
+     {% endif %}
+        
+    {% endfor %}
+    
+    whCheckCart(window.wh_cart,{
+      email: "{{customer.email | escape}}", 
+      id: {{customer.id}},  
+      tags: {{ customer.tags|json }} 
+    });
+    
+    jQuery('[max]').change(function() {
+      var max = parseInt(jQuery(this).attr('max'), 10) || 10000;
+      var value = parseInt(jQuery(this).val(), 10) || 0;
+      if (value > max) { jQuery(this).val(max); }
+    });
+
+  </script>
+{% endif %}
+
+<script>
+  function ensureCorrectQuantites(whCart, domElement){
+    for (var i = 0; i < whCart.items.length; i++){
+      var item = whCart.items[i];
+      var el = domElement.replace("{variant_id}", item.variant_id);
+      if(item.quantity != jQuery(el).val()){
+        alert("Please update cart before checkout");
+        return false
+      }
+    }
+    return true
+  }
+  
+  function ensureInStock(){
+    var arr = []
+    jQuery("input[max]").each(function(){
+      var el = jQuery(this);
+      var max = parseInt(el.attr('max'), 10) || 10000;
+      var value = parseInt(el.val(), 10) || 0;
+      if (value > max){
+        arr.push(el);
+        el.val(max);
+      }      
+    });
+    
+    if(arr.length > 0){
+      alert("Some inventory has changed since being added to the cart. Please update cart to continue");
+      return false
+    }
+  }
+</script>

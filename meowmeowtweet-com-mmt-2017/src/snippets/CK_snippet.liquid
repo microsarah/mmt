@@ -1,0 +1,9 @@
+{% if customer %}{% if customer.tags contains "wholesale" %}
+            <script>
+                var storeArguments = {
+                    customer: "{{customer.id}}",
+                    shopAddress: "{{shop.permanent_domain}}",
+                };
+            </script>
+            {{"CK_script.js" | asset_url | script_tag }}                
+            {% endif %}{% endif %}

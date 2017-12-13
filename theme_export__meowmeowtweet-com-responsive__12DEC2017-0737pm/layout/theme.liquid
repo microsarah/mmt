@@ -1,0 +1,324 @@
+{% if template contains 'article' and blog.metafields.blogfeeder.use_canonical == 'yes' %}{% assign canonical_url = article.metafields.blogfeeder.canonical %}{% endif %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+  <head>
+<script>window.wh_metafields = {};
+ {% if customer.tags.size > 0 %} window.wh_customer_tags = true; {% endif %} 
+ window.wh_discount_value = 1;
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="robots" content="index,follow">
+      
+    {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}       
+    <title>{% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}</title>
+            
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}" />
+    {% endif %}
+
+    <!-- Custom Fonts -->
+    {% if settings.logo_font contains 'Google' or settings.headline_font contains 'Google' or settings.nav_font contains 'Google' or settings.slideshow_subtitle_font contains 'Google' or settings.regular_font contains 'Google' or settings.top_bar_font contains 'Google' %}
+      <link href="//fonts.googleapis.com/css?family=.|{% if settings.logo_font contains 'Google' %}{{ settings.logo_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.headline_font contains 'Google' %}{{ settings.headline_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.nav_font contains 'Google' %}{{ settings.nav_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.slideshow_subtitle_font contains 'Google' %}{{ settings.slideshow_subtitle_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.top_bar_font contains 'Google' %}{{ settings.top_bar_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.regular_font contains 'Google' %}{{ settings.regular_font | replace: 'Google_', ''  }}:light,normal,bold{% endif %}" rel="stylesheet" type="text/css" />
+    {% endif %}
+    
+    {% include 'social-meta-info' %}
+
+    {% if collection.previous_product %}
+      <link rel="prev" href="{{ collection.previous_product }}">
+    {% endif %}
+    {% if collection.next_product %}
+      <link rel="next" href="{{ collection.next_product }}">
+    {% endif %}
+
+    <!-- Mobile Specific Metas -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- Stylesheets for Responsive 5.1 -->
+    {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
+    <link rel="canonical" href="{{ canonical_url }}" />
+
+    {% if template contains 'customer' %}
+      {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+      {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+    {% endif %}
+        
+    {{ 'app.js' | asset_url | script_tag }}
+    {% if settings.product_slideshow_animation == 'zoom' %}{{ "cloudzoom.js" | asset_url | script_tag }}{% endif %}
+    {{ content_for_header }}
+
+  {% if template == 'product.beans' %} <meta name='robots' content='noindex,noarchive'> {% endif %}
+
+
+  
+
+
+  
+
+    {{ 'bold.css' | asset_url | stylesheet_tag }}
+{% include 'bold-product' with product, hide_action: 'header' %} 
+  
+
+<!-- BeginConsistentCartAddon --><script>{% if customer %}Shopify.merge_cart_text = '{{ "consistent_cart_addon.merge_cart_text" | t }}' ;Shopify.customer_logged_in = true ;Shopify.customer_email = "{{ customer.email }}" ;Shopify.log_uuids = true;{% else %}Shopify.customer_logged_in = false ;Shopify.customer_email = "" ;Shopify.log_uuids = true;{% endif %}</script><!-- EndConsistentCartAddon -->
+  {{ 'shopstorm-apps.scss.css' | asset_url | stylesheet_tag }}
+  {% include 'shopstorm-scripttags' %}
+</head>
+<body class="{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
+    <div class="top_bar">
+      <div class="container">
+        {% if settings.search_box_top_bar %}
+          <div class="four columns top_bar_search">          
+            <form class="search" action="/search">
+              {% if settings.search_option != 'everything' %}
+                <input type="hidden" name="type" value="product" />
+              {% endif %}
+              <input type="text" name="q" class="search_box" placeholder="{{ 'general.search.placeholder' | t }}" value="{% if search and search.results.first.price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
+            </form>
+          </div>
+        {% endif %}        
+        
+        {% if settings.show_multiple_currencies %}
+          <div class="four columns currencies-switcher mobile_hidden">
+            {% include 'currencies-switcher' %} 
+          </div>
+        {% endif %}
+
+        <div class="columns {% if settings.search_box_top_bar and settings.show_multiple_currencies %}eight{% elsif settings.search_box_top_bar or settings.show_multiple_currencies %}twelve{% else %}sixteen{% endif %}">
+          <ul>
+            {% if settings.top_bar_linklist != blank %}
+              {% for link in linklists[settings.top_bar_linklist].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
+
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li>
+                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                </li>
+                <li>
+                  <a href="/account">{{ customer.name }}</a>
+                </li>
+              {% else %}
+                <li>
+                  {{ 'layout.customer.log_in' | t | customer_login_link }}
+                </li>
+              {% endif %}
+            {% endif %}
+            
+            <li>
+              <a href="/cart" class="cart_button"><span class="icon-cart"></span> {{ 'layout.general.cart' | t }} (<span class="cart_count">{{ cart.item_count }}</span>)</a>
+            </li>
+            <li>
+              {% if cart.item_count == 0 %}
+                <a href="/cart" class="checkout">{{ 'layout.general.checkout' | t }}</a>
+              {% else %}
+                <a href="/checkout" class="checkout">{{ 'layout.general.checkout' | t }}</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+  
+    <div class="container content"> 
+      <div class="sixteen columns logo">
+        {% if settings.header_social_icons %}
+          <div class="header_icons">
+            {% include 'social-icons' %}
+          </div>
+        {% endif %}
+
+        <a href="{{ shop.url }}" title="{{ shop.name }}">
+          {% if settings.use_logo %}
+            <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" />
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
+        </a>
+      </div>
+      
+      <div class="sixteen columns clearfix">
+        <div id="mobile_nav"></div>
+        <div id="nav">
+          <ul id="menu">
+            {% for link in linklists[settings.main_linklist].links %}
+              {% if linklists[link.handle] == empty %}
+                <li><a href="{{ link.url }}" {% if link.active %}class="active"{% endif %}>{{ link.title }}</a></li>
+              {% else %}
+                <li>{% assign sublink_active = false %}{% for link in linklists[link.handle].links %}{% if link.active %}{% assign sublink_active = true %}{% endif %}{% endfor %}<a href="{{ link.url }}"{% if link.active or sublink_active %} class="active"{% endif %}>{{ link.title }}<span class="icon-down-arrow arrow"></span></a> 
+                  <ul class="animated fadeIn">
+                    {% for link in linklists[link.handle].links %}
+                      {% if linklists[link.handle] == empty %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                      {% else %}
+                      <li><a href="{{ link.url }}">{{ link.title }} <span class="icon-right-arrow arrow"></span></a> 
+                        <ul class="animated fadeIn">
+                          {% for link in linklists[link.handle].links %}                        
+                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      
+      {% if settings.featured_content_page != blank %}
+        <div class="sixteen columns">
+          <div class="section clearfix featured_content">
+            {{ pages[settings.featured_content_page].content }}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if template contains 'list-collections' %}
+        {% include 'collection-listing' %}
+      {% else %}
+        {{ content_for_layout }}
+      {% endif %}
+      
+    </div> <!-- end container -->
+
+    <div class="footer">
+      <div class="container">
+        <div class="sixteen columns">
+
+          {% if linklists[settings.footer_linklist_2] != blank %}
+            <div class="three columns alpha footer_menu_vertical">
+              <h6>{{ linklists[settings.footer_linklist_2].title }}</h6>
+              <ul>
+                {% for link in linklists[settings.footer_linklist_2].links %}
+                  <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          <div class="ten columns {% if linklists[settings.footer_linklist_2] == blank %}offset-by-three alpha{% endif %} center">
+            <h6>{{ 'general.newsletter_form.title' | t }}</h6>
+            <p>{{ 'general.newsletter_form.description' | t }}</p>
+            {% include 'newsletter' %}
+            
+            {% if settings.enable_social_links %}
+              {% include 'social-icons' %}
+            {% endif %}
+          </div>
+        
+
+          {% if settings.footer_content_page != blank %}
+            <div class="three columns omega">
+              <h6>{{ pages[settings.footer_content_page].title }}</h6>
+              {{ pages[settings.footer_content_page].content }}
+            </div>
+          {% endif %}
+
+          <div class="sixteen columns alpha omega center">
+            <div class="section">
+              {% if settings.enable_social_links %}
+                <hr />
+              {% endif %}
+
+              {% if linklists[settings.footer_linklist_1] != blank %}
+                <ul class="footer_menu">
+                  {% for link in linklists[settings.footer_linklist_1].links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+
+              <div class="mobile_only">
+                <br class="clear" />
+                {% if settings.show_multiple_currencies %}
+                  <label for="currencies" class="center">{{ 'layout.general.pick_a_currency' | t }}: &nbsp; </label>
+                  {% include 'currencies-switcher' with 'inline' %}
+                {% endif %}
+              </div>
+
+              <p class="credits">
+                &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
+                {{ settings.copyright_text }} 
+                {% if settings.display_designed_by == true %}
+                  {{ 'layout.general.designer_credits_html' | t }}
+                {% endif %}
+                {{ powered_by_link | split: '" ' | join: '?ref=out-of-the-sandbox" ' | split: '">' | join: '?ref=out-of-the-sandbox">' }}
+              </p>
+
+              {% if settings.display_payment_methods %}
+                <div class="payment_methods">
+                  {% for type in shop.enabled_payment_types %}
+                    <img src="{{ type | payment_type_img_url }}" alt="{{ type | replace: "_", " " | capitalize }}" />
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end footer -->
+    
+    {% if settings.size_chart != blank %}
+      <div id="size-chart">
+        <h5 class="center">{{ pages[settings.size_chart].title }}</h5>
+        {{ pages[settings.size_chart].content }}
+      </div>
+    {% endif %}    
+    {% include 'newsletter-popup' %}
+    {% include 'currencies' %}
+    {% if settings.disqus_enabled and settings.blog_comment_count %}
+      {% if template contains "blog" or template contains "article" or template contains "index" %}
+        <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
+      {% endif %}
+    {% endif %}
+  
+      {% if customer.tags.size > 0 and template != 'cart' %}
+        <script>
+          $(function(){
+            $(document).on('click', "input[name='checkout'], button[name='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], [href$='checkout']", function(e){
+              e.preventDefault();
+              window.location = "/cart";
+            });
+          });
+        </script>
+      {% endif %}
+      
+   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  {% include 'sweettooth-initializer' %}
+
+  {% include 'sweettooth-tab-widget' %}
+
+
+      {% include 'booster-discounts' %}
+    
+
+{% include 'special-offers' %}
+
+</body>
+</html>

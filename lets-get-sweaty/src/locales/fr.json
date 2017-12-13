@@ -183,7 +183,11 @@
       "price": "Prix",
       "quantity": "Quantité",
       "total": "Total",
-      "fulfilled_at": "Traitée le {{ date }}",
+      "fulfilled_at": "Date traitée",
+      "track_shipment": "Retracer l'envoi",
+      "tracking_url": "Lien de suivi",
+      "tracking_company": "Compagnie",
+      "tracking_number": "Numéro de suivi",
       "subtotal": "Sous-total"
     },
     "recover_password": {
@@ -262,7 +266,8 @@
       "shop_link": "Boutique",
       "print": "Imprimer",
       "remaining_html": "{{ balance }} restant",
-      "add_to_apple_wallet": "Ajouter à Apple Wallet"
+      "add_to_apple_wallet": "Ajouter à Apple Wallet",
+      "initial_value": "Valeur de la carte-cadeau : {{ value }}"
     }
   },
   "date_formats":{

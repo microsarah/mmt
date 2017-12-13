@@ -15,6 +15,16 @@
   width: 40px;
 }
 
+.icon-arrow-down{
+  width: 10px !important;
+  padding: 0 0 .25em;
+}
+
+.icon-arrow-down:hover{
+  fill: $color-barley;
+}
+
+
 svg,
 symbol {
   &.icon:not(.icon--full-color) {

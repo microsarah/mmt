@@ -1,8 +1,35 @@
 /*================ General layout styles ================*/
+
 body,
 html {
   background-color: $color-body;
+  font-family: $font-stack-body;
+  letter-spacing: .05em;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: 'NewsGothicMTStd-Bold', 'Times New Roman', serif;
+  font-weight: normal;
+}
+
+a{
+  color: $color-night;
+  text-decoration: none;
+}
+
+a:hover{
+  color: $color-barley;
+}
+
+a:visited{
+}
+
+
 
 .page-width {
   @include clearfix();
@@ -10,3 +37,71 @@ html {
   padding: 0 $gutter;
   margin: 0 auto;
 }
+
+
+// ============================================================================= Header
+
+// ================================================ Logo
+.h1-logo{
+  margin:0;
+}
+
+.site-logo{
+  margin: 0 auto;
+}
+
+
+// ================================================ Site Nav
+
+.site-nav{
+  position: relative;
+}
+
+.site-nav li{
+  position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+.site-nav a:hover{
+  fill: $color-barley;
+}
+
+.site-nav a{
+  font-size: .75em;
+  font-family: $font-stack-header;
+  border-bottom: none;
+  padding: 0 1em;
+  display: block;
+  line-height: 2.5em;
+  font-size: .75em;
+}
+
+.site-nav__submenu{
+  background: $color-body;
+  display: none;
+  position: absolute;
+  top: 1.75em;
+  left: 0;
+  width: 10em;
+  padding: .25em 0;
+}
+
+.site-nav--has-submenu:hover .site-nav__submenu{
+  display: block !important;
+}
+
+.site-nav__submenu li{
+  float: none !important;
+}
+
+// ================================================ System Nav
+
+
+
+// .site-nav,
+// .site-nav__submenu{
+//   list-style: none;
+//   padding:0;
+// }

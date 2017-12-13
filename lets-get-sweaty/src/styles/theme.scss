@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*============================================================================
-  [replace with theme name] | Built with Slate
+  lets-get-sweaty | Built with Slate
     - You cannot use native CSS/Sass @imports in this file without a build script
 ==============================================================================*/
 
@@ -11,6 +11,7 @@
 @import url('settings/variables.scss.liquid');
 
 /*================ COMMON ================*/
+// @import url('global/webfonts.scss');
 @import url('global/normalize.scss');
 @import url('global/slate-reset.scss');
 @import url('global/helper-classes.scss');
@@ -22,6 +23,7 @@
 @import url('global/links-buttons.scss');
 @import url('global/forms.scss');
 @import url('global/blank-states.scss');
+
 
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');

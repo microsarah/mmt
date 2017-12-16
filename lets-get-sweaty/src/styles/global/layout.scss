@@ -5,6 +5,7 @@ html {
   background-color: $color-body;
   font-family: $font-stack-body;
   letter-spacing: .05em;
+  line-height: 1.5em;
 }
 
 h1,
@@ -29,14 +30,20 @@ a:hover{
 a:visited{
 }
 
-
-
 .page-width {
   @include clearfix();
   max-width: $width-site;
   padding: 0 $gutter;
   margin: 0 auto;
 }
+
+.wrap{
+  max-width: 1400px;
+  margin: auto;
+}
+
+::-moz-selection { background: $color-papaya; }
+::selection { background: $color-papaya; }
 
 
 // ============================================================================= Header
@@ -46,15 +53,30 @@ a:visited{
   margin:0;
 }
 
-.site-logo{
-  margin: 0 auto;
+.logo-svg{
+  display: block;
+  width: 80px;
+  margin: .5em auto;
 }
 
+
+// ================================================ Nav
+nav{
+  font-size: .75em;
+  font-family: $font-stack-header;
+  text-transform: uppercase;
+}
+
+nav a{
+  line-height: 3.5em;
+}
 
 // ================================================ Site Nav
 
 .site-nav{
   position: relative;
+  width:505px;
+  padding:2em 0;
 }
 
 .site-nav li{
@@ -69,20 +91,17 @@ a:visited{
 }
 
 .site-nav a{
-  font-size: .75em;
-  font-family: $font-stack-header;
   border-bottom: none;
   padding: 0 1em;
   display: block;
-  line-height: 2.5em;
-  font-size: .75em;
+  // line-height: 3.5em;
 }
 
 .site-nav__submenu{
   background: $color-body;
   display: none;
   position: absolute;
-  top: 1.75em;
+  top: 2.75em;
   left: 0;
   width: 10em;
   padding: .25em 0;
@@ -96,12 +115,127 @@ a:visited{
   float: none !important;
 }
 
-// ================================================ System Nav
+
+// ================================================ Top Nav
+
+.top-nav{
+  float: right;
+  padding:2em 0;
+}
+
+.top-nav li{
+  float: left;
+}
+
+.cart{
+  padding: 0 1em;
+}
+
+.cart-item-count{
+  // position: absolute;
+  // top:0;
+  // left:0;
+}
+
+// ================================================ Collection Page
 
 
 
-// .site-nav,
-// .site-nav__submenu{
-//   list-style: none;
-//   padding:0;
-// }
+.collection-header{
+  padding: 8em 0 10em;
+}
+
+.collection-title{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#MainContent{
+  margin: 0 0 10em;
+}
+
+
+// ================================================ Footer
+footer{
+  background: $color-powder;
+  padding:3em 0;
+  // height: 350px;
+}
+
+footer h3{
+  font-size: .75em;
+  text-transform: uppercase;
+  margin: 0 0 2em;
+}
+
+footer h4{
+  font-family: $font-stack-body;
+  font-size: .75em;
+  text-transform: lowercase;
+  font-style: italic;
+  margin:0;
+}
+
+footer p{
+  font-size: .75em;
+  margin: 0em 0 2em;
+}
+
+footer li a{
+  font-size: .75em;
+  display: block;
+  margin: 0 0 1em;
+}
+
+footer small{
+  padding:5em 0 0;
+  font-size: .75em;
+  display: block;
+  text-align: center;
+}
+
+.social{
+  margin: 0 0 1em;
+}
+
+.social span{
+  font-size: 1em;
+  padding-left: .5em;
+}
+
+
+// ================================================ Product Page
+
+.product{
+  padding: 5em 0;
+}
+
+// ==================== Number buttons
+
+
+#Quantity{
+  width:80px;
+  margin: 0 0 1rem;
+  border: none;
+  padding: 1em;
+  font-family: $font-stack-header;
+  font-size:.75em;
+}
+
+// ==================== Product Image
+
+.product-image-solo{
+  display: block;
+  margin: auto;
+}
+
+.product-image-multiple{
+  display: block;
+  float: left;
+}
+
+.product-image-list{
+  float: left;
+  margin: 0 0 0 1.5em;
+  width: 80px;
+}

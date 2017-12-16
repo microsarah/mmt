@@ -7,19 +7,23 @@
   @include clearfix();
   list-style: none;
   margin: 0;
-  padding: 0;
-  margin-left: -$grid-gutter;
+  padding: 0 $grid-gutter/2;
+  // margin-left: -$grid-gutter;
 }
 
 .grid__item {
   float: left;
-  padding-left: $grid-gutter;
+  padding: 0 $grid-gutter/2;
   width: 100%;
 
   &[class*='--push'] {
     position: relative;
   }
 }
+
+// .grid__item:first-of-type{
+//   padding-left:0;
+// }
 
 /*============================================================================
   Reversed grids allow you to structure your source in the opposite

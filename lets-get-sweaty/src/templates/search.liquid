@@ -32,7 +32,7 @@
     <ul>
       {% for item in search.results %}
         <li>
-          {% assign featured_image = product.selected_variant.featured_image | default: product.featured_image %}
+          {% assign featured_image = item.image | default: item.featured_image %}
           {% if featured_image != blank %}
             <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
               {{ featured_image | img_url: '240x240' | img_tag: featured_image.alt }}

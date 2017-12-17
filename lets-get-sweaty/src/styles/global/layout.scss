@@ -137,7 +137,7 @@ nav a{
   // left:0;
 }
 
-// ================================================ Collection Page
+// ================================================ Collection Pages
 
 
 
@@ -150,9 +150,27 @@ nav a{
   text-align: center;
 }
 
+.collection-product-title{
+  font-family: $font-stack-header;
+  margin: 0;
+}
+
+.collection-product-price{
+  margin: 0;
+}
+
 #MainContent{
   margin: 0 0 10em;
 }
+
+.feat-collection-title{
+  font-family: $font-stack-body;
+  font-style: italic;
+  font-size: 1em;
+  text-align: center;
+  margin: 2em 0 3em;
+}
+
 
 
 // ================================================ Footer
@@ -204,13 +222,7 @@ footer small{
 }
 
 // ================================================ Index Page
-.featured-collection-title{
-  font-family: $font-stack-body;
-  font-style: italic;
-  font-size: 1em;
-  text-align: center;
-  margin: 2em 0 3em;
-}
+
 
 
 // ================================================ Product Page

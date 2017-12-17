@@ -1,6 +1,6 @@
 <div class="wrap">
   {% if section.settings.title != blank %}
-    <h2 class="featured-collection-title">{{ section.settings.title | escape }}</h2>
+    <h2 class="feat-collection-title">{{ section.settings.title | escape }}</h2>
   {% endif %}
 
   {%- assign collection = collections[section.settings.collection] -%}
@@ -13,13 +13,13 @@
             {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
           {% endif %}
 
-          <p>{{ product.title }}</p>
-          <p>
+          <p class="collection-product-title">{{ product.title }}</p>
+          <p class="collection-product-price">
             {% if product.compare_at_price > product.price %}
 
               {% if product.price_varies %}
                 {%- assign sale_price = product.price | money -%}
-                {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                {{ product.price | money }}
               {% else %}
                 {{ 'products.product.on_sale' | t }}
                 {{ product.price | money }}
@@ -29,7 +29,7 @@
 
               {% if product.price_varies %}
                 {%- assign price = product.price | money -%}
-                {{ 'products.product.from_text_html' | t: price: price }}
+                {{ product.price_max | money }}
               {% else %}
                 {{ product.price | money }}
               {% endif %}

@@ -1,8 +1,8 @@
 <div class="wrap product">
   <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
 
-    {%- assign current_variant = product.selected_or_first_available_variant -%}
-    {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+    {% assign current_variant = product.selected_variant %}
+    {% assign featured_image = product.selected_variant.featured_image | default: product.featured_image %}
 
     <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
     <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
@@ -12,7 +12,7 @@
 
     <div class="grid">
       <div class="grid__item medium-up--three-eighths">
-        <h1>{{ product.title }}</h1>
+        <h1 class="product-title">{{ product.title }}</h1>
         <div class="rte">
           {{ product.description }}
         </div>
@@ -43,12 +43,7 @@
 
             <select name="id" class="no-js" data-product-select>
               {% for variant in product.variants %}
-                <option
-                  {% if variant == current_variant %}selected="selected"{% endif %}
-                  {% unless variant.available %}disabled="disabled"{% endunless %}
-                  value="{{ variant.id }}">
-                    {{ variant.title }}
-                </option>
+                <option {% if forloop.length <= 1 and variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
               {% endfor %}
             </select>
 
@@ -106,9 +101,7 @@
             <ul class="product-image-list">
               {% for image in product.images %}
                 <li>
-                  <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
                     <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
-                  </a>
                 </li>
               {% endfor %}
             </ul>
@@ -132,3 +125,37 @@
       ]
     }
   {% endschema %}
+  
+  {% if product.variants.size > 1 %}
+  <script>
+    var variantImages = {},
+      thumbnails,
+      variant,
+      variantImage,
+      optionValue,
+      productOptions = [];
+      {% for variant in product.variants %}
+         variant = {{ variant | json }};
+         if ( typeof variant.featured_image !== 'undefined' && variant.featured_image !== null ) {
+           variantImage =  variant.featured_image.src.split('?')[0].replace(/http(s)?:/,'');
+           variantImages[variantImage] = variantImages[variantImage] || {};
+           {% for option in product.options %}
+
+             {% assign option_value = variant.options[forloop.index0] %}
+             {% assign option_key = 'option-' | append: forloop.index0 %}
+
+             if (typeof variantImages[variantImage][{{ option_key | json }}] === 'undefined') {
+               variantImages[variantImage][{{ option_key | json }}] = {{ option_value | json }};
+             }
+             else {
+               var oldValue = variantImages[variantImage][{{ option_key | json }}];
+               if ( oldValue !== null && oldValue !== {{ option_value | json }} )  {
+                 variantImages[variantImage][{{ option_key | json }}] = null;
+               }
+             }
+           {% endfor %}
+         }
+         productOptions.push(variant);
+      {% endfor %}
+  </script>
+  {% endif %}

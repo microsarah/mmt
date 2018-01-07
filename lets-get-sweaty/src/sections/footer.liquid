@@ -62,6 +62,8 @@
       </div>
       <div class="grid__item medium-up--one-quarter">
         <h3>Stay in Touch</h3>
+        {% include 'newsletter' %}
+        {% include 'newsletter-popup' %}
       </div>
     </div>
     <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}</small>
@@ -83,6 +85,12 @@
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
+      },
+      {
+        "type": "text",
+        "id": "mailchimp_link",
+        "label": "MailChimp form action URL",
+        "info": "[Find your MailChimp form action URL](http:\/\/support.outofthesandbox.com\/customer\/portal\/articles\/942352)"
       }
     ]
   }

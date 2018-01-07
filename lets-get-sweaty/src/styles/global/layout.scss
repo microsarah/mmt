@@ -87,7 +87,8 @@ nav a{
 }
 
 .site-nav a:hover{
-  fill: $color-barley;
+  // fill: $color-barley;
+  // background: $color-barley;
 }
 
 .site-nav a{
@@ -103,7 +104,7 @@ nav a{
   position: absolute;
   top: 2.75em;
   left: 0;
-  width: 10em;
+  width: 11em;
   padding: .25em 0;
 }
 
@@ -113,6 +114,11 @@ nav a{
 
 .site-nav__submenu li{
   float: none !important;
+}
+
+.site-nav__submenu li a:hover{
+  background: $color-barley;
+  color: $color-night;
 }
 
 

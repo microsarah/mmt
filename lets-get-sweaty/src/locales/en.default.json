@@ -240,7 +240,18 @@
     "footer": {
       "social_platform": "{{ name }} on {{ platform }}",
       "copyright": "Copyright",
-      "payment_methods": "Payment methods accepted"
+      "payment_methods": "Payment methods accepted",
+      "newsletter_form": {￼
+         "title": "Sign Up for our Newsletter",
+         "description": "Subscribe to our newsletter and always be the first to hear about what is happening.",
+         "name": "Name",
+         "email": "Email",
+         "subscriber_first_name": "Newsletter",
+         "subscriber_last_name": "Subscriber",
+         "success_text": "Thank you for joining our mailing list!",
+         "placeholder": "Enter your email address...",
+         "submit": "Sign Up"
+      }
     }
   },
   "products": {

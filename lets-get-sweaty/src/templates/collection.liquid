@@ -3,7 +3,7 @@
   <header role="banner" class="collection-header">
     <h1 class="collection-title">{{ collection.title }}</h1>
     {% if collection.description != blank %}
-      <p class="rte">
+      <p class="collection-description">
         {{ collection.description }}
       </p>
     {% endif %}
@@ -11,9 +11,10 @@
 
   <main class="grid">
     {% for product in collection.products %}
+
         {% if product.featured_image != blank %}
           <a href="{{ product.url | within: collection }}">
-          <div class="grid__item medium-up--one-third">
+          <div class="grid__item medium-up--one-quarter small--one-half">
             {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }}
         {% endif %}
         <p class="collection-product-title">{{ product.title }}</p>

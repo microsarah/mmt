@@ -18,6 +18,10 @@ h6{
   font-weight: normal;
 }
 
+p{
+  max-width: 35em;
+}
+
 a{
   color: $color-night;
   text-decoration: none;
@@ -49,18 +53,44 @@ a:visited{
 // ============================================================================= Header
 
 // ================================================ Logo
+.logo{
+  position: absolute;
+  top:.5em;
+  left:50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 80px;
+}
+
 .h1-logo{
   margin:0;
 }
 
 .logo-svg{
   display: block;
-  width: 80px;
-  margin: .5em auto;
+
+
 }
 
 
 // ================================================ Nav
+
+.menu-mobile-label{
+  display: none;
+  font-size: .75em;
+  font-family: $font-stack-header;
+}
+
+#menu-mobile-checkbox{
+  display: none !important;
+}
+
+
+
 nav{
   font-size: .75em;
   font-family: $font-stack-header;
@@ -72,6 +102,14 @@ nav a{
 }
 
 // ================================================ Site Nav
+
+.site-navigation{
+  float: left;
+}
+
+.top-navigation{
+  float: right;
+}
 
 .site-nav{
   position: relative;
@@ -143,6 +181,62 @@ nav a{
   // left:0;
 }
 
+
+.searchbar{
+  position: relative;
+}
+
+.searchbar:hover .icon-search{
+  width: 15em;
+  fill: $color-barley;
+  color: $color-barley;
+}
+
+.searchbar:hover .search-input::placeholder{
+    color: $color-barley;
+}
+
+.search-input {
+    line-height: 1em;
+    padding: 1.125em .75em .75em 1.75em;
+    width: 7em;
+    background-color: rgba(0,0,0,0);
+    -webkit-transition: width .5s ease-in-out;
+    -moz-transition: width .5s ease-in-out;
+    -o-transition: width .5s ease-in-out;
+    transition: width .5s ease-in-out;
+    z-index: 0;
+}
+
+.search-input:focus {
+    outline: none;
+    width: 15em;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    background-color: $color-body;
+    color: $color-barley;
+    z-index: 200;
+}
+
+.search-input::placeholder{
+    color: $color-night;
+}
+
+.icon-search{
+  position: absolute;
+  top: .375em;
+  width: 1.5em !important;
+}
+
+.icon-search:hover{
+  fill:$color-night;
+  color: $color-night;
+}
+
+
+
 // ================================================ Collection Pages
 
 
@@ -154,6 +248,13 @@ nav a{
 .collection-title{
   text-transform: uppercase;
   text-align: center;
+  margin: 0.67em 0 1em;
+}
+
+.collection-description{
+  text-align: center;
+  margin:auto;
+
 }
 
 .collection-product-title{
@@ -269,4 +370,32 @@ footer small{
   float: left;
   margin: 0 0 0 1.5em;
   width: 80px;
+}
+
+// ================================================ MQ's
+
+@media screen and (max-width:850px){
+  .site-nav{
+    width:100%;
+  }
+
+  .menu-mobile-wrap{
+    padding:2.75em 1em;
+  }
+
+  .menu-mobile-label{
+    display: block !important;
+  }
+
+  .menu{
+    display: none;
+  }
+
+  #menu-mobile-checkbox:checked + .menu{
+    display: block !important;
+  }
+
+  .wrap{
+    padding:0 1em;
+  }
 }

@@ -8,7 +8,7 @@
   <div class="grid clearfix">
     {% for product in collection.products limit: 6 %}
       <a href="{{ product.url | within: collection }}">
-        <div class="grid__item medium-up--one-quarter">
+        <div class="grid__item medium-up--one-quarter one-half">
           {% if product.featured_image != blank %}
             {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
           {% endif %}

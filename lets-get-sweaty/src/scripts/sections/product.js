@@ -19,6 +19,7 @@ theme.Product = (function() {
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
+    productVariantImage: '[data-product-variant]',
     singleOptionSelector: '[data-single-option-selector]'
   };
 
@@ -44,14 +45,17 @@ theme.Product = (function() {
       enableHistoryState: this.$container.data('enable-history-state') || false,
       singleOptionSelector: selectors.singleOptionSelector,
       originalSelectorId: selectors.originalSelectorId,
-      product: this.productSingleObject
+      product: this.productSingleObject,
+      productThumbs: selectors.productThumbs,
+      productFeaturedImage: selectors.productFeaturedImage,
+      productVariantImage: selectors.productVariantImage,
     };
 
     this.settings = {};
     this.namespace = '.product';
     this.variants = new slate.Variants(options);
-    this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
 
+    this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
     this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
     this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
 
@@ -61,6 +65,7 @@ theme.Product = (function() {
 
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
     }
+
   }
 
   Product.prototype = $.extend({}, Product.prototype, {

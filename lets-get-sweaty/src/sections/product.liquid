@@ -106,7 +106,7 @@
               </div>
               <ul class="product-image-list grid__item medium-up--one-eighth">
                 {% for image in product.images %}
-                  <li>
+                  <li data-product-variant="{{ forloop.index0 }}">
                     <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
                       <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
                     </a>

@@ -23,8 +23,14 @@ slate.Variants = (function() {
     this.originalSelectorId = options.originalSelectorId;
     this.enableHistoryState = options.enableHistoryState;
     this.currentVariant = this._getVariantFromOptions();
+    this.productThumbs = options.productThumbs;
+    this.productFeaturedImage = options.productFeaturedImage;
+    this.productVariantImage = options.productVariantImage;
 
     $(this.singleOptionSelector, this.$container).on('change', this._onSelectChange.bind(this));
+
+    // triggers _onImageSelectChange to change currently selected product
+    $(this.productThumbs, this.$container).on('click', this._onImageSelectChange.bind(this));
   }
 
   Variants.prototype = $.extend({}, Variants.prototype, {
@@ -90,6 +96,39 @@ slate.Variants = (function() {
       });
 
       return found || null;
+    },
+
+    /**
+     * _onImageSelectChange - Event handler for when a variant changes based on image click.
+     *
+     * @param  {integer} selectedVariantIndex index of clicked product thumbnail
+     */
+    _onImageSelectChange: function(evt) {
+        evt.preventDefault();
+        var selectedVariantIndex = evt.target.parentNode.parentNode.getAttribute('data-product-variant');
+
+        // if there's more than one varaint, update the selected product
+        if (this.product.variants.length > 1){
+            // grab variant by index via image selected
+            var variant = this.product.variants[selectedVariantIndex];
+            if (!variant || variant ==='undefined') {
+                return;
+            }
+            // set dropdown menu to index of selected image
+            $(this.singleOptionSelector)[0].selectedIndex = selectedVariantIndex;
+            this.$container.trigger({
+                type: 'variantChange',
+                variant: variant
+            });
+            this._onSelectChange();
+        }
+        // if there's only one variant, just change the featured image but not the variant selected
+        else {
+                                                // vvvv A cleaner way....? vvvv
+            var newFeaturedImageUrl = $("li"+this.productVariantImage)[selectedVariantIndex].childNodes[1].href;
+            // sets src of product featured image to clicked
+            $(this.productFeaturedImage).attr('src', newFeaturedImageUrl);
+        }
     },
 
     /**

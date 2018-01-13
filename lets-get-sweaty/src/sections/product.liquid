@@ -101,10 +101,10 @@
 
           {% else%}
             <div class="grid product-images">
-              <div class="grid__item medium-up--seven-eighths">
+              <div class="grid__item medium-up--three-quarters">
                 <img class="product-image-multiple" src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
               </div>
-              <ul class="product-image-list grid__item medium-up--one-eighth">
+              <ul class="product-image-list grid__item medium-up--one-quarter">
                 {% for image in product.images %}
                   <li>
                     <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>

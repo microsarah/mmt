@@ -414,9 +414,9 @@ footer small{
 }
 
 .product-image-list{
-  // position: relative;
-  top:50%;
-  // transform: translateY(-50%);
+  position: relative;
+  // top:50%;
+  transform: translateY(100%);
   padding: 0 0 0 1.5em;
 }
 

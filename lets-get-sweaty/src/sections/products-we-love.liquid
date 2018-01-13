@@ -1,6 +1,6 @@
 <div class="wrap">
   {% if section.settings.title != blank %}
-    <h2 class="feat-collection-title">{{ section.settings.title | escape }}</h2>
+    <h1 class="feat-collection-title">{{ section.settings.title | escape }}</h1>
   {% endif %}
 
   {%- assign collection = collections[section.settings.collection] -%}

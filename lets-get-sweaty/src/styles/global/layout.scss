@@ -366,12 +366,26 @@ footer small{
 .data-price-wrapper{
   font-family: $font-stack-header;
   font-size: 1.25em;
+  margin: 2em 0 1em;
 }
+
+
+.product-size-quantity{
+  border: 1px solid #000;
+  padding: 1em;
+  font-family: $font-stack-header;
+  font-size:.75em;
+}
+
+.product-size-quantity:nth-of-type(2){
+  margin-left:-1px;
+}
+
 
 // ==================== Selector dropdown
 
 .selector-wrapper{
-  width:50%;
+  // width:50%;
 }
 
 // ==================== Number buttons
@@ -379,14 +393,16 @@ footer small{
 
 #Quantity{
   width:80px;
-  margin: 0 0 1rem;
   border: none;
-  padding: 1em;
-  font-family: $font-stack-header;
-  font-size:.75em;
+
+
 }
 
 // ==================== Product Image
+
+.product-images{
+  position: relative;
+}
 
 .product-image-solo{
   display: block;
@@ -394,14 +410,14 @@ footer small{
 }
 
 .product-image-multiple{
-  display: block;
-  float: left;
+  width:100%;
 }
 
 .product-image-list{
-  float: left;
-  margin: 0 0 0 1.5em;
-  width: 80px;
+  // position: relative;
+  top:50%;
+  // transform: translateY(-50%);
+  padding: 0 0 0 1.5em;
 }
 
 // ================================================ MQ's

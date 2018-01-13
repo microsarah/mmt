@@ -25,7 +25,7 @@
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
                 <div class="grid">
-                  <div class="grid__item medium-up--one-half selector-wrapper js">
+                  <div class="grid__item medium-up--three-quarters selector-wrapper js product-size-quantity">
                     <select
                       id="SingleOptionSelector-{{ forloop.index0 }}"
                       data-single-option-selector
@@ -38,20 +38,20 @@
                         </option>
                       {% endfor %}
                     </select>
-                  </div>
-                {% endfor %}
-              {% endunless %}
-              <select name="id" class="no-js" data-product-select>
-                {% for variant in product.variants %}
-                  <option
-                    {% if variant == current_variant %}selected="selected"{% endif %}
-                    {% unless variant.available %}disabled="disabled"{% endunless %}
-                    value="{{ variant.id }}">
-                      {{ variant.title }}
-                  </option>
-                {% endfor %}
-              </select>
-              <div class="grid__item medium-up--one-half">
+                  {% endfor %}
+                {% endunless %}
+                <select name="id" class="no-js" data-product-select>
+                  {% for variant in product.variants %}
+                    <option
+                      {% if variant == current_variant %}selected="selected"{% endif %}
+                      {% unless variant.available %}disabled="disabled"{% endunless %}
+                      value="{{ variant.id }}">
+                        {{ variant.title }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="grid__item medium-up--one-quarter product-size-quantity">
                 <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
               </div>
             </div>
@@ -100,16 +100,20 @@
             <img class="product-image-solo" src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
 
           {% else%}
-            <img class="product-image-multiple" src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
-            <ul class="product-image-list">
-              {% for image in product.images %}
-                <li>
-                  <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
-                    <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
+            <div class="grid product-images">
+              <div class="grid__item medium-up--seven-eighths">
+                <img class="product-image-multiple" src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+              </div>
+              <ul class="product-image-list grid__item medium-up--one-eighth">
+                {% for image in product.images %}
+                  <li>
+                    <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
+                      <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           {% endif %}
         {% endif %}
       </div>

@@ -1,4 +1,4 @@
-<div class="wrap product">
+<div class="product">
   <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
 
     {%- assign current_variant = product.selected_or_first_available_variant -%}
@@ -10,7 +10,7 @@
     <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
     <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
-    <div class="grid">
+    <div class="grid wrap">
       <div class="grid__item medium-up--three-eighths">
         <h1 class="product-title">{{ product.title }}</h1>
         <div class="rte">
@@ -24,51 +24,53 @@
           <form action="/cart/add" method="post" enctype="multipart/form-data">
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
-                <div class="selector-wrapper js">
-                  <select
-                    id="SingleOptionSelector-{{ forloop.index0 }}"
-                    data-single-option-selector
-                    data-index="option{{ option.position }}">
-                    {% for value in option.values %}
-                      <option
-                        value="{{ value | escape }}"
-                        {% if option.selected_value == value %}selected="selected"{% endif %}>
-                          {{ value }}
-                      </option>
-                    {% endfor %}
-                  </select>
-                </div>
-              {% endfor %}
-            {% endunless %}
-
-            <select name="id" class="no-js" data-product-select>
-              {% for variant in product.variants %}
-                <option
-                  {% if variant == current_variant %}selected="selected"{% endif %}
-                  {% unless variant.available %}disabled="disabled"{% endunless %}
-                  value="{{ variant.id }}">
-                    {{ variant.title }}
-                </option>
-              {% endfor %}
-            </select>
-
-            <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
-
-            <div data-price-wrapper>
-              <span data-product-price>
-                {{ current_variant.price | money }}
-              </span>
-
-              {% if product.compare_at_price_max > product.price %}
-                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-                <s data-compare-price>
-                  {% if current_variant.compare_at_price > current_variant.price %}
-                    {{ current_variant.compare_at_price | money }}
-                  {% endif %}
-                </s>
-              {% endif %}
+                <div class="grid">
+                  <div class="grid__item medium-up--one-half selector-wrapper js">
+                    <select
+                      id="SingleOptionSelector-{{ forloop.index0 }}"
+                      data-single-option-selector
+                      data-index="option{{ option.position }}">
+                      {% for value in option.values %}
+                        <option
+                          value="{{ value | escape }}"
+                          {% if option.selected_value == value %}selected="selected"{% endif %}>
+                            {{ value }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                {% endfor %}
+              {% endunless %}
+              <select name="id" class="no-js" data-product-select>
+                {% for variant in product.variants %}
+                  <option
+                    {% if variant == current_variant %}selected="selected"{% endif %}
+                    {% unless variant.available %}disabled="disabled"{% endunless %}
+                    value="{{ variant.id }}">
+                      {{ variant.title }}
+                  </option>
+                {% endfor %}
+              </select>
+              <div class="grid__item medium-up--one-half">
+                <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
+              </div>
             </div>
+            <div class="data-price-wrapper">
+              <div data-price-wrapper>
+                <span data-product-price>
+                  {{ current_variant.price | money }}
+                </span>
 
+                {% if product.compare_at_price_max > product.price %}
+                  <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                  <s data-compare-price>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money }}
+                    {% endif %}
+                  </s>
+                {% endif %}
+              </div>
+            </div>
             <button
               type="submit"
               name="add"
@@ -86,17 +88,13 @@
 
         </div>
 
-        {% if section.settings.show_share_buttons %}
-          {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
-        {% endif %}
-
         {% unless product == empty %}
           <script type="application/json" data-product-json>
             {{ product | json }}
           </script>
         {% endunless %}
       </div>
-      <div class="grid__item medium-up--one-half clearfix">
+      <div class="grid__item medium-up--five-eighths">
         {% if featured_image != blank %}
           {% if product.images.size == 1 %}
             <img class="product-image-solo" src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
@@ -116,19 +114,25 @@
         {% endif %}
       </div>
     </div>
+    <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details">
+      <div class="grid wrap">
+        <div class="grid__item medium-up--one-third one-whole">
+          <h2>ingredients</h2>
+          <p>{{ product.metafields.product_info.ingredients }}</p>
+        </div>
+        <div class="grid__item medium-up--one-third one-whole">
+          <h2>how to</h2>
+          <p>{{ product.metafields.product_info.to_use }}</p>
+        </div>
+        <div class="grid__item medium-up--one-third one-whole">
+          <h2>tips</h2>
+          <p>{{ product.metafields.product_info.tips }}</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div>
 </div>
-
-  {% schema %}
-    {
-      "name": "Product pages",
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_share_buttons",
-          "label": "Show social sharing buttons",
-          "default": true
-        }
-      ]
-    }
-  {% endschema %}

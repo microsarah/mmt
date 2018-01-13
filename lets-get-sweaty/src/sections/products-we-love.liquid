@@ -6,13 +6,9 @@
   {%- assign collection = collections[section.settings.collection] -%}
 
   <div class="grid clearfix">
-    {% for product in collection.products limit: 6 %}
+    {% for product in collection.products limit: 4 %}
       <a href="{{ product.url | within: collection }}">
-        <div class="grid__item medium-up--one-quarter one-half">
-          {% if product.featured_image != blank %}
-            {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
-          {% endif %}
-
+        <div class="grid__item medium-up--one-quarter one-half small--one-half">
           <p class="collection-product-title">{{ product.title }}</p>
           <p class="collection-product-price">
             {% if product.compare_at_price > product.price %}
@@ -36,6 +32,9 @@
 
             {% endif %}
           </p>
+          {% if product.featured_image != blank %}
+            {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
+          {% endif %}
         </div>
       </a>
     {% else %}

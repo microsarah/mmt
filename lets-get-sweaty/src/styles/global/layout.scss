@@ -20,6 +20,9 @@ h6{
 
 p{
   max-width: 35em;
+  margin: auto;
+  font-size: 1em;
+  line-height: 1.6em;
 }
 
 a{
@@ -336,10 +339,39 @@ footer small{
 
 .product{
   padding: 5em 0;
+  text-align: center;
 }
 
 .product-title{
-  line-height: 1em;
+  line-height: 1.2em;
+  margin: 0.67em 0 1em
+}
+
+.product-details{
+  background-color: $color-papaya;
+  margin:5em 0;
+  padding:5em 0;
+}
+
+.product-details h2{
+  font-size: 1em;
+  letter-spacing: .1em;
+  text-align: center;
+}
+
+.product-details p{
+  padding: 0 2em;
+}
+
+.data-price-wrapper{
+  font-family: $font-stack-header;
+  font-size: 1.25em;
+}
+
+// ==================== Selector dropdown
+
+.selector-wrapper{
+  width:50%;
 }
 
 // ==================== Number buttons

@@ -348,7 +348,7 @@ footer small{
 }
 
 .product-details{
-  background-color: $color-papaya;
+  // background-color: $color-papaya;
   margin:5em 0;
   padding:5em 0;
 }
@@ -411,12 +411,15 @@ footer small{
 
 .product-image-multiple{
   width:100%;
+  max-width: 480px;
+  display: block;
+  margin-left:auto;
 }
 
 .product-image-list{
   position: relative;
-  // top:50%;
-  transform: translateY(100%);
+  transform: translateY(10%);
+  width:120px;
   padding: 0 0 0 1.5em;
 }
 
@@ -445,5 +448,10 @@ footer small{
 
   .wrap{
     padding:0 1em;
+  }
+
+  .medium-up--five-eighths,
+  .medium-up--five-eighths{
+    width:50% !important;
   }
 }

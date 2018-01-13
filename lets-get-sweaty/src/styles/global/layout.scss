@@ -75,8 +75,6 @@ a:visited{
 
 .logo-svg{
   display: block;
-
-
 }
 
 
@@ -261,8 +259,12 @@ nav a{
 }
 
 .collection-product-title{
+  text-align: center;
   font-family: $font-stack-header;
+  font-size: 1.2em;
   margin: 0;
+  line-height: 1.2em;
+  height:2.5em;
 }
 
 .collection-product-price{

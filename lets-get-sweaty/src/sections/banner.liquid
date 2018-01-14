@@ -1,0 +1,69 @@
+{% if section.settings.sales_bkgd %}
+
+{% schema %}
+{
+    "name": "Home page - banner images",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "For best results, upload images that are 1280px in width and under 600px in height. Try to keep your banner images the same size for consistency."
+      },
+      {
+        "type": "header",
+        "content": "Banner Image"
+      },
+      {
+        "type": "image",
+        "id": "banner.jpg",
+        "label": "Banner image",
+        "info": "1280 x 600px recommended",
+        "max-width": 2048,
+        "max-height": 1600
+      },
+      {
+        "type": "text",
+        "id": "banner_1_alt_text",
+        "label": "ALT text"
+      },
+      {
+        "type": "text",
+        "id": "banner_1_headline",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "banner_1_subtitle",
+        "label": "Subheading"
+      },
+      {
+        "type": "select",
+        "id": "banner_1_text_align",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "banner_1_button_text",
+        "label": "Button text"
+      },
+      {
+        "type": "text",
+        "id": "banner_1_link",
+        "label": "Link URL"
+      }
+    ]
+  }
+{% endschema %}

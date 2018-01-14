@@ -8,16 +8,17 @@ textarea,
 select {
   border: none;
   border-radius: 0;
-  max-width: 100%;
+  width: 100%;
   background:$color-body;
 
   font-family: $font-stack-header;
   // font-size: 1em;
   text-transform: uppercase;
   letter-spacing: .05em;
+  outline:none;
 
   &:focus {
-    border: 1px solid $color-papaya;
+    border: none;
   }
 
   &[disabled] {

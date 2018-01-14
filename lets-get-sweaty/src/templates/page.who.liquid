@@ -1,11 +1,54 @@
-<div class="rte">
-  <h2>Our Story</h2>
-  <p>{{ page.metafields.who_we_are.our_story }}</p>
-  <h2>Our Ingredients</h2>
-  <p>{{ page.metafields.who_we_are.our_ingredients }}</p>
-  <h2>Our Packaging</h2>
-  <p>{{ page.metafields.who_we_are.our_packaging }}</p>
-  <h2>Giving Back</h2>
-  <p>{{ page.metafields.who_we_are.giving_back }}</p>
-  {{ page.content }}
+<div class="who-we-are">
+    <section class="our-story">
+      <h1>Our Story</h1>
+      <h3>{{ page.metafields.who_we_are.about_us }}</h3>
+      <div class="about-us-img">
+        <img src="{{ 'who-we-are_1.svg' | asset_url }}" alt="illustration of friendly slithering snake" title="hisssssssssssss" />
+      </div>
+      <p class="about-us">{{ page.metafields.who_we_are.our_story }}</p>
+    </section>
+
+    <section class="our-ingredients">
+      <div class="grid wrap">
+        <div class="grid__item medium-up--one-third">
+          <img src="{{ 'who-we-are_2.svg' | asset_url }}" alt="illustration of cat trimming topiary" title="snip-snip-snip" />
+        </div>
+        <div class="grid__item medium-up--two-thirds">
+          <h2>Our Ingredients</h2>
+          <p>{{ page.metafields.who_we_are.our_ingredients }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="our-packaging">
+      <div class="grid wrap">
+        <div class="grid__item medium-up--two-thirds">
+          <h2>Our Packaging</h2>
+          <p>{{ page.metafields.who_we_are.our_packaging }}</p>
+        </div>
+        <div class="grid__item medium-up--one-third">
+          <img src="{{ 'who-we-are_3.svg' | asset_url }}" alt="illustration of cat kneading cardboard box" title="knead-knead-knead" />
+        </div>
+      </div>
+    </section>
+
+    <section class="giving-back">
+      <div class="grid wrap">
+        <div class="grid__item medium-up--one-third">
+          <img src="{{ 'who-we-are_4.svg' | asset_url }}" alt="illustration of two standing cats grooming each other" title="lick-scratch-lick" />
+        </div>
+        <div class="grid__item medium-up--two-thirds">
+          <h2>Giving Back</h2>
+          <p>{{ page.metafields.who_we_are.giving_back }}</p>
+          <div class="grid giving-back-lists">
+            <div class="grid__item medium-up--one-half one-whole">
+              <ul>{{page.metafields.who_we_are.giving_back_list_1 }}</ul>
+            </div>
+            <div class="grid__item medium-up--one-half one-whole">
+              <ul>{{page.metafields.who_we_are.giving_back_list_2 }}</ul>
+            </div>
+          <div>
+        </div>
+      </div>
+    </section>
 </div>

@@ -283,7 +283,108 @@ nav a{
   margin: 2em 0 3em;
 }
 
+// ============================================================================= Who We Are
 
+// ================================================ General
+.who-we-are{
+  text-align: center;
+}
+
+.who-we-are h1,
+.who-we-are h2{
+  text-transform: uppercase;
+}
+
+.who-we-are h3{
+  font-family: $font-stack-body;
+  font-style: italic;
+  font-size: .875em;
+  width:21.5em;
+  margin:2em auto;
+}
+
+.who-we-are ul{
+  margin: 3em 0 0;
+  text-align: left;
+  padding: 0;
+  font-size: .75em;
+}
+
+.who-we-are li{
+  padding: .5em 0;
+}
+
+.who-we-are li:before{
+  color:$color-papaya;
+  content: "♥ ";
+}
+
+.who-we-are img{
+  display: block;
+  width:100%;
+}
+
+.our-ingredients p,
+.our-packaging p,
+.giving-back p{
+  padding:0 2em;
+}
+
+
+// ================================================ Our Story
+.our-story{
+  background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
+  background-size:cover;
+  -webkit-background-blend-mode: multiply;
+  padding:12em 0;
+  height:900px;
+}
+
+.about-us{
+  padding:0 2em;
+}
+
+.about-us-img{
+  display: block;
+  width: 15em;
+  margin: 2em auto;
+}
+
+// ================================================ Our Ingredients
+.our-ingredients{
+  margin: -2em 0 0;
+  background:url('who-we-are-our-ingredients-bkgd.svg') no-repeat center center scroll;
+  background-size:cover;
+  padding:10em 0 5em;
+  height:920px;
+}
+
+
+// ================================================ Our Packaging
+.our-packaging{
+  background:url('who-we-are-our-packaging-bkgd.svg') no-repeat center center scroll;
+  background-size:cover;
+  padding:5em 0;
+  margin: -15em 0 0;
+}
+
+
+// ================================================ Giving Back
+.giving-back{
+  background:url('who-we-are-giving-back-bkgd.svg') no-repeat center center scroll;
+  background-size:cover;
+  padding:5em 0;
+}
+
+.giving-back img{
+  position: relative;
+  top:10em;
+}
+
+.giving-back-lists{
+  width: 640px;
+  margin: auto;
+}
 
 // ================================================ Footer
 footer{

@@ -1,7 +1,18 @@
 <div class="rte">
-  <h2>FAQ</h2>
-  <div>{{ page.metafields.info.faq }}</div>
-  <h2>Buzz</h2>
-  <p>{{ page.metafields.info.buzz }}</p>
   {{ page.content }}
+  {{ page.metafields.info.faq_returns }}
+  {{ page.metafields.info.faq_ingredients }}
+  {{ page.metafields.info.faq_shipping }}
+  {{ page.metafields.info.faq_etc }}
+
+  <div class="grid">
+    <div class="grid__item medium-up--one-third one-whole">
+      {{ page.metafields.info.online_retailers_list1 }}
+    </div>
+    <div class="grid__item medium-up--one-third one-whole">
+      {{ page.metafields.info.online_retailers_list2 }}
+    </div>
+    <div class="grid__item medium-up--one-third one-whole">
+      {{ page.metafields.info.online_retailers_list3 }}
+    </div>
 </div>

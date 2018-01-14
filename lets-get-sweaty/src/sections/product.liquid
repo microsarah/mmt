@@ -124,15 +124,17 @@
       <div class="grid wrap">
         <div class="grid__item medium-up--one-third one-whole">
           <h2>ingredients</h2>
-          <p>{{ variant.metafields.product_info.ingredients }}</p>
+          {% for variant in product.variants %}
+            <p>{{ variant.metafields.product_info.product_ingredients }}</p>
+          {% endfor %}
         </div>
         <div class="grid__item medium-up--one-third one-whole">
           <h2>how to</h2>
-          <p>{{ product.metafields.product_info.to_use }}</p>
+          <p>{{ product.metafields.product_info.product_to_use }}</p>
         </div>
         <div class="grid__item medium-up--one-third one-whole">
           <h2>tips</h2>
-          <p>{{ product.metafields.product_info.tips }}</p>
+          <p>{{ product.metafields.product_info.product_tips }}</p>
         </div>
       </div>
     </div>

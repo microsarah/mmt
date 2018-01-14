@@ -237,10 +237,7 @@ nav a{
 }
 
 
-
 // ================================================ Collection Pages
-
-
 
 .collection-header{
   padding: 8em 0 10em;
@@ -435,7 +432,28 @@ footer small{
 }
 
 // ================================================ Index Page
+.blog-preview{
 
+}
+
+.blog-preview-title{
+  font-family: $font-stack-header;
+}
+
+.blog-preview-content{
+  width:100%;
+  height:500px;
+  overflow: hidden;
+}
+
+.blog-preview-content p{
+  width:50%;
+  float:left;
+}
+
+.read-more{
+  text-align: center;
+}
 
 
 // ================================================ Product Page
@@ -525,6 +543,10 @@ footer small{
   width:120px;
   padding: 0 0 0 1.5em;
 }
+// ================================================ Blog
+
+
+
 
 // ================================================ MQ's
 

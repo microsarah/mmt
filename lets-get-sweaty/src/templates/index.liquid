@@ -2,61 +2,29 @@
 {{ content_for_index }}
 
 
-<div class="blog-test">
+<section class="blog-preview grid wrap">
   {% assign blog = blogs.Blog %}
     {%- assign blog_title = blog.title -%}
     {% for article in blog.articles limit: 3 %}
       {% if forloop.rindex <= forloop.length %}
-        <h3>
-          <a href="{{ article.url }}">{{ article.title }}</a>
-        </h3>
+        <a href="{{ article.url }}">
 
-        {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-
-        <p>
-          {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
-        </p>
-
-        {% if article.image %}
-          <a href="{{ article.url }}">
-            {{ article | img_url: '1024x1024' | img_tag: article.title }}
-          </a>
-        {% endif %}
-
-        <div class="rte">
-          {% if article.excerpt.size > 0 %}
-            {{ article.excerpt }}
-          {% else %}
-            <p>
-              {{ article.content | strip_html | truncatewords: 100 }}
-            </p>
+          {% if article.image %}
+              {{ article | img_url: '1024x1024' | img_tag: article.title }}
           {% endif %}
-        </div>
 
-        {% if blog.comments_enabled? or article.tags.size > 0 %}
-          <ul>
-            {% if blog.comments_enabled? %}
-              <li>
-                <a href="{{ article.url }}#comments">
-                  {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
-                </a>
-              </li>
+          <div class="blog-preview-content grid">
+            <h3 class="blog-preview-title">{{ article.title }}</h3>
+            {% if article.excerpt.size > 0 %}
+              {{ article.excerpt }}
+            {% else %}
+              <p>
+                {{ article.content | strip_html | truncatewords: 100 }}
+              </p>
             {% endif %}
-
-            {% if article.tags.size > 0 %}
-              {% for tag in article.tags %}
-                <li>
-                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-                  {% unless forloop.last %}, {% endunless %}
-                </li>
-              {% endfor %}
-            {% endif %}
-          </ul>
-        {% endif %}
-
-        <p>
-          <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
-        </p>
+          </div>
+          <p class="read-more">{{ 'blogs.article.read_more' | t }} &rarr;</p>
+        </a>
       {% endif %}
     {% endfor %}
 </div>

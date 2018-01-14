@@ -7,7 +7,7 @@
 {% if cart.item_count == 0 %}
   <div class="sixteen columns">
     <div class="section clearfix">
-      <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>    
+      <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
       <br class="clear" />
       <br class="clear" />
     </div>
@@ -16,26 +16,26 @@
 
   <div class="sixteen columns">
     <form action="/cart" method="post" id="cart_form">
-      <div class="checkout_table_header">    
-        <div class="eight columns alpha">      
+      <div class="checkout_table_header">
+        <div class="eight columns alpha">
           <h4>{{ 'cart.general.item' | t }}</h4>
         </div>
-            
+
         <div class="two columns">
           <h4>{{ 'cart.general.price' | t }}</h4>
-        </div>    
-      
+        </div>
+
         <div class="two columns">
           <h4>{{ 'cart.general.quantity' | t }}</h4>
         </div>
-      
+
         <div class="four columns omega">
           <h4>{{ 'cart.general.total' | t }}</h4>
         </div>
-      
+
         <div class="clear"></div>
       </div>
-      
+
       <ul class="none">
       {% for item in cart.items %}
         <li>
@@ -45,7 +45,7 @@
           </a>
 
           <p class="cart_price">
-            
+
 <span class="saso-cart-item-price" data-key="{{item.key}}">{{ item.price | money }}</span>
 
             <span class="price_total_text">
@@ -55,10 +55,10 @@
           <p>
             <a href="{{ item.url }}" title="{{ item.title | escape }}">{{ item.title }}
 <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
-<span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>                                
+<span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
                                 </a>
-          </p> 
-          
+          </p>
+
           {% if item.properties %}
             <p>
             {% for p in item.properties %}
@@ -73,10 +73,10 @@
             </p>
           {% endif %}
         </div>
-      
+
         <div class="two columns">
           <p class="price_total">
-            
+
 <span class="saso-cart-item-price" data-key="{{item.key}}">{{ item.price | money }}</span>
 
           </p>
@@ -86,7 +86,7 @@
           <span class="quantity_label">{{ 'cart.general.quantity' | t }}:</span>
           <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
         </div>
-        
+
         <div class="four columns mobile_right omega">
           <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" title="{{ 'cart.general.remove' | t }}" class="right mobile_hidden remove"><span class="ss-icon">&#x2421;</span></a>
 
@@ -94,7 +94,7 @@
 <span class="saso-cart-item-line-price" data-key="{{item.key}}">{{ item.line_price | money }}</span>
 </span></span>
         </div>
-            
+
         <div class="sixteen columns clearfix alpha omega">
           <hr />
         </div>
@@ -111,11 +111,11 @@
           <h4><span class="wh-original-cart-total">
 <span class="saso-cart-original-total">{{ cart.total_price | money_with_currency }}</span>
 <span class="saso-cart-total"></span>
-</span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note "></span></div></h4> 
+</span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note "></span></div></h4>
           {% comment %}
           <small id="estimated-shipping" style="display:none">+ <em>{{ 0 | money }}</em> {{ 'cart.shipping_calculator.estimated_shipping' | t }}</small>
           {% endcomment %}
-          
+
           <p>
             <small class="excluding_tax"><em>{{ 'cart.general.excluding_tax_shipping' | t }}</em></small>
 
@@ -136,16 +136,16 @@
           </p>
       </div>
 
-      {% if settings.display_special_instructions %} 
+      {% if settings.display_special_instructions %}
         <div class="three columns mobile_left alpha">
           <label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
         </div>
-      
+
         <div class="six columns">
-          <textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>        
-        </div>  
+          <textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>
+        </div>
       {% endif %}
-      
+
       <div class="three columns update_subtotal_text align_right {% unless settings.display_special_instructions %}offset-by-nine alpha{% endunless %}">
         <p>
           <a href="#" class="update_subtotal">{{ 'cart.general.update' | t }}</a>
@@ -159,14 +159,14 @@
         <p>
           <input type="submit" class="action_button" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
         </p>
-        
+
         {% if additional_checkout_buttons %}
     <div>{{ content_for_additional_checkout_buttons }}</div>
   {% endif %}
-        
+
       </div>
     </form>
   </div>
-  
+
   {% include 'cart-shipping-calculator' %}
 {% endif %}

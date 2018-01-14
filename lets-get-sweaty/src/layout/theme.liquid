@@ -74,5 +74,20 @@
 
   {% section 'footer' %}
 
+  <script data-cfasync="false" >
+    window.saso_config = {
+      product_title_max_length: 40,
+      crosssell_never_show_popup: false,
+      show_upsell_only_in: "product, cart",
+      hide_shown_upsells_for: 15, //minutes
+      hide_closed_notifications_for: 10, //minutes
+      upsell_variant_choose_option: "please select",
+      upsell_variant_choose_message: "Please select an option",
+      translate_percent_off: '% Off'
+    }
+  </script>
+
+  {% include 'special-offers' %}
+
 </body>
 </html>

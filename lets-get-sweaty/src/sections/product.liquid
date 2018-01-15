@@ -11,7 +11,7 @@
     <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
     <div class="grid wrap">
-      <div class="grid__item medium-up--three-eighths">
+      <div class="grid__item medium-up--one-third">
         <h1 class="product-title">{{ product.title }}</h1>
         <div class="rte">
           {{ product.description }}
@@ -24,9 +24,13 @@
           <form action="/cart/add" method="post" enctype="multipart/form-data">
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
-                <div class="grid">
-                  <div class="grid__item medium-up--three-quarters selector-wrapper js product-size-quantity">
+                <div class="grid product-selection">
+                  <div class="grid__item medium-up--one-quarter product-size-quantity">
+                    <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
+                  </div>
+                  <div class="grid__item medium-up--three-quarters js product-size-quantity">
                     <select
+                      class="scent-selector"
                       id="SingleOptionSelector-{{ forloop.index0 }}"
                       data-single-option-selector
                       data-index="option{{ option.position }}">
@@ -50,9 +54,6 @@
                     </option>
                   {% endfor %}
                 </select>
-              </div>
-              <div class="grid__item medium-up--one-quarter product-size-quantity">
-                <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
               </div>
             </div>
             <div class="data-price-wrapper">
@@ -94,15 +95,18 @@
           </script>
         {% endunless %}
       </div>
-      <div class="grid__item medium-up--five-eighths">
+      <div class="grid__item medium-up--two-thirds">
         {% if featured_image != blank %}
           {% if product.images.size == 1 %}
-            <img class="product-image-solo" src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
-
+            <div class="product-image-wrap">
+              <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+            </div>
           {% else%}
             <div class="grid product-images">
               <div class="grid__item medium-up--three-quarters">
-                <img class="product-image-multiple" src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+                <div class="product-image-wrap">
+                  <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+              </div>
               </div>
               <div class="grid__item medium-up--one-quarter">
                 <ul class="product-image-list">
@@ -120,13 +124,12 @@
         {% endif %}
       </div>
     </div>
+    {% for variant in product.variants %}
     <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details">
       <div class="grid wrap">
         <div class="grid__item medium-up--one-third one-whole">
           <h2>ingredients</h2>
-          {% for variant in product.variants %}
             <p>{{ variant.metafields.product_info.product_ingredients }}</p>
-          {% endfor %}
         </div>
         <div class="grid__item medium-up--one-third one-whole">
           <h2>how to</h2>
@@ -138,6 +141,7 @@
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
 </div>
 

@@ -53,6 +53,7 @@ optgroup {
 
 // Force option color (affects IE only)
 option {
+  text-align: center;
   color: $color-body-text;
   background-color: $color-body;
 }

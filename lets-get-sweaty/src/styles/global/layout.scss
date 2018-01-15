@@ -5,7 +5,7 @@ html {
   background-color: $color-body;
   font-family: $font-stack-body;
   font-size: 12px;
-  letter-spacing: .05em;
+  letter-spacing: .07em;
   line-height: 1.5em;
 }
 
@@ -489,14 +489,16 @@ footer small{
   padding: 0 2em;
 }
 
-.data-price-wrapper{
-  font-family: $font-stack-header;
-  font-size: 1.25em;
-  margin: 2em 0 1em;
+
+
+
+// ==================== Quantity and Type dropdown
+.product-selection{
+  margin:4em 0 2em;
 }
 
-
 .product-size-quantity{
+  text-align: center;
   border: 1px solid #000;
   padding: 1em;
   line-height: 1em;
@@ -506,21 +508,24 @@ footer small{
   margin-left:-1px;
 }
 
-
-// ==================== Selector dropdown
-
-.selector-wrapper{
-  // width:50%;
+.scent-selector{
+  text-transform: uppercase !important;
 }
+
+.data-price-wrapper{
+  font-family: $font-stack-header;
+  font-size: 2em;
+  margin: 2em 0 1.5em;
+}
+
+
+
 
 // ==================== Number buttons
 
 
 #Quantity{
-  width:80px;
-  border: none;
-
-
+  height:16px;
 }
 
 // ==================== Product Image
@@ -529,23 +534,26 @@ footer small{
   position: relative;
 }
 
-.product-image-solo{
-  display: block;
-  margin: auto;
+.product-image-wrap{
+  background: #fff;
 }
 
-.product-image-multiple{
+.product-imagewarp img{
+  display: block;
+  margin: auto;
   width:100%;
   max-width: 480px;
-  display: block;
-  margin-left:auto;
 }
 
 .product-image-list{
   position: relative;
   transform: translateY(10%);
   width:120px;
-  padding: 0 0 0 1.5em;
+  padding: 0 1em;
+}
+
+.product-image-list li{
+  padding: 1em 0;
 }
 // ================================================ Blog
 

@@ -448,6 +448,18 @@ footer small{
   text-align: center;
 }
 
+footer input{
+  background: $color-powder;
+  border: 1px solid #000;
+  padding:1em;
+  margin: 0 0 1em;
+  font-size: 1em;
+}
+
+footer input:focus{
+  border: 1px solid #000;
+}
+
 .social{
   margin: 0 0 1em;
 }
@@ -455,6 +467,18 @@ footer small{
 .social span{
   font-size: 1em;
   padding-left: .5em;
+}
+
+.sign_up{
+  letter-spacing: .07em;
+  font-family: $font-stack-header;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sign_up:hover{
+  background: $color-night;
+  color: $color-powder;
 }
 
 // ================================================ Index Page

@@ -1,47 +1,115 @@
 {
-    "current": "Default",
-    "presets": {
-        "Default": {
-            "sections": {
-                "collection-list": {
-                    "type": "collection-list",
-                    "blocks": {
-                        "collection-list-0": {
-                            "type": "collection"
-                        },
-                        "collection-list-1": {
-                            "type": "collection"
-                        },
-                        "collection-list-2": {
-                            "type": "collection"
-                        }
-                    },
-                    "block_order": [
-                        "collection-list-0",
-                        "collection-list-1",
-                        "collection-list-2"
-                    ]
-                },
-                "products-we-love": {
-                    "type": "products-we-love",
-                    "settings": {
-                        "collection": "frontpage"
-                    }
-                },
-                "featured-posts": {
-                    "type": "featured-posts",
-                    "settings": {
-                        "collection": "frontpage"
-                    }
-                },
-                "featured-product": {
-                    "type": "featured-product"
-                }
-            },
-            "content_for_index": [
-                "products-we-love",
-                "featured-posts"
-            ]
+  "current": {
+    "type_base_size": "16px",
+    "color_primary": "#000",
+    "color_body_text": "#000",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": true,
+    "favicon": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "sections": {
+      "products-we-love": {
+        "type": "products-we-love",
+        "settings": {
+          "title": "products we love",
+          "collection": "frontpage"
         }
+      },
+      "featured-posts": {
+        "type": "featured-posts",
+        "blocks": {
+          "1515977560074": {
+            "type": "select",
+            "settings": {
+              "featured_post": "blog\/our-super-easy-super-thoughtful-gift-guide"
+            }
+          },
+          "1515977566197": {
+            "type": "select",
+            "settings": {
+              "featured_post": "blog\/night-routine"
+            }
+          },
+          "1515977570601": {
+            "type": "select",
+            "settings": {
+              "featured_post": "blog\/a-look-at-our-multi-purpose-products"
+            }
+          }
+        },
+        "block_order": [
+          "1515977560074",
+          "1515977566197",
+          "1515977570601"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "",
+          "logo_max_width": 250,
+          "main_linklist": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_linklist": "footer",
+          "show_payment_icons": false,
+          "mailchimp_link": "\/\/meowmeowtweet.us2.list-manage.com\/subscribe\/post?u=530c1007bf269d7a5ddf46751&amp;id=dd3fb792dd"
+        }
+      }
+    },
+    "content_for_index": [
+      "products-we-love",
+      "featured-posts"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "products-we-love": {
+          "type": "products-we-love",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "featured-posts": {
+          "type": "featured-posts",
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "products-we-love",
+        "featured-posts"
+      ]
     }
+  }
 }

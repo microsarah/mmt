@@ -2,13 +2,17 @@
   <p class="message"></p>
   {% if section.settings.mailchimp_link != blank %}
   <form action="{{ section.settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form" target="_blank">
-    <input type="email" value="" name="EMAIL" class="contact_email" placeholder="Your email">
-    <input type="submit" value="SIGN UP" class="action_button sign_up" name="subscribe" />
+    <input type="email" value="" name="EMAIL" class="contact_email" placeholder="Your email address">
+    <input type="button" value="SIGN UP" class="action_button sign_up" name="subscribe" onclick="submitNewsletterForm()"/>
   </form>
   <script>
-      $('.sign_up').click(function(){
-          $('.contact-form')[0].reset();
-      })
+    function submitNewsletterForm(){
+        $('.contact-form').submit();
+        $('.contact-form')[0].reset();
+        return false;
+    };
+
+
   </script>
 {% else %}
   {% form 'customer' %}

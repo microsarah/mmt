@@ -209,9 +209,13 @@ nav a{
 }
 
 .search-input {
+    font-family: $font-stack-header;
+    font-size: 1em;
+    text-align: left;
+    text-transform: uppercase;
     line-height: 1em;
-    padding: 1.125em .75em .75em 1.75em;
-    width: 7em;
+    padding: 1.125em .75em .75em 2em;
+    width: 7.25em;
     background-color: rgba(0,0,0,0);
     -webkit-transition: width .5s ease-in-out;
     -moz-transition: width .5s ease-in-out;
@@ -228,7 +232,7 @@ nav a{
     border-right: none !important;
     border-bottom: none !important;
     background-color: $color-body;
-    color: $color-barley;
+    color: $color-papaya;
     z-index: 200;
 }
 

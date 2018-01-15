@@ -6,11 +6,11 @@
   {% endif %}
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
-  <header role="banner" class="grid clearfix">
-    <div class="menu-mobile-wrap clearfix">
+  <header role="banner" class="site-header">
+    <div class="menu-mobile-wrap grid clearfix">
       <label for="menu-mobile-checkbox" class="menu-mobile-label">MENU</label>
       <input type="checkbox" id="menu-mobile-checkbox">
-      <div class="menu">
+      <div class="menu wrap">
         <nav role="navigation" class="site-navigation">
           <ul class="site-nav clearfix">
             {% for link in linklists[section.settings.main_linklist].links %}

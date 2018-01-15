@@ -6,7 +6,7 @@ html {
   font-family: $font-stack-body;
   font-size: 12px;
   letter-spacing: .07em;
-  line-height: 1.5em;
+  line-height: 1.675em;
 }
 
 h1,
@@ -17,10 +17,12 @@ h5,
 h6{
   font-family: 'NewsGothicMTStd-Bold', 'Times New Roman', serif;
   font-weight: normal;
+  text-align: center;
 }
 
 h1{
   font-size:3em;
+  line-height: 1.375em;
 }
 
 p{
@@ -32,11 +34,13 @@ p{
 
 a{
   color: $color-night;
+  border-bottom: 1px solid $color-night;
   text-decoration: none;
 }
 
 a:hover{
-  color: $color-barley;
+  color: $color-papaya;
+  border-bottom: 1px solid $color-papaya;
 }
 
 a:visited{
@@ -60,10 +64,14 @@ a:visited{
 
 // ============================================================================= Header
 
+.site-header{
+  padding: 2em 0;
+}
+
 // ================================================ Logo
 .logo{
   position: absolute;
-  top:.5em;
+  top:2.175em;
   left:50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
@@ -72,6 +80,10 @@ a:visited{
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 80px;
+}
+
+.logo a{
+  border-bottom:none;
 }
 
 .h1-logo{
@@ -103,7 +115,9 @@ nav{
   text-transform: uppercase;
 }
 
-nav a{
+nav a,
+nav a:hover{
+  border-bottom:none;
   line-height: 3.5em;
 }
 
@@ -148,8 +162,8 @@ nav a{
   position: absolute;
   top: 2.75em;
   left: 0;
-  width: 11em;
-  padding: .25em 0;
+  width: 12em;
+  padding: .275em 0 0;
 }
 
 .site-nav--has-submenu:hover .site-nav__submenu{
@@ -161,7 +175,7 @@ nav a{
 }
 
 .site-nav__submenu li a:hover{
-  background: $color-barley;
+  background: $color-papaya;
   color: $color-night;
 }
 
@@ -194,18 +208,22 @@ nav a{
 
 .searchbar:hover .icon-search{
   width: 15em;
-  fill: $color-barley;
-  color: $color-barley;
+  fill: $color-papaya;
+  color: $color-papaya;
 }
 
 .searchbar:hover .search-input::placeholder{
-    color: $color-barley;
+    color: $color-papaya;
 }
 
 .search-input {
+    font-family: $font-stack-header;
+    font-size: 1em;
+    text-align: left;
+    text-transform: uppercase;
     line-height: 1em;
-    padding: 1.125em .75em .75em 1.75em;
-    width: 7em;
+    padding: 1.125em .75em .75em 2em;
+    width: 7.25em;
     background-color: rgba(0,0,0,0);
     -webkit-transition: width .5s ease-in-out;
     -moz-transition: width .5s ease-in-out;
@@ -222,7 +240,7 @@ nav a{
     border-right: none !important;
     border-bottom: none !important;
     background-color: $color-body;
-    color: $color-barley;
+    color: $color-papaya;
     z-index: 200;
 }
 
@@ -241,6 +259,22 @@ nav a{
   color: $color-night;
 }
 
+// ================================================ Search Results
+
+.search-results{
+  text-align: center;
+  width:50%;
+  margin:2em auto;
+  padding: 2em 2em 4em;
+}
+
+.search-results h2{
+  font-size: 2em;
+}
+
+.pagination{
+  text-align: center;
+}
 
 // ================================================ Collection Pages
 
@@ -251,26 +285,38 @@ nav a{
 .collection-title{
   text-transform: uppercase;
   text-align: center;
-  margin: 0.67em 0 1em;
+  margin: 0.67em 0 2em;
 }
 
 .collection-description{
+  font-style: italic;
+  font-size: 1.25em;
   text-align: center;
   margin:auto;
-
 }
 
-.collection-product-title{
+.product-card-wrap{
+  padding:3em;
+}
+
+.product-card{
+  background: #fff;
+  padding:0 0 4em;
+}
+
+.product-card-title{
   text-align: center;
   font-family: $font-stack-header;
-  font-size: 1.2em;
-  margin: 0;
-  line-height: 1.2em;
+  font-size: 1.5em;
+  margin: 2em 0 1em;
+  line-height: 1.5em;
   height:2.5em;
 }
 
-.collection-product-price{
+.product-card-price{
+  font-size: 1em;
   margin: 0;
+  text-align: center;
 }
 
 #MainContent{
@@ -280,10 +326,17 @@ nav a{
 .feat-collection-title{
   font-family: $font-stack-body;
   font-style: italic;
-  font-size: 1em;
+  font-size: 1.25em;
   text-align: center;
-  margin: 2em 0 3em;
+  margin: 4em 0 2em;
 }
+
+
+.body-care-page{
+  background:url('body-care.svg') no-repeat center 157px fixed;
+  background-size:cover;
+}
+
 
 // ============================================================================= Who We Are
 
@@ -297,19 +350,23 @@ nav a{
   text-transform: uppercase;
 }
 
+.who-we-are h2{
+  font-size: 2em;
+}
+
 .who-we-are h3{
   font-family: $font-stack-body;
   font-style: italic;
-  font-size: .875em;
-  width:21.5em;
-  margin:2em auto;
+  font-size: 1em;
+  width:22em;
+  margin:3em auto;
 }
 
 .who-we-are ul{
   margin: 3em 0 0;
   text-align: left;
   padding: 0;
-  font-size: .75em;
+  font-size: 1em;
 }
 
 .who-we-are li{
@@ -329,7 +386,7 @@ nav a{
 .our-ingredients p,
 .our-packaging p,
 .giving-back p{
-  padding:0 2em;
+  padding: 1em;
 }
 
 
@@ -338,18 +395,19 @@ nav a{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   -webkit-background-blend-mode: multiply;
-  padding:12em 0;
+  padding:19em 0;
   height:900px;
 }
 
 .about-us{
-  padding:0 2em;
+  padding:0 3em;
+  max-width: 43em;
 }
 
 .about-us-img{
   display: block;
-  width: 15em;
-  margin: 2em auto;
+  width: 18em;
+  margin: 3em auto;
 }
 
 // ================================================ Our Ingredients
@@ -396,28 +454,33 @@ footer{
 }
 
 footer h3{
-  font-size: .75em;
+  font-size: 1em;
   text-transform: uppercase;
   margin: 0 0 2em;
 }
 
 footer h4{
   font-family: $font-stack-body;
-  font-size: .75em;
+  font-size: 1em;
   text-transform: lowercase;
   font-style: italic;
   margin:0;
 }
 
 footer p{
-  font-size: .75em;
-  margin: 0em 0 2em;
+  text-align: center;
+  font-size: 1em;
+  margin: 0em auto 2em;
+}
+
+footer li{
+  text-align: center;
+    margin: 0 0 1em;
 }
 
 footer li a{
-  font-size: .75em;
-  display: block;
-  margin: 0 0 1em;
+  font-size: 1em;
+
 }
 
 footer small{
@@ -425,6 +488,18 @@ footer small{
   font-size: .75em;
   display: block;
   text-align: center;
+}
+
+footer input{
+  background: $color-powder;
+  border: 1px solid #000;
+  padding:1em;
+  margin: 0 0 1em;
+  font-size: 1em;
+}
+
+footer input:focus{
+  border: 1px solid #000;
 }
 
 .social{
@@ -436,27 +511,69 @@ footer small{
   padding-left: .5em;
 }
 
-// ================================================ Index Page
-.blog-preview{
+.sign_up{
+  letter-spacing: .07em;
+  font-family: $font-stack-header;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 
+.sign_up:hover{
+  background: $color-night;
+  color: $color-powder;
+}
+
+// ================================================ Index Page
+
+.banner a{
+  border-bottom: none;
+}
+.blog-preview-content{
+  width:100%;
+  height:450px;
+  overflow: hidden;
+  margin: 7em 0;
+  position: relative;
 }
 
 .blog-preview-title{
   font-family: $font-stack-header;
+  font-size: 1.75em;
+  text-align: center;
 }
 
-.blog-preview-content{
-  width:100%;
-  height:500px;
-  overflow: hidden;
+.blog-preview-body{
+  margin: 1em auto 2em;
+  text-align: center;
 }
 
-.blog-preview-content p{
+.blog-preview-img img{
+  display: block;
+  margin: auto;
+}
+
+.blog-preview-copy{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.blog-preview-content:nth-of-type(even) .blog-preview-copy{
+  font-size: 1em;
   width:50%;
   float:left;
 }
 
+.blog-preview-content:nth-of-type(odd) .blog-preview-copy{
+  font-size: 1em;
+  width:50%;
+  float:right;
+}
+
 .read-more{
+  font-family: $font-stack-header;
+  text-transform: uppercase;
+  font-size: .875em;
   text-align: center;
 }
 
@@ -480,7 +597,7 @@ footer small{
 }
 
 .product-details h2{
-  font-size: 1em;
+  font-size: 1.5em;
   letter-spacing: .1em;
   text-align: center;
 }
@@ -489,7 +606,9 @@ footer small{
   padding: 0 2em;
 }
 
-
+.product-details .grid__item{
+  padding: 0 4.5em;
+}
 
 
 // ==================== Quantity and Type dropdown
@@ -558,11 +677,62 @@ footer small{
 // ================================================ Blog
 
 
+// ================================================ buzz
+
+.buzz{
+  text-align: center;
+  width:80%;
+  margin:auto;
+}
+
+.buzz-page h1{
+      margin: 0.67em 0 1em;
+}
+
+.buzz-page p{
+  text-align: center;
+  font-style: italic;
+   margin:2em auto;
+}
+
+.buzz-hero{
+  width:20em;
+  display: block;
+  margin:auto;
+}
+
+.buzz li{
+  width:25%;
+  float:left;
+  padding:3em;
+  height:330px;
+}
+
+.buzz img{
+  position: relative;
+  top:50%;
+  transform: translateY(-50%);
+}
+
 
 
 // ================================================ MQ's
 
+@media screen and (max-width:1120px){
+  .buzz{
+    width:100%;
+  }
+  .buzz li{
+    width:33.33%;
+    // height: 300px;
+  }
+}
+
 @media screen and (max-width:850px){
+  .buzz li{
+    width:50%;
+  }
+
   .site-nav{
     width:100%;
   }
@@ -590,5 +760,12 @@ footer small{
   .medium-up--five-eighths,
   .medium-up--five-eighths{
     width:50% !important;
+  }
+}
+
+@media screen and (max-width:600px){
+  .buzz li{
+    width:100%;
+    height: auto;
   }
 }

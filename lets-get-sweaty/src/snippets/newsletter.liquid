@@ -1,5 +1,5 @@
 <div class="newsletter {% if newsletter == 'center' %}center{% endif %}">
-  <p class="message"></p>
+  <p class="message">Want to hear the latest and greatest?</p>
   {% if section.settings.mailchimp_link != blank %}
   <form action="{{ section.settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form" target="_blank">
     <input type="email" value="" name="EMAIL" class="contact_email" placeholder="Your email address">

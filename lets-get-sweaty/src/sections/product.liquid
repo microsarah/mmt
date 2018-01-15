@@ -64,6 +64,7 @@
                     {{ current_variant.price | money }}
                   </span>
 
+<<<<<<< HEAD
                   {% if product.compare_at_price_max > product.price %}
                     <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
                     <s data-compare-price>
@@ -71,6 +72,30 @@
                         {{ current_variant.compare_at_price | money }}
                       {% endif %}
                     </s>
+=======
+                {% if product.compare_at_price_max > product.price %}
+                  <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                  <s data-compare-price>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money }}
+                    {% endif %}
+                  </s>
+                {% endif %}
+              </div>
+              <div class="saso-volumes"></div>
+              <div class="saso-bundle"></div>
+            </div>
+            <button
+              type="submit"
+              name="add"
+              data-add-to-cart
+              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                <span data-add-to-cart-text>
+                  {% if current_variant.available %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }}
+>>>>>>> metafields template
                   {% endif %}
                 </div>
               </div>
@@ -125,9 +150,10 @@
         {% endif %}
       </div>
     </div>
+
     {% for variant in product.variants %}
         {% if variant.id == current_variant.id %}
-        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details">
+        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details" data-product-details>
           <div class="grid wrap">
             <div class="grid__item medium-up--one-third one-whole">
               <h2>ingredients</h2>

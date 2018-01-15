@@ -24,6 +24,7 @@ slate.Variants = (function() {
     this.enableHistoryState = options.enableHistoryState;
     this.currentVariant = this._getVariantFromOptions();
     this.productThumbs = options.productThumbs;
+    this.productDetails = options.productDetails;
     this.productFeaturedImage = options.productFeaturedImage;
     this.productVariantImage = options.productVariantImage;
 
@@ -149,6 +150,7 @@ slate.Variants = (function() {
       this._updateMasterSelect(variant);
       this._updateImages(variant);
       this._updatePrice(variant);
+      this._updateProductDetails(variant);
       this.currentVariant = variant;
 
       if (this.enableHistoryState) {
@@ -174,6 +176,29 @@ slate.Variants = (function() {
         type: 'variantImageChange',
         variant: variant
       });
+    },
+
+    /**
+     * updateProductDetails - description
+     *
+     * @param  {object} variant - Currently Selected Variant
+     * @return {event} variantDetailsChange
+     */
+    _updateProductDetails: function(variant){
+        // console.log(variant);
+        // console.log(this.product);
+        // console.log(this.currentVariant);
+        $.get('https://www.meowmeowtweet.com/' + '/admin/metafields.json', function(data){
+            console.log(data);
+        })
+        .fail(function(){
+            console.log('GET REQUEST FAILED');
+        })
+
+        this.$container.trigger({
+            type: 'variantDetailsChange',
+            variant: variant
+        });
     },
 
     /**

@@ -11,9 +11,9 @@ select {
   width: 100%;
   background:$color-body;
 
-  font-family: $font-stack-header;
-  // font-size: 1em;
-  text-transform: uppercase;
+  font-family: $font-stack-body;
+  font-size: 1.175em;
+  text-transform: lowercase;
   letter-spacing: .05em;
   outline:none;
 

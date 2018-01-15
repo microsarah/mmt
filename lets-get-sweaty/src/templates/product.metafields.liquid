@@ -1,0 +1,7 @@
+{% layout none %}
+{% assign arr = '' %}
+{% for product in product.variants %}
+    {{ product.id }}
+    {% assign info = product.metafields | map: 'product_info' %}
+
+{% endfor %}

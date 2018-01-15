@@ -1,4 +1,18 @@
-<div class="wrap">
+{% if collection.handle == 'body-care' %}
+  <div class="wrap body-care-page">
+{% else %}
+{% if collection.handle == 'deodorant' %}
+  <div class="wrap deodorant-page">
+{% else %}
+{% if collection.handle == 'face' %}
+  <div class="wrap face-care-page">
+{% else %}
+{% if collection.handle == 'gifts-kits' %}
+  <div class="wrap gifts-kits-page">
+{% else %}
+{% if collection.handle == 'frontpage' %}
+  <div class="wrap soap-page">
+{% endif %}
     {% paginate collection.products by 12 %}
     <header role="banner" class="collection-header">
         <h1 class="collection-title">{{ collection.title }}</h1>

@@ -293,7 +293,7 @@ nav a{
 
 .product-card{
   background: #fff;
-  padding:2em 0 4em;
+  padding:0 0 4em;
 }
 
 .product-card-title{
@@ -456,10 +456,11 @@ footer h4{
 footer p{
   text-align: center;
   font-size: 1em;
-  margin: 0em 0 2em;
+  margin: 0em auto 2em;
 }
 
 footer li a{
+  text-align: center;
   font-size: 1em;
   display: block;
   margin: 0 0 1em;
@@ -655,11 +656,62 @@ footer input:focus{
 // ================================================ Blog
 
 
+// ================================================ buzz
+
+.buzz{
+  text-align: center;
+  width:80%;
+  margin:auto;
+}
+
+.buzz-page h1{
+      margin: 0.67em 0 1em;
+}
+
+.buzz-page p{
+  text-align: center;
+  font-style: italic;
+   margin:2em auto;
+}
+
+.buzz-hero{
+  width:20em;
+  display: block;
+  margin:auto;
+}
+
+.buzz li{
+  width:25%;
+  float:left;
+  padding:3em;
+  height:330px;
+}
+
+.buzz img{
+  position: relative;
+  top:50%;
+  transform: translateY(-50%);
+}
+
 
 
 // ================================================ MQ's
 
+@media screen and (max-width:1120px){
+  .buzz{
+    width:100%;
+  }
+  .buzz li{
+    width:33.33%;
+    // height: 300px;
+  }
+}
+
 @media screen and (max-width:850px){
+  .buzz li{
+    width:50%;
+  }
+
   .site-nav{
     width:100%;
   }
@@ -687,5 +739,12 @@ footer input:focus{
   .medium-up--five-eighths,
   .medium-up--five-eighths{
     width:50% !important;
+  }
+}
+
+@media screen and (max-width:600px){
+  .buzz li{
+    width:100%;
+    height: auto;
   }
 }

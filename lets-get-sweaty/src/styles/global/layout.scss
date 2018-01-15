@@ -319,9 +319,9 @@ nav a:hover{
   text-align: center;
 }
 
-#MainContent{
-  margin: 0 0 10em;
-}
+// #MainContent{
+//   padding: 0 0 10em;
+// }
 
 .feat-collection-title{
   font-family: $font-stack-body;
@@ -335,6 +335,7 @@ nav a:hover{
 .body-care-page{
   background:url('body-care.svg') no-repeat center 157px fixed;
   background-size:cover;
+  padding:0 0 15em;
 }
 
 
@@ -448,6 +449,7 @@ nav a:hover{
 
 // ================================================ Footer
 footer{
+  // margin:10em 0 0;
   background: $color-powder;
   padding:3em 0;
   // height: 350px;
@@ -638,7 +640,18 @@ footer input:focus{
 }
 
 
-
+.discount-flag{
+  width:13em;
+  font-family: $font-stack-body;
+  font-style: italic;
+  // text-transform: uppercase;
+  font-size: .5em;
+  border-bottom: 1px solid $color-powder;
+  // background: $color-powder;
+  color: $color-papaya;
+  margin: 2em auto;
+  padding: .25em 0;
+}
 
 // ==================== Number buttons
 

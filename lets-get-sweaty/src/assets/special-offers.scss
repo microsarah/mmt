@@ -1,7 +1,7 @@
 
 
 .saso-notification {
-  z-index: 2147483647;  
+  z-index: 2147483647;
   display: none;
   left: 0px;
   width: 100%;
@@ -10,7 +10,7 @@
   font-size: 16px;
   text-align: center;
   text-transform: none;
-  
+
   p {
     text-align: center;
     margin: 0;
@@ -28,17 +28,16 @@
   height: 0;
   overflow: visible;
   margin-right: 2em;
-  cursor: pointer; 
+  cursor: pointer;
   /*position: absolute;*/
-  
+
   a {
   	text-decoration: none;
   }
 }
 
 .saso-price {
-  color: #f45b4f;
-  font-weight: bold;
+  font-weight: 800;
   display: inline !important;
 }
 
@@ -53,10 +52,10 @@
   margin-top: 6px;
   border-collapse: collapse;
   /*text-align: center;*/
-  
+
   thead {
-  }  
-  
+  }
+
   tbody {
     tr:nth-child(even) {
       background: #f8f8f8;
@@ -66,17 +65,17 @@
       background: #ececec;
       color: #000000;
     }
-    
+
     .saso-add-to-cart {
       font-weight: bold;
     }
   }
-  
+
   th, td {
   	border: 1px solid #e6e6e6;
     padding: 4px;
   }
-  
+
 }
 
 
@@ -95,12 +94,12 @@
   .saso-message {
     font-size: 16px;
   }
-  
+
   .saso-products-container {
     display: block;
 	overflow: auto;
   }
-  
+
   table {
     table-layout: fixed;
     width: auto;
@@ -115,7 +114,7 @@
   tr:first-child th:after, tr:first-child td:after {
     border-bottom: 0 !important;
   }
-  
+
   td {
     text-align: center !important;
     border: 0 !important;
@@ -126,7 +125,7 @@
   .saso-product-container {
     width: 180px;
   }
-    
+
   .saso-image {
     width: 180px;
     height: 180px;
@@ -145,7 +144,7 @@
     margin: 0 auto;
     display: inline-block;
   }
-  
+
   .saso-title {
     margin: 4px 0px 0px 0px;
     height: 3em;
@@ -157,7 +156,7 @@
     /* text-overflow: ellipsis; */
     /* white-space: nowrap; */
   }
-  
+
   .saso-variants-container {
     min-height: 24px; /* don't use height, will overlap with next row */
     margin: 4px 0px;
@@ -182,7 +181,7 @@
   .saso-was-price:empty {
     display:none;
   }
-  
+
   .saso-add-to-cart, button.saso-click-here {
     background: #f45b4f;
     color: #fff;
@@ -197,8 +196,8 @@
   button.saso-click-here {
     width: auto;
   }
-  
-  
+
+
   a.saso-click-here {
     /*display: block;
     margin-top: 10px;
@@ -208,7 +207,7 @@
   a.saso-click-here:hover {
     opacity: 0.9;
   }
-  
+
 /*  .saso-click-here-h {
     text-align: center;
   }
@@ -230,16 +229,16 @@
 .saso-bundle-popup {
   background: #f4f4f4;
   padding: 2px;
-  
+
   .saso-message {
-  	color: #f45b4f    
+  	color: #f45b4f
   }
 
   .saso-product-container {
     width: 160px;
     display: inline-block;
   }
-  
+
   .saso-image {
     width: 160px;
     height: 160px;
@@ -250,11 +249,11 @@
     max-width: 160px;
     max-height: 160px;
   }
-  
+
   .saso-product-container .saso-price {
     text-decoration: line-through;
   }
-  
+
   .saso-quantity-container, .saso-plus-container, .saso-equal-container {
     color: #f45b4f;
     font-weight: bold;
@@ -268,7 +267,7 @@
     top: -60px;
     left: 0px;
     z-index: 100;
-  }    
+  }
   .saso-plus-container {
     vertical-align: top;
     padding-top: 35px;
@@ -282,34 +281,34 @@
   .saso-plus-container:last-child {
     display: none !important;
   }
-  
+
   .saso-bundle-row {
     border-top: 0px solid #DCDCDC;
     td {
       padding: 0px 10px !important;
     }
   }
-  
+
   .saso-bundle-price-container {
 	font-size: 36px;
     padding: 0px 0px 0px 10px !important;
   }
-  
+
   .saso-bundle-success {
     display: none;
   }
 }
 
 
-.saso-cart-item-discount-notes, .saso-cart-item-upsell-notes {  	
-  display: block;  
+.saso-cart-item-discount-notes, .saso-cart-item-upsell-notes {
+  display: block;
   color: #d54f4c;
   a {
     color: #d54f4c;
   }
 }
 
-.saso-cart-item-upsell-notes {  	
+.saso-cart-item-upsell-notes {
   font-weight: bold;
 }
 
@@ -341,16 +340,16 @@
 }
 
 .saso-cart-offers {
-  
+
   .saso-hide-when-embedded {
   	display: none;
   }
-  
+
   .saso-cross-sell-popup {
     padding: 5px; /* embedded */
     margin: 0px;
   }
-  
+
   .title {
     padding: 0px !important;
     height: auto;
@@ -360,7 +359,7 @@
   .select-options  {
   	display: none;
   }
-  
+
   .image {
     height: auto;
   }
@@ -374,12 +373,12 @@
   input {
     display: inline !important;
     width: auto;
-    max-width: 16em;      
+    max-width: 16em;
   }
   button {
     margin: 0px 0px;
   }
-  
+
 }
 
 .saso-use-discount-code-cart-container::after {
@@ -408,8 +407,8 @@
   }
 
   .saso-cross-sell-popup {
-    min-width: 100px;    
-  
+    min-width: 100px;
+
     .saso-message {
       font-size: 14px;
     }
@@ -429,10 +428,10 @@
     }
 
   }
- 
 
 
-  
+
+
   ::-webkit-scrollbar {
       -webkit-appearance: none;
   }
@@ -452,11 +451,11 @@
   }
 
   ::-webkit-scrollbar-track {
-      border-radius: 10px;  
-      background-color: #ffffff; 
+      border-radius: 10px;
+      background-color: #ffffff;
   }
-  
-  
+
+
 }
 
 

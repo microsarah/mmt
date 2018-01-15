@@ -151,6 +151,7 @@ slate.Variants = (function() {
       this._updateImages(variant);
       this._updatePrice(variant);
       this._updateDescription(variant);
+      this._updateProductDetails(variant);
       this.currentVariant = variant;
 
       if (this.enableHistoryState) {

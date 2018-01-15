@@ -46,8 +46,6 @@ a:hover{
 a:visited{
 }
 
-
-
 .page-width {
   @include clearfix();
   max-width: $width-site;
@@ -321,7 +319,6 @@ nav a:hover{
   text-align: center;
 }
 
-
 #MainContent{
   margin: 0 0 10em;
 }
@@ -333,6 +330,13 @@ nav a:hover{
   text-align: center;
   margin: 4em 0 2em;
 }
+
+
+.body-care-page{
+  background:url('body-care.svg') no-repeat center 157px fixed;
+  background-size:cover;
+}
+
 
 // ============================================================================= Who We Are
 

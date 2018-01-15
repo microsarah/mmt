@@ -1,23 +1,25 @@
 <section class="blog-preview grid wrap" data-section-id="{{ section.id }}" data-section-type="featured_posts">
     {% assign blog = blogs.Blog %}
-        {% for block in section.blocks %}
-            {% assign post_url = block.settings.featured_post %}
-            {% for article in blog.articles %}
-                {% if article.url contains post_url %}
-                    <div class="blog-preview-container">
-                        <div class="blog-preview-content grid">
-                            <a href="{{ article.url }}"><h3 class="blog-preview-title">{{ article.title }}</h3></a>
-                            {% assign src = article.excerpt | split: 'src="' %}
-                            {% assign src = src[1] | split: '"' %}
-                            {% assign src = src[0] %}
-                            <a href="{{ article.url }}"><img src="{{ src }}" alt=""></a>
-                            <p class="blog-preview-body">{{ article.excerpt | strip_html | truncatewords: 100 }}</p>
-                            <a href="{{ article.url }}"><p class="read-more">{{ 'blogs.article.read_more' | t }} &rarr;</p></a>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
+      {% for block in section.blocks %}
+        {% assign post_url = block.settings.featured_post %}
+          {% for article in blog.articles %}
+              {% if article.url contains post_url %}
+                <div class="blog-preview-content grid">
+                  <div class="blog-preview-copy">
+                      <h3 class="blog-preview-title">{{ article.title }}</h3>
+                      <p class="blog-preview-body">{{ article.excerpt | strip_html | truncatewords: 100 }}</p>
+                      <a href="{{ article.url }}"><p class="read-more">{{ 'blogs.article.read_more' | t }} &rarr;</p></a>
+                  </div>
+                  <div class="blog-preview-img">
+                    {% assign src = article.excerpt | split: 'src="' %}
+                    {% assign src = src[1] | split: '"' %}
+                    {% assign src = src[0] %}
+                    <a href="{{ article.url }}"><img src="{{ src }}" alt=""></a>
+                  </div>
+                </div>
+              {% endif %}
+          {% endfor %}
+      {% endfor %}
 </section>
 
 {% schema %}

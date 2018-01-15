@@ -6,7 +6,7 @@ html {
   font-family: $font-stack-body;
   font-size: 12px;
   letter-spacing: .07em;
-  line-height: 1.5em;
+  line-height: 1.675em;
 }
 
 h1,
@@ -277,14 +277,14 @@ nav a{
 .product-card-title{
   text-align: center;
   font-family: $font-stack-header;
-  font-size: 1.75em;
+  font-size: 1.5em;
   margin: 2em 0 1em;
   line-height: 1.5em;
   height:2.5em;
 }
 
 .product-card-price{
-  font-size: 1.25em;
+  font-size: 1em;
   margin: 0;
   text-align: center;
 }
@@ -313,19 +313,23 @@ nav a{
   text-transform: uppercase;
 }
 
+.who-we-are h2{
+  font-size: 2em;
+}
+
 .who-we-are h3{
   font-family: $font-stack-body;
   font-style: italic;
-  font-size: .875em;
-  width:21.5em;
-  margin:2em auto;
+  font-size: 1em;
+  width:22em;
+  margin:3em auto;
 }
 
 .who-we-are ul{
   margin: 3em 0 0;
   text-align: left;
   padding: 0;
-  font-size: .75em;
+  font-size: 1em;
 }
 
 .who-we-are li{
@@ -345,7 +349,7 @@ nav a{
 .our-ingredients p,
 .our-packaging p,
 .giving-back p{
-  padding:0 2em;
+  padding: 1em;
 }
 
 
@@ -354,18 +358,19 @@ nav a{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   -webkit-background-blend-mode: multiply;
-  padding:12em 0;
+  padding:19em 0;
   height:900px;
 }
 
 .about-us{
-  padding:0 2em;
+  padding:0 3em;
+  max-width: 43em;
 }
 
 .about-us-img{
   display: block;
-  width: 15em;
-  margin: 2em auto;
+  width: 18em;
+  margin: 3em auto;
 }
 
 // ================================================ Our Ingredients
@@ -453,26 +458,52 @@ footer small{
 }
 
 // ================================================ Index Page
-.blog-preview{
-
+.blog-preview-content{
+  width:100%;
+  height:450px;
+  overflow: hidden;
+  margin: 7em 0;
+  position: relative;
 }
 
 .blog-preview-title{
   font-family: $font-stack-header;
+  font-size: 1.75em;
+  text-align: center;
 }
 
-.blog-preview-content{
-  width:100%;
-  height:500px;
-  overflow: hidden;
+.blog-preview-body{
+  margin: 1em auto 2em;
+  text-align: center;
 }
 
-.blog-preview-content p{
+.blog-preview-img img{
+  display: block;
+  margin: auto;
+}
+
+.blog-preview-copy{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.blog-preview-content:nth-of-type(even) .blog-preview-copy{
+  font-size: 1em;
   width:50%;
   float:left;
 }
 
+.blog-preview-content:nth-of-type(odd) .blog-preview-copy{
+  font-size: 1em;
+  width:50%;
+  float:right;
+}
+
 .read-more{
+  font-family: $font-stack-header;
+  text-transform: uppercase;
+  font-size: .875em;
   text-align: center;
 }
 
@@ -496,7 +527,7 @@ footer small{
 }
 
 .product-details h2{
-  font-size: 1em;
+  font-size: 1.5em;
   letter-spacing: .1em;
   text-align: center;
 }
@@ -505,7 +536,9 @@ footer small{
   padding: 0 2em;
 }
 
-
+.product-details .grid__item{
+  padding: 0 4.5em;
+}
 
 
 // ==================== Quantity and Type dropdown

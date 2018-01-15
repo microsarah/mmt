@@ -2,9 +2,9 @@
     {% paginate collection.products by 12 %}
     <header role="banner" class="collection-header">
         <h1 class="collection-title">{{ collection.title }}</h1>
-        {% if collection.description != blank %}
-          <p class="collection-description">{{ collection.description }}</p>
-        {% endif %}
+        <p class="collection-description">
+        {{ collection.metafields.collection_info.collection_description }}
+        </p>
     </header>
 
     <main class="grid">

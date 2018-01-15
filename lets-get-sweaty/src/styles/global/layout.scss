@@ -34,11 +34,13 @@ p{
 
 a{
   color: $color-night;
+  border-bottom: 1px solid $color-night;
   text-decoration: none;
 }
 
 a:hover{
   color: $color-papaya;
+  border-bottom: 1px solid $color-papaya;
 }
 
 a:visited{
@@ -82,6 +84,10 @@ a:visited{
   width: 80px;
 }
 
+.logo a{
+  border-bottom:none;
+}
+
 .h1-logo{
   margin:0;
 }
@@ -111,7 +117,9 @@ nav{
   text-transform: uppercase;
 }
 
-nav a{
+nav a,
+nav a:hover{
+  border-bottom:none;
   line-height: 3.5em;
 }
 
@@ -283,6 +291,8 @@ nav a{
 }
 
 .collection-description{
+  font-style: italic;
+  font-size: 1.25em;
   text-align: center;
   margin:auto;
 }
@@ -459,11 +469,14 @@ footer p{
   margin: 0em auto 2em;
 }
 
-footer li a{
+footer li{
   text-align: center;
+    margin: 0 0 1em;
+}
+
+footer li a{
   font-size: 1em;
-  display: block;
-  margin: 0 0 1em;
+
 }
 
 footer small{
@@ -507,6 +520,10 @@ footer input:focus{
 }
 
 // ================================================ Index Page
+
+.banner a{
+  border-bottom: none;
+}
 .blog-preview-content{
   width:100%;
   height:450px;

@@ -41,53 +41,54 @@
                             {{ value }}
                         </option>
                       {% endfor %}
+                      </select>
+                      {% endfor %}
+                    {% endunless %}
+                    <select name="id" class="no-js" data-product-select>
+                      {% for variant in product.variants %}
+                        <option
+                          {% if variant == current_variant %}selected="selected"{% endif %}
+                          {% unless variant.available %}disabled="disabled"{% endunless %}
+                          value="{{ variant.id }}">
+                            {{ variant.title }}
+                        </option>
+                      {% endfor %}
                     </select>
-                  {% endfor %}
-                {% endunless %}
-                <select name="id" class="no-js" data-product-select>
-                  {% for variant in product.variants %}
-                    <option
-                      {% if variant == current_variant %}selected="selected"{% endif %}
-                      {% unless variant.available %}disabled="disabled"{% endunless %}
-                      value="{{ variant.id }}">
-                        {{ variant.title }}
-                    </option>
-                  {% endfor %}
-                </select>
-              </div>
-            </div>
-            <div class="data-price-wrapper">
-              <div data-price-wrapper>
-                <span data-product-price>
-                  {{ current_variant.price | money }}
-                </span>
+                  </div>
+                </div>
+                <div class="sasa-volumes"></div>
+                <div class="sasa-bundle"></div>
+              <div class="data-price-wrapper">
+                <div data-price-wrapper>
+                  <span data-product-price>
+                    {{ current_variant.price | money }}
+                  </span>
 
-                {% if product.compare_at_price_max > product.price %}
-                  <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-                  <s data-compare-price>
-                    {% if current_variant.compare_at_price > current_variant.price %}
-                      {{ current_variant.compare_at_price | money }}
-                    {% endif %}
-                  </s>
-                {% endif %}
-              </div>
-            </div>
-            <button
-              type="submit"
-              name="add"
-              data-add-to-cart
-              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-                <span data-add-to-cart-text>
-                  {% if current_variant.available %}
-                    {{ 'products.product.add_to_cart' | t }}
-                  {% else %}
-                    {{ 'products.product.sold_out' | t }}
+                  {% if product.compare_at_price_max > product.price %}
+                    <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                    <s data-compare-price>
+                      {% if current_variant.compare_at_price > current_variant.price %}
+                        {{ current_variant.compare_at_price | money }}
+                      {% endif %}
+                    </s>
                   {% endif %}
-                </span>
-            </button>
-          </form>
-
-        </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                name="add"
+                data-add-to-cart
+                {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                  <span data-add-to-cart-text>
+                    {% if current_variant.available %}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {% else %}
+                      {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                  </span>
+              </button>
+            </form>
+          </div>
 
         {% unless product == empty %}
           <script type="application/json" data-product-json>

@@ -723,10 +723,67 @@ footer input:focus{
 .product-image-list li a{
   border-bottom: none;
 }
-// ================================================ Blog
 
+// ================================================ General Pages
+.page-hero{
+  width:20em;
+  display: block;
+  margin:auto;
+}
 
-// ================================================ buzz
+// ================================================ FAQ Page
+
+.faq-page{
+  background:url('faq-page-bkgd.svg') no-repeat center 157px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+  text-align: center;
+}
+
+.faq-page header p{
+  font-style: italic;
+  width:30em;
+}
+
+.faq-page img{
+  width:40em;
+}
+
+// ================================================ Retailers Page
+
+.retailers-page{
+  background:url('retailers-page-bkgd.svg') no-repeat center 159px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+}
+
+// ================================================ Contact Page
+
+.contact-page{
+  background:url('contact-page-bkgd.svg') no-repeat center 162px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+  text-align: center;
+}
+
+.contact-page h1{
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0.67em 0 1em;
+}
+
+.contact-page h2{
+  text-transform: uppercase;
+  margin: 2em 0 .5em;
+}
+
+// ================================================ Buzz Page
+
+.buzz-page{
+  background:url('buzz-page-bkgd.svg') no-repeat center 157px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+}
 
 .buzz{
   text-align: center;
@@ -742,12 +799,6 @@ footer input:focus{
   text-align: center;
   font-style: italic;
    margin:2em auto;
-}
-
-.buzz-hero{
-  width:20em;
-  display: block;
-  margin:auto;
 }
 
 .buzz li{
@@ -767,7 +818,7 @@ footer input:focus{
   transform: translateY(-50%);
 }
 
-
+// ================================================ Blog
 
 // ================================================ MQ's
 

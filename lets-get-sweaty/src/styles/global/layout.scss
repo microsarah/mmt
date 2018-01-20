@@ -133,7 +133,7 @@ nav a:hover{
 
 .site-nav{
   position: relative;
-  width:513px;
+  width:527px;
   padding:2em 0;
 }
 
@@ -162,7 +162,7 @@ nav a:hover{
   position: absolute;
   top: 2.75em;
   left: 0;
-  width: 12em;
+  width: 15.75em;
   padding: .275em 0 0;
 }
 
@@ -531,7 +531,11 @@ footer input:focus{
 }
 
 .social{
-  margin: 0 0 1em;
+  margin: 0 0 2em;
+}
+
+.social a{
+  border-bottom: none;
 }
 
 .social span{
@@ -755,6 +759,35 @@ footer input:focus{
   background:url('retailers-page-bkgd.svg') no-repeat center 159px fixed;
   background-size:cover;
   padding:0 0 15em;
+}
+
+.retailers-page h2{
+  text-transform: uppercase;
+}
+
+.store-locator{
+  width:80%;
+  margin:auto;
+}
+
+.online-retailers{
+  text-align: center;
+}
+
+.online-retailers img{
+    padding:10em 0 4em;
+}
+
+.online-retailers h2{
+  padding: 0 0 1em;
+}
+
+.online-retailers ul{
+  padding: 0 0 1em;
+}
+
+.online-retailers li{
+  padding: .5em 0;
 }
 
 // ================================================ Contact Page

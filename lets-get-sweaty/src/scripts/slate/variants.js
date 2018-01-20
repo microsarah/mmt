@@ -149,11 +149,20 @@ slate.Variants = (function() {
       this._updateMasterSelect(variant);
       this._updateImages(variant);
       this._updatePrice(variant);
+      this._updateDescription(variant);
       this.currentVariant = variant;
 
       if (this.enableHistoryState) {
         this._updateHistoryState(variant);
       }
+    },
+
+    _updateDescription: function(variant){
+
+        this.$container.trigger({
+            type: 'variantDescriptionChange',
+            variant: variant
+        })
     },
 
     /**

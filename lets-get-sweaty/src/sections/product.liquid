@@ -125,22 +125,24 @@
       </div>
     </div>
     {% for variant in product.variants %}
-    <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details">
-      <div class="grid wrap">
-        <div class="grid__item medium-up--one-third one-whole">
-          <h2>ingredients</h2>
-            <p>{{ variant.metafields.product_info.product_ingredients }}</p>
+        {% if variant.id == current_variant.id %}
+        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details">
+          <div class="grid wrap">
+            <div class="grid__item medium-up--one-third one-whole">
+              <h2>ingredients</h2>
+                <p>{{ variant.metafields.product_info.product_ingredients }}</p>
+            </div>
+            <div class="grid__item medium-up--one-third one-whole">
+              <h2>how to</h2>
+              <p>{{ product.metafields.product_info.product_to_use }}</p>
+            </div>
+            <div class="grid__item medium-up--one-third one-whole">
+              <h2>tips</h2>
+              <p>{{ product.metafields.product_info.product_tips }}</p>
+            </div>
+          </div>
         </div>
-        <div class="grid__item medium-up--one-third one-whole">
-          <h2>how to</h2>
-          <p>{{ product.metafields.product_info.product_to_use }}</p>
-        </div>
-        <div class="grid__item medium-up--one-third one-whole">
-          <h2>tips</h2>
-          <p>{{ product.metafields.product_info.product_tips }}</p>
-        </div>
-      </div>
-    </div>
+        {% endif %}
     {% endfor %}
   </div>
 </div>
@@ -158,3 +160,13 @@
     ]
   }
 {% endschema %}
+
+{% javascript %}
+    $(window).load(function(){
+        var singleOptionSelector = '[data-single-option-selector]';
+        var variants = {{ product | json }}
+        console.log(varaints);
+
+    });
+
+{% endjavascript %}

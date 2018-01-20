@@ -133,7 +133,7 @@ nav a:hover{
 
 .site-nav{
   position: relative;
-  width:505px;
+  width:513px;
   padding:2em 0;
 }
 
@@ -331,12 +331,38 @@ nav a:hover{
   margin: 4em 0 2em;
 }
 
-
 .body-care-page{
-  background:url('body-care.svg') no-repeat center 157px fixed;
+  background:url('body-page-bkgd.svg') no-repeat center 157px fixed;
   background-size:cover;
   padding:0 0 15em;
 }
+
+.deo-page{
+  background:url('deo-page-bkgd.svg') no-repeat center 157px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+}
+
+.face-care-page{
+  background:url('face-page-bkgd.svg') no-repeat center 157px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+}
+
+.kits-page{
+  background:url('kits-page-bkgd.svg') no-repeat center 157px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+}
+
+.soap-page{
+  background:url('soap-page-bkgd.svg') no-repeat center 157px fixed;
+  background-size:cover;
+  padding:0 0 15em;
+}
+
+
+
 
 
 // ============================================================================= Who We Are
@@ -527,9 +553,14 @@ footer input:focus{
 
 // ================================================ Index Page
 
+.banner{
+  margin:auto;
+}
+
 .banner a{
   border-bottom: none;
 }
+
 .blog-preview-content{
   width:100%;
   height:450px;
@@ -641,16 +672,17 @@ footer input:focus{
 
 
 .discount-flag{
-  width:13em;
+  // width:13em;
   font-family: $font-stack-body;
   font-style: italic;
   // text-transform: uppercase;
-  font-size: .5em;
-  border-bottom: 1px solid $color-powder;
+  font-size: 1em;
+  // border-bottom: 1px solid $color-powder;
   // background: $color-powder;
+  background-color: #ffeee6;
   color: $color-papaya;
-  margin: 2em auto;
-  padding: .25em 0;
+  margin: 2em 0;
+  padding: .5em 0;
 }
 
 // ==================== Number buttons
@@ -687,6 +719,10 @@ footer input:focus{
 .product-image-list li{
   padding: 1em 0;
 }
+
+.product-image-list li a{
+  border-bottom: none;
+}
 // ================================================ Blog
 
 
@@ -719,6 +755,10 @@ footer input:focus{
   float:left;
   padding:3em;
   height:330px;
+}
+
+.buzz li a{
+  border-bottom: none;
 }
 
 .buzz img{

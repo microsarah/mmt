@@ -25,10 +25,10 @@
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
                 <div class="grid product-selection">
-                  <div class="grid__item medium-up--one-quarter product-size-quantity">
+                  <div class="grid__item medium-up--one-sixth product-size-quantity">
                     <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
                   </div>
-                  <div class="grid__item medium-up--three-quarters js product-size-quantity">
+                  <div class="grid__item medium-up--five-sixths js product-size-quantity">
                     <select
                       class="scent-selector"
                       id="SingleOptionSelector-{{ forloop.index0 }}"

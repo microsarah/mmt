@@ -334,31 +334,26 @@ nav a:hover{
 #body-care{
   background:url('body-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 #deodorant{
   background:url('deo-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 #facial-care{
   background:url('face-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 #gifts-kits{
   background:url('kits-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 #soap{
   background:url('soap-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 
@@ -737,10 +732,9 @@ footer input:focus{
 
 // ================================================ FAQ Page
 
-.faq-page{
-  background:url('faq-page-bkgd.svg') no-repeat center 157px fixed;
+#etc{
+  background:url('faq-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
   text-align: center;
 }
 
@@ -755,10 +749,9 @@ footer input:focus{
 
 // ================================================ Retailers Page
 
-.retailers-page{
-  background:url('retailers-page-bkgd.svg') no-repeat center 159px fixed;
+#where-to-buy{
+  background:url('retailers-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 .retailers-page h2{
@@ -776,6 +769,11 @@ footer input:focus{
 
 .online-retailers img{
     padding:10em 0 4em;
+    width:14em;
+}
+
+.retailers-page .page-hero{
+  width:28em;
 }
 
 .online-retailers h2{
@@ -792,10 +790,9 @@ footer input:focus{
 
 // ================================================ Contact Page
 
-.contact-page{
-  background:url('contact-page-bkgd.svg') no-repeat center 162px fixed;
+#get-in-touch{
+  background:url('contact-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
   text-align: center;
 }
 
@@ -812,10 +809,9 @@ footer input:focus{
 
 // ================================================ Buzz Page
 
-.buzz-page{
-  background:url('buzz-page-bkgd.svg') no-repeat center 157px fixed;
+#buzz-of-the-bees{
+  background:url('buzz-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 .buzz{
@@ -845,7 +841,16 @@ footer input:focus{
   border-bottom: none;
 }
 
-.buzz img{
+.buzz-page header img{
+  position: static;
+  top:0;
+  transform:none;
+  width:22em;
+  display: block;
+  margin:auto;
+}
+
+.buzz-page img{
   position: relative;
   top:50%;
   transform: translateY(-50%);

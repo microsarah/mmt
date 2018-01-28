@@ -279,13 +279,13 @@ nav a:hover{
 // ================================================ Collection Pages
 
 .collection-header{
-  padding: 8em 0 10em;
+  padding: 3em 0 4em;
 }
 
 .collection-title{
   text-transform: uppercase;
   text-align: center;
-  margin: 0.67em 0 2em;
+  // margin: 0.67em 0 2em;
 }
 
 .collection-description{
@@ -331,32 +331,32 @@ nav a:hover{
   margin: 4em 0 2em;
 }
 
-.body-care-page{
-  background:url('body-page-bkgd.svg') no-repeat center 157px fixed;
+#body-care{
+  background:url('body-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
   padding:0 0 15em;
 }
 
-.deodorant-page{
-  background:url('deo-page-bkgd.svg') no-repeat center 162px fixed;
+#deodorant{
+  background:url('deo-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
   padding:0 0 15em;
 }
 
-.face-care-page{
-  background:url('face-page-bkgd.svg') no-repeat center 162px fixed;
+#facial-care{
+  background:url('face-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
   padding:0 0 15em;
 }
 
-.gifts-kits-page{
-  background:url('kits-page-bkgd.svg') no-repeat center 157px fixed;
+#gifts-kits{
+  background:url('kits-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
   padding:0 0 15em;
 }
 
-.soap-page{
-  background:url('soap-page-bkgd.svg') no-repeat center 157px fixed;
+#soap{
+  background:url('soap-page-bkgd.svg') no-repeat center top fixed;
   background-size:cover;
   padding:0 0 15em;
 }

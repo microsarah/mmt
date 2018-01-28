@@ -1,18 +1,3 @@
-{% if collection.handle == 'body-care' %}
-  <div class="body-care-page">
-{% endif %}
-{% if collection.handle == 'deodorant' %}
-  <div class="deodorant-page">
-{% endif %}
-{% if collection.handle == 'face' %}
-  <div class="face-care-page">
-{% endif %}
-{% if collection.handle == 'gifts-kits' %}
-  <div class="gifts-kits-page">
-{% endif %}
-{% if collection.handle == 'frontpage' %}
-  <div class="soap-page">
-{% endif %}
 <div class="wrap">
     {% paginate collection.products by 12 %}
     <header role="banner" class="collection-header">
@@ -76,5 +61,4 @@
     </main>
 
     {% if paginate.pages > 1 %} {% include 'pagination' %} {% endif %} {% endpaginate %}
-</div>
 </div>

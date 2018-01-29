@@ -46,6 +46,10 @@ a:hover{
 a:visited{
 }
 
+#MainContent{
+  padding: 0 0 14em;
+}
+
 .page-width {
   @include clearfix();
   max-width: $width-site;
@@ -134,7 +138,7 @@ nav a:hover{
 .site-nav{
   position: relative;
   width:527px;
-  padding:2em 0;
+  padding:1em 0;
 }
 
 .site-nav li{
@@ -379,8 +383,9 @@ nav a:hover{
 .who-we-are h3{
   font-family: $font-stack-body;
   font-style: italic;
-  font-size: 1em;
-  width:22em;
+  font-size: 1.25em;
+  line-height: 1.6em;
+  width:21.5em;
   margin:3em auto;
 }
 
@@ -417,13 +422,15 @@ nav a:hover{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   -webkit-background-blend-mode: multiply;
-  padding:19em 0;
+  padding:16em 0;
   height:900px;
+  margin:-7em 0 0;
 }
 
 .about-us{
   padding:0 3em;
   max-width: 43em;
+  font-size: 1.25em;
 }
 
 .about-us-img{
@@ -438,7 +445,7 @@ nav a:hover{
   background:url('who-we-are-our-ingredients-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   padding:10em 0 5em;
-  height:920px;
+  height:720px;
 }
 
 

@@ -164,10 +164,10 @@ nav a:hover{
   background: $color-body;
   display: none;
   position: absolute;
-  top: 2.75em;
+  top: 3em;
   left: 0;
   width: 15.75em;
-  padding: .275em 0 0;
+  padding: 0;
 }
 
 .site-nav--has-submenu:hover .site-nav__submenu{
@@ -175,7 +175,8 @@ nav a:hover{
 }
 
 .site-nav__submenu li{
-  float: none !important;
+  width:100%;
+  text-align: left;
 }
 
 .site-nav__submenu li a:hover{

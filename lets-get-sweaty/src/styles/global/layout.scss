@@ -293,6 +293,10 @@ nav a:hover{
   // margin: 0.67em 0 2em;
 }
 
+.collection-title a{
+  border-bottom: none;
+}
+
 .collection-description{
   font-style: italic;
   font-size: 1.25em;
@@ -580,6 +584,7 @@ footer input:focus{
   font-family: $font-stack-header;
   font-size: 1.75em;
   text-align: center;
+  line-height: 1.25em;
 }
 
 .blog-preview-body{
@@ -604,10 +609,23 @@ footer input:focus{
   float:left;
 }
 
+
+.blog-preview-content:nth-of-type(even) .blog-preview-img{
+  font-size: 1em;
+  width:50%;
+  float:right;
+}
+
 .blog-preview-content:nth-of-type(odd) .blog-preview-copy{
   font-size: 1em;
   width:50%;
   float:right;
+}
+
+.blog-preview-content:nth-of-type(odd) .blog-preview-img{
+  font-size: 1em;
+  width:50%;
+  float:left;
 }
 
 .read-more{
@@ -867,6 +885,67 @@ footer input:focus{
 }
 
 // ================================================ Blog
+
+.blog-categories{
+  width:80%;
+  margin:auto;
+  text-align: center;
+  padding:10em 0 0;
+}
+
+.blog-tag-title{
+  margin: 0 0 3em;
+}
+
+.blog-tags{
+  display: inline-block;
+  margin: .75em;
+}
+
+.blog-hero{
+  width: 30em;
+  display: block;
+  margin: auto;
+}
+
+.blog-content{
+  // float: right;
+}
+
+.blog-content p{
+  margin: 1em 0 0 5em;
+  max-width: 100%;
+}
+
+.blog-article-header{
+  // position: fixed;
+  text-align: center;
+
+}
+
+.blog-article-header header{
+  // position: absolute;
+  // top: 2em;
+}
+
+.page{
+  margin: 0 1em;
+  font-family: $font-stack-header;
+}
+
+.page a,
+.next a{
+  border-bottom: none;
+}
+
+.page.current{
+  color: $color-papaya;
+}
+
+.next{
+  margin: 1em 0 0;
+  display: block;
+}
 
 // ================================================ MQ's
 

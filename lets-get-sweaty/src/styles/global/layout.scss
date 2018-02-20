@@ -912,9 +912,19 @@ footer input:focus{
   // float: right;
 }
 
-.blog-content p{
+.blog-content p,
+.blog-content ul,
+.blog-content ol{
   margin: 1em 0 0 5em;
   max-width: 100%;
+}
+
+.blog-content ul{
+  list-style: disc inside;
+}
+
+.blog-content ol{
+  list-style: inside;
 }
 
 .blog-article-header{

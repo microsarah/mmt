@@ -35,7 +35,7 @@
       {% endif %}
     </header>
   </div>
-  <div class="rte grid__item medium-up--three-fifths blog-content" itemprop="articleBody">
+  <div class="grid__item medium-up--three-fifths blog-content" itemprop="articleBody">
     {{ article.content }}
   </div>
 
@@ -68,7 +68,7 @@
           {% endcomment %}
           {% if comment and comment.status != 'published' %}
             <li id="{{ comment.id }}">
-              <div class="rte">
+              <div>
                 {{ comment.content }}
               </div>
               {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}

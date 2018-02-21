@@ -9,7 +9,7 @@
       {% endcapture %}
     {% else %}
       {% capture blog_title %}
-      <h1 class="blog-title">Blog</h1>
+      <h1 class="blog-title">{{ blog.title | link_to: blog.url }}</h1>
       {% endcapture %}
     {% endif %}
 
@@ -17,31 +17,29 @@
       {{ blog_title }}
     </header>
 
-    {% for article in blog.articles %}
-      <div class="blog-preview-content grid">
-        <div class="blog-preview-copy">
-          <a href="{{ article.url }}">
-            <h3 class="blog-preview-title">
-              {{ article.title }}
-            </h3>
-            <!-- {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-            <p class="blog-preview-body">
-              {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
-            </p> -->
-            <p class="blog-preview-body">
-                {{ article.excerpt | strip_html | truncatewords: 100 }}
-            </p>
-            <p class="read-more">{{ 'blogs.article.read_more' | t }} &rarr;</p>
-            </a>
+    <div class="blog-feed">
+      {% for article in blog.articles %}
+        <div class="blog-preview-content grid">
+          <div class="blog-preview-copy">
+            <a href="{{ article.url }}">
+              <h3 class="blog-preview-title">
+                {{ article.title }}
+              </h3>
+              <p class="blog-preview-body">
+                  {{ article.excerpt | strip_html | truncatewords: 100 }}
+              </p>
+              <p class="read-more">{{ 'blogs.article.read_more' | t }} &rarr;</p>
+              </a>
+          </div>
+          <div class="blog-preview-img">
+            {% assign src = article.excerpt | split: 'src="' %}
+            {% assign src = src[1] | split: '"' %}
+            {% assign src = src[0] %}
+            <a href="{{ article.url }}"><img src="{{ src }}" alt=""></a>
+          </div>
         </div>
-        <div class="blog-preview-img">
-          {% assign src = article.excerpt | split: 'src="' %}
-          {% assign src = src[1] | split: '"' %}
-          {% assign src = src[0] %}
-          <a href="{{ article.url }}"><img src="{{ src }}" alt=""></a>
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
 
     {% if paginate.pages > 1 %}
       {% include 'pagination' %}

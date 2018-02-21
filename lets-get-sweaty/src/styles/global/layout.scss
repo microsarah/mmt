@@ -912,10 +912,14 @@ footer input:focus{
 
 .blog-tag-title{
   font-family: $font-stack-body;
-  font-size: 1em;
+  font-size: .75em;
   font-style: italic;
-  margin: 16em 0 0;
+  margin: 7em 0 0;
   text-transform: uppercase;
+}
+
+.blog-feed{
+  margin: -1em 0 0;
 }
 
 .blog-tags{
@@ -933,34 +937,15 @@ footer input:focus{
   margin: auto;
 }
 
-.blog-content{
-  // float: right;
-}
-
-.blog-content p,
-.blog-content ul,
-.blog-content ol{
-  margin: 1em 0 0 5em;
-  max-width: 100%;
-}
-
-.blog-content ul{
-  list-style: disc inside;
-}
-
-.blog-content ol{
-  list-style: inside;
-}
-
-.blog-article-header{
-  // position: fixed;
+.blog-article{
+  width: 70%;
+  margin:auto;
   text-align: center;
-
+  padding: 2em 0 0;
 }
 
-.blog-article-header header{
-  // position: absolute;
-  // top: 2em;
+.blog-article p{
+  max-width: 45em;
 }
 
 .page{

@@ -168,6 +168,7 @@ nav a:hover{
   left: 0;
   width: 15.75em;
   padding: 0;
+  z-index: 100;
 }
 
 .site-nav--has-submenu:hover .site-nav__submenu{
@@ -893,8 +894,28 @@ footer input:focus{
   padding:10em 0 0;
 }
 
+.blog-header{
+  background: url("blog.svg") no-repeat center center scroll;
+  font-size: 2em;
+  text-transform: uppercase;
+  padding: 3.75em 0 0;
+  height: 10em;
+}
+
+.blog-title{
+  font-size: 1em;
+}
+
+.blog-title a{
+  border-bottom: none;
+}
+
 .blog-tag-title{
-  margin: 0 0 3em;
+  font-family: $font-stack-body;
+  font-size: 1em;
+  font-style: italic;
+  margin: 16em 0 0;
+  text-transform: uppercase;
 }
 
 .blog-tags{
@@ -903,6 +924,10 @@ footer input:focus{
 }
 
 .blog-hero{
+  position: absolute;
+  top: 12em;
+  left: 50%;
+  transform: translateX(-50%);
   width: 30em;
   display: block;
   margin: auto;

@@ -13,6 +13,11 @@
   {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
 
+
+  <header class="blog-header">
+    <h1 class="blog-title">Blog</h1>
+  </header>
+
 <article role="article" itemscope itemtype="http://schema.org/Article" class="grid wrap">
 
   {% if article.image %}
@@ -22,7 +27,7 @@
   <div class="grid__item medium-up--two-fifths blog-article-header">
     <header role="banner">
       <h1>{{ article.title }}</h1>
-      {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+      <!-- {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
       <p>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
       {% if article.tags.size > 0 %}
         <ul>
@@ -32,7 +37,7 @@
             </li>
           {% endfor %}
         </ul>
-      {% endif %}
+      {% endif %} -->
     </header>
   </div>
   <div class="grid__item medium-up--three-fifths blog-content" itemprop="articleBody">

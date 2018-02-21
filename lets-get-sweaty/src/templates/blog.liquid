@@ -2,16 +2,20 @@
   {% paginate blog.articles by 24 %}
 
     {%- assign blog_title = blog.title -%}
-
     {% if current_tags %}
       {% capture blog_title %}
-      <h1 class="collection-title">{{ blog.title | link_to: blog.url }} > {{ current_tags.first }}</h1>
-      <!-- <h2 class="blog-tag-title">{{ current_tags.first }}</h2> -->
+      <h1 class="blog-title">{{ blog.title | link_to: blog.url }}</h1>
+      <h2 class="blog-tag-title">{{ current_tags.first }}</h2>
+      {% endcapture %}
+    {% else %}
+      {% capture blog_title %}
+      <h1 class="blog-title">Blog</h1>
       {% endcapture %}
     {% endif %}
 
-    <h1 class="collection-title">{{ blog_title }}</h1>
-    <img src="{{ 'blog.svg' | asset_url }}" alt="illustration of cat hands sending good vibes to human hands" title="good vibes only" class="blog-hero"/>
+    <header class="blog-header">
+      {{ blog_title }}
+    </header>
 
     {% for article in blog.articles %}
       <div class="blog-preview-content grid">
@@ -20,10 +24,10 @@
             <h3 class="blog-preview-title">
               {{ article.title }}
             </h3>
-            {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+            <!-- {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
             <p class="blog-preview-body">
               {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
-            </p>
+            </p> -->
             <p class="blog-preview-body">
                 {{ article.excerpt | strip_html | truncatewords: 100 }}
             </p>

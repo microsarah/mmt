@@ -108,7 +108,13 @@
               <div class="grid__item medium-up--one-quarter">
                 <ul class="product-image-list">
                   {% for image in product.images %}
-                    <li data-product-variant="{{ forloop.index0 }}">
+
+                      {% if product.id == 161963617 %}
+                        <li data-product-variant="{% if forloop.index0 == 0 or forloop.index0 == 1 %}0{% else %}1{% endif %}" >
+                      {% else %}
+                        <li data-product-variant="{{ forloop.index0 }}" >
+                      {% endif %}
+
                       <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
                         <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
                       </a>
@@ -157,13 +163,3 @@
     ]
   }
 {% endschema %}
-
-{% javascript %}
-    $(window).load(function(){
-        var singleOptionSelector = '[data-single-option-selector]';
-        var variants = {{ product | json }}
-        console.log(varaints);
-
-    });
-
-{% endjavascript %}

@@ -895,15 +895,15 @@ footer input:focus{
 }
 
 .blog-header{
-  background: url("blog.svg") no-repeat center center scroll;
   font-size: 2em;
   text-transform: uppercase;
-  padding: 3.75em 0 0;
-  height: 10em;
 }
 
 .blog-title{
-  font-size: 1em;
+  background: url("blog.svg") no-repeat center center scroll;
+  font-size: 1.5em;
+  padding: 2.875em 0 0;
+  height: 7em;
 }
 
 .blog-title a{
@@ -911,11 +911,9 @@ footer input:focus{
 }
 
 .blog-tag-title{
-  font-family: $font-stack-body;
-  font-size: .75em;
-  font-style: italic;
-  margin: 7em 0 0;
-  text-transform: uppercase;
+  font-size: 1.5em;
+  padding: 1.5em 0 .5em;
+  text-transform: capitalize;
 }
 
 .blog-feed{

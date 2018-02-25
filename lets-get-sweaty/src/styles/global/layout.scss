@@ -46,6 +46,10 @@ a:hover{
 a:visited{
 }
 
+#MainContent{
+  padding: 0 0 14em;
+}
+
 .page-width {
   @include clearfix();
   max-width: $width-site;
@@ -134,7 +138,7 @@ nav a:hover{
 .site-nav{
   position: relative;
   width:527px;
-  padding:2em 0;
+  padding:1em 0;
 }
 
 .site-nav li{
@@ -160,10 +164,11 @@ nav a:hover{
   background: $color-body;
   display: none;
   position: absolute;
-  top: 2.75em;
+  top: 3em;
   left: 0;
   width: 15.75em;
-  padding: .275em 0 0;
+  padding: 0;
+  z-index: 100;
 }
 
 .site-nav--has-submenu:hover .site-nav__submenu{
@@ -171,7 +176,8 @@ nav a:hover{
 }
 
 .site-nav__submenu li{
-  float: none !important;
+  width:100%;
+  text-align: left;
 }
 
 .site-nav__submenu li a:hover{
@@ -279,13 +285,17 @@ nav a:hover{
 // ================================================ Collection Pages
 
 .collection-header{
-  padding: 8em 0 10em;
+  padding: 3em 0 4em;
 }
 
 .collection-title{
   text-transform: uppercase;
   text-align: center;
-  margin: 0.67em 0 2em;
+  // margin: 0.67em 0 2em;
+}
+
+.collection-title a{
+  border-bottom: none;
 }
 
 .collection-description{
@@ -331,34 +341,29 @@ nav a:hover{
   margin: 4em 0 2em;
 }
 
-.body-care-page{
-  background:url('body-page-bkgd.svg') no-repeat center 157px fixed;
+#body-care{
+  background:url('body-page.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
-.deodorant-page{
-  background:url('deo-page-bkgd.svg') no-repeat center 162px fixed;
+#deodorant{
+  background:url('deo-page-3.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
-.face-care-page{
-  background:url('face-page-bkgd.svg') no-repeat center 162px fixed;
+#facial-care{
+  background:url('face-page.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
-.gifts-kits-page{
-  background:url('kits-page-bkgd.svg') no-repeat center 157px fixed;
+#gifts-kits{
+  background:url('kits-page.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
-.soap-page{
-  background:url('soap-page-bkgd.svg') no-repeat center 157px fixed;
+#soap{
+  background:url('soap-page.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 
@@ -384,8 +389,9 @@ nav a:hover{
 .who-we-are h3{
   font-family: $font-stack-body;
   font-style: italic;
-  font-size: 1em;
-  width:22em;
+  font-size: 1.25em;
+  line-height: 1.6em;
+  width:21.5em;
   margin:3em auto;
 }
 
@@ -422,13 +428,15 @@ nav a:hover{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   -webkit-background-blend-mode: multiply;
-  padding:19em 0;
+  padding:16em 0;
   height:900px;
+  margin:-7em 0 0;
 }
 
 .about-us{
   padding:0 3em;
   max-width: 43em;
+  font-size: 1.25em;
 }
 
 .about-us-img{
@@ -443,7 +451,7 @@ nav a:hover{
   background:url('who-we-are-our-ingredients-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   padding:10em 0 5em;
-  height:920px;
+  height:840px;
 }
 
 
@@ -577,6 +585,7 @@ footer input:focus{
   font-family: $font-stack-header;
   font-size: 1.75em;
   text-align: center;
+  line-height: 1.25em;
 }
 
 .blog-preview-body{
@@ -601,10 +610,23 @@ footer input:focus{
   float:left;
 }
 
+
+.blog-preview-content:nth-of-type(even) .blog-preview-img{
+  font-size: 1em;
+  width:50%;
+  float:right;
+}
+
 .blog-preview-content:nth-of-type(odd) .blog-preview-copy{
   font-size: 1em;
   width:50%;
   float:right;
+}
+
+.blog-preview-content:nth-of-type(odd) .blog-preview-img{
+  font-size: 1em;
+  width:50%;
+  float:left;
 }
 
 .read-more{
@@ -737,10 +759,9 @@ footer input:focus{
 
 // ================================================ FAQ Page
 
-.faq-page{
-  background:url('faq-page-bkgd.svg') no-repeat center 157px fixed;
+#etc{
+  background:url('faq-page.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
   text-align: center;
 }
 
@@ -755,10 +776,9 @@ footer input:focus{
 
 // ================================================ Retailers Page
 
-.retailers-page{
-  background:url('retailers-page-bkgd.svg') no-repeat center 159px fixed;
+#where-to-buy{
+  background:url('retailers-page.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 .retailers-page h2{
@@ -766,7 +786,9 @@ footer input:focus{
 }
 
 .store-locator{
-  width:80%;
+  width:92%;
+  padding:2%;
+  background: #fff;
   margin:auto;
 }
 
@@ -776,6 +798,11 @@ footer input:focus{
 
 .online-retailers img{
     padding:10em 0 4em;
+    width:14em;
+}
+
+.retailers-page .page-hero{
+  width:28em;
 }
 
 .online-retailers h2{
@@ -792,10 +819,9 @@ footer input:focus{
 
 // ================================================ Contact Page
 
-.contact-page{
-  background:url('contact-page-bkgd.svg') no-repeat center 162px fixed;
+#get-in-touch{
+  background:url('contact-page-1.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
   text-align: center;
 }
 
@@ -812,10 +838,9 @@ footer input:focus{
 
 // ================================================ Buzz Page
 
-.buzz-page{
-  background:url('buzz-page-bkgd.svg') no-repeat center 157px fixed;
+#buzz-of-the-bees{
+  background:url('buzz-page-3.svg') no-repeat center top fixed;
   background-size:cover;
-  padding:0 0 15em;
 }
 
 .buzz{
@@ -845,13 +870,102 @@ footer input:focus{
   border-bottom: none;
 }
 
-.buzz img{
+.buzz-page header img{
+  position: static;
+  top:0;
+  transform:none;
+  width:22em;
+  display: block;
+  margin:auto;
+}
+
+.buzz-page img{
   position: relative;
   top:50%;
   transform: translateY(-50%);
 }
 
 // ================================================ Blog
+
+.blog-categories{
+  width:80%;
+  margin:auto;
+  text-align: center;
+  padding:10em 0 0;
+}
+
+.blog-header{
+  background: url("blog.svg") no-repeat center center scroll;
+  font-size: 2em;
+  text-transform: uppercase;
+  padding: 3.75em 0 0;
+  height: 10em;
+}
+
+.blog-title{
+  font-size: 1em;
+}
+
+.blog-title a{
+  border-bottom: none;
+}
+
+.blog-tag-title{
+  font-family: $font-stack-body;
+  font-size: .75em;
+  font-style: italic;
+  margin: 7em 0 0;
+  text-transform: uppercase;
+}
+
+.blog-feed{
+  margin: -1em 0 0;
+}
+
+.blog-tags{
+  display: inline-block;
+  margin: .75em;
+}
+
+.blog-hero{
+  position: absolute;
+  top: 12em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30em;
+  display: block;
+  margin: auto;
+}
+
+.blog-article{
+  width: 70%;
+  margin:auto;
+  text-align: center;
+  padding: 2em 0 0;
+}
+
+.blog-article p{
+  max-width: 45em;
+}
+
+.page{
+  margin: 0 1em;
+  font-family: $font-stack-header;
+}
+
+.page a,
+.next a{
+  border-bottom: none;
+}
+
+.page.current{
+  color: $color-papaya;
+}
+
+.next{
+  margin: 1em 0 0;
+  display: block;
+}
 
 // ================================================ MQ's
 

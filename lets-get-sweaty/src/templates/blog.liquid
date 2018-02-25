@@ -1,91 +1,68 @@
-{% paginate blog.articles by 5 %}
+<div class="wrap">
+  {% paginate blog.articles by 24 %}
 
-  {%- assign blog_title = blog.title -%}
-
-  {% if current_tags %}
-    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
-  {% endif %}
-
-  <h1>{{ blog_title }}</h1>
-
-  {% if blog.all_tags.size > 0 %}
-    <h2>{{ 'blogs.general.categories' | t }}</h2>
-
-    <ul>
-      {% for tag in blog.all_tags %}
-
-        {% if current_tags contains tag %}
-          <li>{{ tag }}</li>
-        {% else %}
-          <li>{{ tag | link_to_tag: tag }}</li>
-        {% endif %}
-
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-
-  {% comment %}
-
-  Article Previews
-  ====================
-  {% endcomment %}
-
-  {% for article in blog.articles %}
-    <h3>
-      <a href="{{ article.url }}">{{ article.title }}</a>
-    </h3>
-
-    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-
-    <p>
-      {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
-    </p>
-
-    {% if article.image %}
-      <a href="{{ article.url }}">
-        {{ article | img_url: '1024x1024' | img_tag: article.title }}
-      </a>
+    {%- assign blog_title = blog.title -%}
+    {% if current_tags %}
+      {% capture blog_title %}
+      <h1 class="blog-title">{{ blog.title | link_to: blog.url }}</h1>
+      <h2 class="blog-tag-title">{{ current_tags.first }}</h2>
+      {% endcapture %}
+    {% else %}
+      {% capture blog_title %}
+      <h1 class="blog-title">{{ blog.title | link_to: blog.url }}</h1>
+      {% endcapture %}
     {% endif %}
 
-    <div class="rte">
-      {% if article.excerpt.size > 0 %}
-        {{ article.excerpt }}
-      {% else %}
-        <p>
-          {{ article.content | strip_html | truncatewords: 100 }}
-        </p>
-      {% endif %}
+    <header class="blog-header">
+      {{ blog_title }}
+    </header>
+
+    <div class="blog-feed">
+      {% for article in blog.articles %}
+        <div class="blog-preview-content grid">
+          <div class="blog-preview-copy">
+            <a href="{{ article.url }}">
+              <h3 class="blog-preview-title">
+                {{ article.title }}
+              </h3>
+              <p class="blog-preview-body">
+                  {{ article.excerpt | strip_html | truncatewords: 100 }}
+              </p>
+              <p class="read-more">{{ 'blogs.article.read_more' | t }} &rarr;</p>
+              </a>
+          </div>
+          <div class="blog-preview-img">
+            {% assign src = article.excerpt | split: 'src="' %}
+            {% assign src = src[1] | split: '"' %}
+            {% assign src = src[0] %}
+            <a href="{{ article.url }}"><img src="{{ src }}" alt=""></a>
+          </div>
+        </div>
+      {% endfor %}
     </div>
 
-    {% if blog.comments_enabled? or article.tags.size > 0 %}
-      <ul>
-        {% if blog.comments_enabled? %}
-          <li>
-            <a href="{{ article.url }}#comments">
-              {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
-            </a>
-          </li>
-        {% endif %}
-
-        {% if article.tags.size > 0 %}
-          {% for tag in article.tags %}
-            <li>
-              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-              {% unless forloop.last %}, {% endunless %}
-            </li>
-          {% endfor %}
-        {% endif %}
-      </ul>
+    {% if paginate.pages > 1 %}
+      {% include 'pagination' %}
     {% endif %}
+  {% endpaginate %}
 
-    <p>
-      <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
-    </p>
-  {% endfor %}
+  <section class="grid wrap blog-categories">
+    <div class="grid__item one-whole">
+      {% if blog.all_tags.size > 0 %}
+        <h2>{{ 'blogs.general.categories' | t }}</h2>
 
-  {% if paginate.pages > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
+        <ul>
+          {% for tag in blog.all_tags %}
 
-{% endpaginate %}
+            {% if current_tags contains tag %}
+              <li class="blog-tags">{{ tag }}</li>
+            {% else %}
+              <li class="blog-tags">{{ tag | link_to_tag: tag }}</li>
+            {% endif %}
+
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </section>
+</div>

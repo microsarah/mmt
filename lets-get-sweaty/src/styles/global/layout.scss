@@ -197,7 +197,7 @@ nav a:hover{
   float: left;
 }
 
-.cart{
+.cart-icon{
   padding: 0 1em;
 }
 
@@ -963,6 +963,46 @@ footer input:focus{
 .next{
   margin: 1em 0 0;
   display: block;
+}
+
+// ================================================ Cart
+
+.cart{
+  margin: auto;
+  background: #fff;
+}
+
+.cart thead th{
+  padding: 1em 0;
+
+}
+
+.cart-row a{
+  border-bottom: none;
+}
+
+.cart-row img{
+  // width:50%;
+  display: block;
+  margin-left: auto;
+  padding: 0 2em 0 0;
+}
+
+.cart-product-title{
+  font-family: $font-stack-header;
+}
+
+.cart-row td{
+  padding: 0 0 4em;
+}
+
+.cart-row td:nth-child(2){
+  vertical-align: middle;
+  padding: 0 4em 4em 0;
+}
+
+.cart-remove{
+  padding: 0 0 0 6em;
 }
 
 // ================================================ MQ's

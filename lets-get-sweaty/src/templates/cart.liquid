@@ -1,8 +1,8 @@
 {% if cart.item_count > 0 %}
-  <h1>{{ 'cart.general.title' | t }}</h1>
+  <h1 class="collection-title">{{ 'cart.general.title' | t }}</h1>
 
   <form action="/cart" method="post" novalidate>
-    <table class="responsive-table">
+    <table class="responsive-table cart">
       <thead class="small--hide">
         <tr>
           <th colspan="2">{{ 'cart.label.product' | t }}</th>
@@ -23,7 +23,7 @@
         helpers used for responsive-table labels
         {% endcomment %}
 
-          <tr class="responsive-table-row">
+          <tr class="responsive-table-row cart-row">
 
             <td data-label="{{ 'customer.order.product' | t }}">
 
@@ -35,13 +35,11 @@
 
             </td>
             <td>
-              <a href="{{ item.url }}">{{ item.product.title }}</a>
+              <a href="{{ item.url }}" class="cart-product-title">{{ item.product.title }}</a>
 
               {% unless item.product.has_only_default_variant %}
                 <p>{{ item.variant.title }}</p>
               {% endunless %}
-
-              <p>{{ item.vendor }}</p>
 
               {%- assign property_size = item.properties | size -%}
 
@@ -60,9 +58,9 @@
                 {% endfor %}
               {% endif %}
 
-              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-                <small>{{ 'cart.general.remove' | t }}</small>
-              </a>
+              <!-- <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                <small class="cart-remove">{{ 'cart.general.remove' | t }}</small>
+              </a> -->
             </td>
             <td data-label="{{ 'cart.label.price' | t }}">
               {% if item.original_line_price != item.line_price %}
@@ -85,6 +83,9 @@
             <td data-label="{{ 'cart.label.total' | t }}">
               {{ item.line_price | money }}
             </td>
+            <td>              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                            <small class="cart-remove">{{ 'cart.general.remove' | t }}</small>
+                          </a></td>
           </tr>
 
         {% endfor %}

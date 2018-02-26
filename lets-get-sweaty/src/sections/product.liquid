@@ -1,7 +1,16 @@
 <div class="product">
   <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
 
+    <script type="text/javascript">
+        var variants_json = {};
+        {% for variant in product.variants %}
+            variants_json[{{variant.id}}] = {{ variant.metafields.product_info | json }};
+        {% endfor %}
+    </script>
+
     {%- assign current_variant = product.selected_or_first_available_variant -%}
+    {%- assign variant_metafields = '' -%}
+
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
     <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
@@ -107,13 +116,18 @@
               </div>
               <div class="grid__item medium-up--one-quarter">
                 <ul class="product-image-list">
-                  {% for image in product.images %}
-                    <li data-product-variant="{{ forloop.index0 }}">
-                      <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
-                        <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
-                      </a>
-                    </li>
-                  {% endfor %}
+                    <!-- {{ product.variants[0].featured_image }} -->
+                    <!-- {% for variant in product.variants %}
+                                {{ variant | json }}
+                          {% endfor %} -->
+
+                {% for image in product.images %}
+                  <li data-product-variant="{{ forloop.index0 }}">
+                    <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
+                      <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+                    </a>
+                  </li>
+                {% endfor %}
                 </ul>
               </div>
             </div>
@@ -123,24 +137,62 @@
     </div>
     {% for variant in product.variants %}
         {% if variant.id == current_variant.id %}
-        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details">
+        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details" data-variant-background >
           <div class="grid wrap">
             <div class="grid__item medium-up--one-third one-whole">
               <h2>ingredients</h2>
-                <p>{{ variant.metafields.product_info.product_ingredients }}</p>
+                <p data-variant-ingredients >{{ variant.metafields.product_info.product_ingredients }}</p>
             </div>
             <div class="grid__item medium-up--one-third one-whole">
               <h2>how to</h2>
-              <p>{{ product.metafields.product_info.product_to_use }}</p>
+              <p data-variant-howto >{{ product.metafields.product_info.product_to_use }}</p>
             </div>
             <div class="grid__item medium-up--one-third one-whole">
               <h2>tips</h2>
-              <p>{{ product.metafields.product_info.product_tips }}</p>
+              <p data-variant-tips >{{ product.metafields.product_info.product_tips }}</p>
             </div>
           </div>
         </div>
         {% endif %}
     {% endfor %}
+<!--     <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+    {% if settings.display_collections or settings.display_tags or settings.display_type %}
+        <hr />
+    {% endif %}
+
+    {% if settings.display_related_products %}
+        {% capture limit %}{{ settings.products_per_row | plus: 1 }}{% endcapture %}
+
+        {% if collection and collection.all_products_count > 1 %}
+            {% assign col = collection.handle %}
+        {% else %}
+            {% assign col = product.collections.last.handle %}
+        {% endif %}
+
+
+        {% for tag in product.tags %}
+            {% if tag contains 'meta-related-collection-' %}
+                {% assign col = tag | remove: 'meta-related-collection-' %}
+                {% assign collection = collections[col] %}
+                {% capture limit %}{{ collection.products_count | plus: 1 }}{% endcapture %}
+            {% endif %}
+        {% endfor %}
+
+        {% if col and collections[col].all_products_count > 0 %}
+            {% if collections[col].all_products_count != 1 or collections[col].products.first.id != product.id %}
+                <h2>{{ 'products.product.related_items' | t }}</h2>
+
+                {% assign skip_product = product %}
+                {% assign products = collections[col].products %}
+                {% assign products_per_row = settings.products_per_row %}
+                <div>
+                    {% include 'product-loop' %}
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endif %} -->
+
   </div>
 </div>
 
@@ -153,17 +205,13 @@
         "id": "show_share_buttons",
         "label": "Show social sharing buttons",
         "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "display_related_products",
+        "label": "Show related products",
+        "default": true
       }
     ]
   }
 {% endschema %}
-
-{% javascript %}
-    $(window).load(function(){
-        var singleOptionSelector = '[data-single-option-selector]';
-        var variants = {{ product | json }}
-        console.log(varaints);
-
-    });
-
-{% endjavascript %}

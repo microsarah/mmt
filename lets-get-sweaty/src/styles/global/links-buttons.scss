@@ -2,11 +2,27 @@
 .btn {
   @include prefix('user-select', 'none', moz ms webkit spec);
   @include prefix(appearance, none, webkit moz spec);
-  display: inline-block;
+  // display: inline-block;
   width: auto;
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
-  border: 0;
+  border: 1px solid #000;
+  padding: 1.25em;
+  background: inherit;
+  font-family: "NewsGothicMTStd-Bold",Helvetica,Arial,sans-serif;
+  text-transform: uppercase;
+  font-size: 1em;
+  letter-spacing: .05em;
+  -webkit-transition: all ease-in-out .15s;
+  -moz-transition: all ease-in-out .15s;
+  -ms-transition: all ease-in-out .15s;
+  -o-transition: all ease-in-out .15s;
+  transition: all ease-in-out .15s;
+}
+
+.btn:hover{
+  background: $color-night;
+  color: $color-body;
 }

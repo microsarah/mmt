@@ -69,13 +69,13 @@ a:visited{
 // ============================================================================= Header
 
 .site-header{
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 // ================================================ Logo
 .logo{
   position: absolute;
-  top:2.175em;
+  top:1.175em;
   left:50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
@@ -190,23 +190,17 @@ nav a:hover{
 
 .top-nav{
   float: right;
-  padding:2em 0;
+  padding:1em 0;
+  margin: 0.75em;
 }
 
 .top-nav li{
   float: left;
 }
 
-.cart{
-  padding: 0 1em;
+.cart-icon{
+  padding: 0 1.5em;
 }
-
-.cart-item-count{
-  // position: absolute;
-  // top:0;
-  // left:0;
-}
-
 
 .searchbar{
   position: relative;
@@ -266,6 +260,12 @@ nav a:hover{
 }
 
 // ================================================ Search Results
+
+
+.template-search{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
 
 .search-results{
   text-align: center;
@@ -565,8 +565,25 @@ footer input:focus{
 
 // ================================================ Index Page
 
+#made-with-spirit-meow-meow-tweet{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
+
+.announcement{
+  background-color: $color-powder;
+  color: $color-papaya;
+  font-style: italic;
+}
+
 .banner{
   margin:auto;
+}
+
+.banner img{
+  display: block;
+  width: 100%;
+  margin: auto;
 }
 
 .banner a{
@@ -887,6 +904,12 @@ footer input:focus{
 
 // ================================================ Blog
 
+.template-blog{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
+
+
 .blog-categories{
   width:80%;
   margin:auto;
@@ -895,15 +918,15 @@ footer input:focus{
 }
 
 .blog-header{
-  background: url("blog.svg") no-repeat center center scroll;
   font-size: 2em;
   text-transform: uppercase;
-  padding: 3.75em 0 0;
-  height: 10em;
 }
 
 .blog-title{
-  font-size: 1em;
+  background: url("blog.svg") no-repeat center center scroll;
+  font-size: 1.5em;
+  padding: 2.875em 0 0;
+  height: 7em;
 }
 
 .blog-title a{
@@ -911,11 +934,9 @@ footer input:focus{
 }
 
 .blog-tag-title{
-  font-family: $font-stack-body;
-  font-size: .75em;
-  font-style: italic;
-  margin: 7em 0 0;
-  text-transform: uppercase;
+  font-size: 1.5em;
+  padding: 1.5em 0 .5em;
+  text-transform: capitalize;
 }
 
 .blog-feed{
@@ -967,6 +988,100 @@ footer input:focus{
   display: block;
 }
 
+// ================================================ Cart
+
+#your-shopping-cart{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
+
+.cart-wrap{
+  width:100%;
+  max-width: 901px;
+  margin: 3em auto;
+  padding:2em 2em 4em;
+  background: #fff;
+}
+
+.cart{
+
+}
+
+.cart input{
+  background: #fff;
+  font-size: 1em;
+}
+
+.cart thead th{
+  padding: 1em 0;
+}
+
+.cart-row a{
+  border-bottom: none;
+}
+
+.cart-row img{
+  display: block;
+  margin-left: auto;
+  padding: 0 2em 0 0;
+}
+
+.cart-product-title{
+  font-family: $font-stack-header;
+}
+
+.cart-row td{
+  padding: 0 0 4em;
+}
+
+.cart-remove{
+  font-family: Arial, sans-serif;
+  padding: 0 6em 0;
+  color: $color-papaya;
+}
+
+.cart-empty{
+  text-align: center;
+  padding:3em 0;
+}
+
+.note-to-seller{
+  background: #fff;
+  padding:2em;
+}
+
+.note-to-seller textarea{
+  background: #fff;
+  border: 1px solid $color-night;
+  text-align: left;
+  padding:1em;
+}
+
+.note-to-seller textarea:focus{
+  border: 1px solid $color-night;
+}
+
+.bold{
+  font-family: $font-stack-header;
+}
+
+.subtotal{
+  text-align: right;
+  font-size: 1.5em;
+  font-family: $font-stack-header;
+  padding-right: 5.5em;
+}
+
+.subtotal-title{
+  padding-right:1.75em;
+}
+
+.checkout-btn{
+  display: block;
+  margin: auto;
+}
+
+
 // ================================================ MQ's
 
 @media screen and (max-width:1120px){
@@ -975,7 +1090,6 @@ footer input:focus{
   }
   .buzz li{
     width:33.33%;
-    // height: 300px;
   }
 }
 

@@ -4,7 +4,7 @@
 
 <div id="CustomerLoginForm">
   {% form 'customer_login' %}
-    <h1>{{ 'customer.login.title' | t }}</h1>
+    <h1 class="collection-title">{{ 'customer.login.title' | t }}</h1>
 
     {{ form.errors | default_errors }}
 
@@ -32,16 +32,12 @@
              placeholder="{{ 'customer.login.password' | t }}">
     {% endif %}
 
-    <input type="submit" class="btn" value="{{ 'customer.login.sign_in' | t }}">
+    <input type="submit" class="btn checkout-btn" value="{{ 'customer.login.sign_in' | t }}">
 
-    <a href="/">{{ 'customer.login.cancel' | t }}</a>
-
-    <a href="/account/register">
-      {{ 'layout.customer.create_account' | t }}
-    </a>
+    <p class="create-account">Don't have an account? <a href="/account/register">Create one!</a></p>
 
     {% if form.password_needed %}
-      <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+      <p class="create-account"><a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a></p>
     {% endif %}
   {% endform %}
 
@@ -69,11 +65,7 @@
            autocomplete="off"
            autocapitalize="off">
 
-    <input type="submit" class="btn" value="{{ 'customer.recover_password.submit' | t }}">
-
-    <button type="button" id="HideRecoverPasswordLink">
-      {{ 'customer.recover_password.cancel' | t }}
-    </button>
+    <input type="submit" class="btn checkout-btn" value="{{ 'customer.recover_password.submit' | t }}">
   {% endform %}
 
 </div>

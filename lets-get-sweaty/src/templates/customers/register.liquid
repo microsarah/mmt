@@ -1,4 +1,4 @@
-<h1>{{ 'customer.register.title' | t }}</h1>
+<h1 class="collection-title">{{ 'customer.register.title' | t }}</h1>
 
 {% form 'create_customer' %}
   {{ form.errors | default_errors }}
@@ -45,7 +45,6 @@
     placeholder="{{ 'customer.register.password' | t }}">
 
   <p>
-    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
+    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn checkout-btn">
   </p>
-  <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
 {% endform %}

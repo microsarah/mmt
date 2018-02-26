@@ -69,13 +69,13 @@ a:visited{
 // ============================================================================= Header
 
 .site-header{
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 // ================================================ Logo
 .logo{
   position: absolute;
-  top:2.175em;
+  top:1.175em;
   left:50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
@@ -190,7 +190,8 @@ nav a:hover{
 
 .top-nav{
   float: right;
-  padding:2em 0;
+  padding:1em 0;
+  margin: 0.75em;
 }
 
 .top-nav li{
@@ -198,15 +199,8 @@ nav a:hover{
 }
 
 .cart-icon{
-  padding: 0 1em;
+  padding: 0 1.5em;
 }
-
-.cart-item-count{
-  // position: absolute;
-  // top:0;
-  // left:0;
-}
-
 
 .searchbar{
   position: relative;
@@ -266,6 +260,12 @@ nav a:hover{
 }
 
 // ================================================ Search Results
+
+
+.template-search{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
 
 .search-results{
   text-align: center;
@@ -568,6 +568,12 @@ footer input:focus{
 #made-with-spirit-meow-meow-tweet{
   background:url('index-bkgd-1.svg') no-repeat center top fixed;
   background-size:cover;
+}
+
+.announcement{
+  background-color: $color-powder;
+  color: $color-papaya;
+  font-style: italic;
 }
 
 .banner{
@@ -897,6 +903,12 @@ footer input:focus{
 }
 
 // ================================================ Blog
+
+.template-blog{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
+
 
 .blog-categories{
   width:80%;

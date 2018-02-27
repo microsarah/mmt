@@ -39,7 +39,6 @@ theme.Product = (function() {
     if (!$(selectors.productJson, this.$container).html()) {
       return;
     }
-    console.log(this);
 
     var sectionId = this.$container.attr('data-section-id');
     this.productSingleObject = JSON.parse($(selectors.productJson, this.$container).html());

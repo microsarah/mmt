@@ -108,7 +108,7 @@ slate.Variants = (function() {
         var selectedVariantIndex = evt.target.parentNode.parentNode.getAttribute('data-product-variant');
 
         // if there's more than one varaint, update the selected product
-        if (this.product.variants.length > 0){
+        if (this.product.variants.length > 1){
 
             // hard fix for migrator kit (multiple images per single variant)
             if (this.product.id === 161963617 ){

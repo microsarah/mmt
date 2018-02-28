@@ -20,7 +20,11 @@ theme.Product = (function() {
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
     productVariantImage: '[data-product-variant]',
-    singleOptionSelector: '[data-single-option-selector]'
+    singleOptionSelector: '[data-single-option-selector]',
+    variantBackground: '[data-variant-background]',
+    variantIngredients: '[data-variant-ingredients]',
+    variantHowto: '[data-variant-howto]',
+    variantTips: '[data-variant-tips]'
   };
 
   /**
@@ -30,7 +34,6 @@ theme.Product = (function() {
    */
   function Product(container) {
     this.$container = $(container);
-
     // Stop parsing if we don't have the product json script tag when loading
     // section in the Theme Editor
     if (!$(selectors.productJson, this.$container).html()) {
@@ -81,6 +84,11 @@ theme.Product = (function() {
 
       if (variant) {
         $(selectors.priceWrapper, this.$container).removeClass('hide');
+        $(selectors.variantBackground).css("background-color", variants_json[variant.id].color_scent);
+        $(selectors.variantIngredients).html(variants_json[variant.id].product_ingredients);
+        $(selectors.variantHowto).html(variants_json[variant.id].product_to_use);
+        $(selectors.variantTips).html(variants_json[variant.id].product_tips);
+
       } else {
         $(selectors.addToCart, this.$container).prop('disabled', true);
         $(selectors.addToCartText, this.$container).html(theme.strings.unavailable);

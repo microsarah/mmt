@@ -10,7 +10,7 @@
     <div class="menu-mobile-wrap grid clearfix">
       <label for="menu-mobile-checkbox" class="menu-mobile-label">MENU</label>
       <input type="checkbox" id="menu-mobile-checkbox">
-      <div class="menu wrap">
+      <div class="menu wrap clearfix">
         <nav role="navigation" class="site-navigation">
           <ul class="site-nav clearfix">
             {% for link in linklists[section.settings.main_linklist].links %}
@@ -57,7 +57,7 @@
                     {{ 'layout.customer.log_in' | t | customer_login_link }}
                   </li>
                 {% endif %}
-              <li class="cart">
+              <li class="cart-icon">
                 <a href="/cart">
                   {% include 'icon-cart' %}
                   <span class="cart-item-count">{{ cart.item_count }}</span>
@@ -80,7 +80,14 @@
           {% endif %}
         </nav>
       </div>
+      <div class="wrap">
+        <div class="discount-flag-large">
+          <p>{{ shop.metafields.shop_announcement.shop_announcement }}</p>
+          <p>Free Shipping on all Deodorants!</p>
+        </div>
+      </div>
     </div>
+
 
     <div class="logo">
       {% if template.name == 'index' %}

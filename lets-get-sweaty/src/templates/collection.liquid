@@ -1,3 +1,6 @@
+{{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
 <div class="wrap">
     {% paginate collection.products by 24 %}
     <header role="banner" class="collection-header">
@@ -9,41 +12,54 @@
 
     <main class="grid">
         {% for product in collection.products %}
-          <a href="{{ product.url | within: collection }}">
-            <div class="grid__item medium-up--one-third one-whole product-card-wrap" data-collection-item="{{ forloop.index0 }}">
-              <div class="product-card">
-                {% if product.featured_image != blank %}
-                  <!-- {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }} -->
-                  <img src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
-                {% endif %}
-                <p class="product-card-title">{{ product.title }}</p>
-                <p class="product-card-price">
-                    {% if product.compare_at_price > product.price %}
-                      {% if product.price_varies %}
-                        {%- assign sale_price = product.price | money -%}
-                        {{ product.price | money | remove: '.00'}}
-                      {% else %}
-                        {{ 'products.product.on_sale' | t }}
-                        {{ product.price | money | remove: '.00'}}
-                      {% endif %}
-                      {% else %}
-                      {% if product.price_varies %}
-                        {%- assign price = product.price | money -%}
-                        {{ product.price_max | money | remove: '.00'}}
-                      {% else %}
-                        {{ product.price | money | remove: '.00'}}
-                      {% endif %}
-                    {% endif %} {% if product.compare_at_price > product.price %}
-                    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                    <s>{{ product.compare_at_price | money }}</s> {% endif %} {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
-                </p>
+        <div class="grid__item medium-up--one-third one-whole product-card-wrap" data-collection-item="{{ forloop.index0 }}">
+          <div class="product-card">
+          <script type="text/javascript">
+              $('.quickshop-open-{{ forloop.index0 }}').click(function(){
+                  console.log('lol')
+                  $('.quickshop-root-{{ forloop.index0 }}').toggle();
+              });
+          </script>
+          <div class="quickshop-open-{{ forloop.index0 }}" style="width: 200px; height 100px; background-color: blue;">
+              SHOW QUICKSHOP
+          </div>
+          <div class="quickshop-root quickshop-root-{{ forloop.index0 }}">
+              <div class="quickshop-close">
+                  CLOSE X
               </div>
-            </div>
-          </a>
-            <!-- <div class="quickshop-product-root">
-                <p>QUICKSHOP</p>
-                {% include 'quickshop' %}
-            </div> -->
+              {% include 'quickshop' %}
+          </div>
+            {% if product.featured_image != blank %}
+              <a href="{{ product.url | within: collection }}">
+                  <img src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
+              </a>
+            {% endif %}
+            <a href="{{ product.url | within: collection }}">
+                <p class="product-card-title">{{ product.title }}</p>
+            </a>
+            <p class="product-card-price">
+                {% if product.compare_at_price > product.price %}
+                  {% if product.price_varies %}
+                    {%- assign sale_price = product.price | money -%}
+                    {{ product.price | money | remove: '.00'}}
+                  {% else %}
+                    {{ 'products.product.on_sale' | t }}
+                    {{ product.price | money | remove: '.00'}}
+                  {% endif %}
+                  {% else %}
+                  {% if product.price_varies %}
+                    {%- assign price = product.price | money -%}
+                    {{ product.price_max | money | remove: '.00'}}
+                  {% else %}
+                    {{ product.price | money | remove: '.00'}}
+                  {% endif %}
+                {% endif %} {% if product.compare_at_price > product.price %}
+                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                <s>{{ product.compare_at_price | money }}</s> {% endif %} {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
+            </p>
+          </div>
+        </div>
+
         {% else %} {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %} {% for i in (1..8) %}
         <a href="#">
             {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}

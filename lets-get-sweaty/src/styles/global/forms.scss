@@ -89,3 +89,40 @@ textarea {
     color: $color-error;
   }
 }
+
+
+/*================ HIS UGLY CSS ================*/
+
+.quickshop-root {
+    display: none;
+}
+
+.quickshop-radio-button {
+    display:none;
+}
+
+.quickshop-radio-button + .quickshop-radio-button-label {
+    color: yellow;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+}
+
+.quickshop-radio-button + .quickshop-radio-button-label .quickshop-radio-button-background {
+    display:inline-block;
+    width: 19px;
+    height:19px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    cursor:pointer;
+    border-radius:  50%;
+}
+
+.quickshop-radio-button + .quickshop-radio-button-label .quickshop-radio-button-background {
+    margin: 5px;
+}
+
+input.quickshop-radio-button:checked + .quickshop-radio-button-label .quickshop-radio-button-background{
+    box-sizing: content-box;
+    margin: -2.5px 0px;
+    border: 5px solid black;
+}

@@ -6,27 +6,25 @@
 >
     {%- assign current_variant = product.selected_or_first_available_variant -%}
 
+
+<!--     <script type="text/javascript">
+    jQuery.post('/cart/add.js', {
+        quantity: 1,
+        id: 794864229,
+    });
+</script> -->
+
     <form action="/cart/add" method="post" enctype="multipart/form-data">
         {% unless product.has_only_default_variant %}
-            {% for option in product.options_with_values %}
-                <select
-                    id="SingleOptionSelector-{{ forloop.index0 }}"
-                    data-single-option-selector
-                    data-index="option{{ option.position }}"
-                >
-                    {% for value in option.values %}
-                    <option
-                        value="{{ value | escape}}"
-                        {% if option.selected_value == value %}
-                            selected="selected"
-                        {% endif %}
-                    >
-                        {{ value }}
-                    </option>
-                    {% endfor %}
-                </select>
-            {% endfor %}
+            <div class="radio-select-container">
+                {% for variant in product.variants %}
+                <input class="quickshop-radio-button" type="radio" data-product-variant="radio{{forloop.index0}}" name="radio" />
+                <label class="quickshop-radio-button-label" for="radio{{forloop.index0 }}"><span class="quickshop-radio-button-background" style="background-color: {{ variant.metafields.product_info.color_scent }}"></span></label>
+                {% endfor %}
+            </div>
+
         {% endunless %}
+
         <select name="id" class="no-js" data-product-select>
             {% for variant in product.variants %}
                 <option

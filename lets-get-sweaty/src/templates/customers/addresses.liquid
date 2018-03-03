@@ -1,14 +1,11 @@
 {% paginate customer.addresses by 5 %}
 
   <header role="banner">
-    <h1>{{ 'customer.account.title' | t }}</h1>
-    <button type="button" class="btn address-new-toggle">{{ 'customer.addresses.add_new' | t }}</button>
+    <h1 class="collection-title">{{ 'customer.addresses.title' | t }}</h1>
   </header>
 
-  <p>
-    <a href="/account">{{ 'customer.account.return' | t }}</a>
-  </p>
-
+  <div class="table-width">
+  <button type="button" class="btn address-new-toggle checkout-btn">{{ 'customer.addresses.add_new' | t }}</button>
   <div id="AddressNewForm" class="hide">
     {% form 'customer_address', customer.new_address %}
     <h2>{{ 'customer.addresses.add_new' | t }}</h2>
@@ -121,11 +118,11 @@
   </div>
 
   <h2>{{ 'customer.addresses.title' | t }}</h2>
-
+  <div class="grid">
   {% for address in customer.addresses %}
-
+  <div class="grid__item medium-up--one-half">
     {% if address == customer.default_address %}
-      <p><strong>{{ 'customer.addresses.default' | t }}</strong></p>
+      <h3 class="default-address">{{ 'customer.addresses.default' | t }}</h3>
     {% endif %}
     {{ address | format_address }}
 
@@ -249,10 +246,15 @@
       {% endform %}
 
     </div>
+  </div>
   {% endfor %}
-
+</div>
   {% if paginate.pages > 1 %}
     {% include 'pagination' %}
   {% endif %}
 
+  <p>
+    <a href="/account">{{ 'customer.account.return' | t }}</a>
+  </p>
+</div>
 {% endpaginate %}

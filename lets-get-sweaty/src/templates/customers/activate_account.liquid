@@ -4,7 +4,6 @@
 {% form 'activate_customer_password' %}
   {{ form.errors | default_errors }}
 
-  <p>
     <label for="CustomerPassword" class="label-hidden">
       {{ 'customer.activate_account.password' | t }}
     </label>
@@ -12,9 +11,7 @@
       name="customer[password]"
       id="CustomerPassword"
       placeholder="{{ 'customer.activate_account.password' | t }}">
-  </p>
 
-  <p>
     <label for="CustomerPasswordConfirmation" class="label-hidden">
       {{ 'customer.activate_account.password_confirm' | t }}
     </label>
@@ -22,8 +19,7 @@
       name="customer[password_confirmation]"
       id="CustomerPasswordConfirmation"
       placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
-  </p>
 
-  <input type="submit" class="btn" value="{{ 'customer.activate_account.submit' | t }}">
-  <input type="submit" class="btn btn--secondary" name="decline" value="{{ 'customer.activate_account.cancel' | t }}">
+  <input type="submit" class="btn checkout-btn" id="account-submit-btn" value="{{ 'customer.activate_account.submit' | t }}">
+  <!-- <input type="submit" class="btn btn--secondary" name="decline" value="{{ 'customer.activate_account.cancel' | t }}"> -->
 {% endform %}

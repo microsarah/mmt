@@ -19,10 +19,13 @@ window.theme = window.theme || {};
 // =require templates/customers-addresses.js
 // =require templates/customers-login.js
 
+/*================ Templates ================*/
+// =require snippets/quickshop.js
+
 $(document).ready(function() {
   var sections = new slate.Sections();
   sections.register('product', theme.Product);
-  sections.register('collection', theme.Collection);
+  sections.register('quickshop', theme.Quickshop);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

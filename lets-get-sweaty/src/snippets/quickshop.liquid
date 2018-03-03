@@ -1,14 +1,21 @@
 <div
-    class="quickshop-product-container"
-    data-section-type="product"
+    class="quickshop"
+    data-quickshop-product-id="{{ product_id }}"
+    data-enable-history-state="true"
+    data-quickshop-id="{{ forloop.index0 }}"
+    data-section-type="quickshop"
     itemscope
     itemtype="http://schema.org/Product"
 >
     {%- assign current_variant = product.selected_or_first_available_variant -%}
 
     <script type="text/javascript">
-        var formValue = $("#quickshop-form-{{forloop.index0}}");
-        console.log(formValue);
+        // var quickshop_variants = {};
+        var product_id = {{ product_id | json }};
+
+        // {% for variant in product.variants %}
+        //     quickshop_variants[{{variant.id}}] = {{ variant | json }};
+        // {% endfor %}
 
     </script>
 
@@ -17,7 +24,7 @@
             {% for option in product.options_with_values %}
                 <select
                     id="SingleOptionSelector-{{ forloop.index0 }}"
-                    data-single-option-selector
+                    data-single-option-selector-quickshop
                     data-index="option{{ option.position }}"
                 >
                     {% for value in option.values %}

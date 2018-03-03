@@ -427,11 +427,11 @@ nav a:hover{
 }
 
 .shop-announcement{
-  background: url('announcement-1.svg') no-repeat center center scroll;
+  background: url('announcement-2.svg') no-repeat center center scroll;
   width: 250px;
   height: 250px;
-  right: 0;
-  top: 30px;
+  right: 20px;
+  top: 500px;
   z-index: 0;
   position: absolute;
   font-size: 1em;
@@ -441,10 +441,17 @@ nav a:hover{
 
 .shop-announcement p{
   width: 228px;
-  padding: 7em 0px 0 9.75em;
+  padding: 7.25em 0px 0 9.75em;
 }
 
-// ================================================ Log in
+// ================================================ Customer
+
+#create-account,
+#account,
+#addresses{
+  background:url('index-bkgd-1.svg') no-repeat center top fixed;
+  background-size:cover;
+}
 
 #FirstName,
 #LastName,
@@ -452,6 +459,7 @@ nav a:hover{
 #CreatePassword,
 #CustomerEmail,
 #CustomerPassword,
+#CustomerPasswordConfirmation,
 #RecoverEmail{
   width:500px;
   margin:auto;
@@ -461,8 +469,9 @@ nav a:hover{
 }
 
 #CustomerPassword,
+#CustomerPasswordConfirmation,
 #CreatePassword{
-  margin:-1px auto 4em;
+  margin:-1px auto 0;
 }
 
 #LastName,
@@ -482,6 +491,50 @@ nav a:hover{
 
 #RecoverEmail{
   margin:1em auto 3em;
+}
+
+#account-submit-btn{
+  margin: 4em auto;
+}
+
+#account p{
+  width: 100%;
+  margin: 0 0 1em;
+}
+
+.table-width{
+  width: 100%;
+  max-width: 563px;
+  padding:0 1em;
+  margin:auto;
+}
+
+#addresses p{
+  margin: 0 0 2em;
+}
+
+#addresses h3{
+  text-align: left;
+  margin: 2em 0 0;
+}
+
+.address-new-toggle,
+.address-edit-toggle,
+.address-delete{
+  background: #fff;
+}
+
+.default-address{
+  font-family: $font-stack-header;
+}
+
+.order-history{
+  margin: 0 auto 3em;
+}
+
+.order-history th,
+.order-history td{
+  padding: 1em;
 }
 
 .create-account:nth-of-type(1){

@@ -32,7 +32,7 @@
              placeholder="{{ 'customer.login.password' | t }}">
     {% endif %}
 
-    <input type="submit" class="btn checkout-btn" value="{{ 'customer.login.sign_in' | t }}">
+    <input type="submit" class="btn checkout-btn" id="account-submit-btn" value="{{ 'customer.login.sign_in' | t }}">
 
     <p class="create-account">Don't have an account? <a href="/account/register">Create one!</a></p>
 
@@ -65,7 +65,7 @@
            autocomplete="off"
            autocapitalize="off">
 
-    <input type="submit" class="btn checkout-btn" value="{{ 'customer.recover_password.submit' | t }}">
+    <input type="submit" class="btn checkout-btn" id="account-submit-btn" value="{{ 'customer.recover_password.submit' | t }}">
   {% endform %}
 
 </div>
@@ -74,6 +74,6 @@
   <h2>{{ 'customer.login.guest_title' | t }}</h2>
 
   {% form 'guest_login' %}
-    <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+    <input type="submit" class="btn" id="account-submit-btn" value="{{ 'customer.login.guest_continue' | t }}">
   {% endform %}
 {% endif %}

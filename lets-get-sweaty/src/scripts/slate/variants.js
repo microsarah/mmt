@@ -109,18 +109,35 @@ slate.Variants = (function() {
 
         // if there's more than one varaint, update the selected product
         if (this.product.variants.length > 1){
-            // grab variant by index via image selected
-            var variant = this.product.variants[selectedVariantIndex];
+
+            // hard fix for migrator kit (multiple images per single variant)
+            if (this.product.id === 161963617 ){
+                // get url of replacement image image BEFORE manually changing variant index as to correspond with order of variants in dropdown.
+                var newFeaturedImageUrl = $("li"+this.productVariantImage)[selectedVariantIndex].childNodes[1].href;
+                if (selectedVariantIndex < 2) {
+                    selectedVariantIndex = 0;
+                } else if (selectedVariantIndex > 1) {
+                    selectedVariantIndex = 1;
+                };
+            }
+
+            // grab variant by index via image selected after check for migrator kit as selected product
+            var variant = this.product.variants[selectedVariantIndex];;
             if (!variant || variant ==='undefined') {
                 return;
             }
             // set dropdown menu to index of selected image
             $(this.singleOptionSelector)[0].selectedIndex = selectedVariantIndex;
+            // trigger the event
             this.$container.trigger({
                 type: 'variantChange',
                 variant: variant
             });
             this._onSelectChange();
+
+            // !!! set image AFTER this._onSelectChange() as to override selection of variant base image !!!
+            // sets src of product featured image to clicked
+            $(this.productFeaturedImage).attr('src', newFeaturedImageUrl);
         }
         // if there's only one variant, just change the featured image but not the variant selected
         else {

@@ -10,7 +10,6 @@
 
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign variant_metafields = '' -%}
-
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
     <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
@@ -61,12 +60,12 @@
                             </option>
                             {% endfor %}
                         </select>
-                {% unless product.has_only_default_variant %}
+                    {% unless product.has_only_default_variant %}
                     </div>
                 </div>
                 {% endunless %}
-                <div class="sasa-volumes"></div>
-                <div class="sasa-bundle"></div>
+                <div class="saso-volumes"></div>
+                <div class="saso-bundle"></div>
                 <div class="data-price-wrapper">
                     <div data-price-wrapper>
                         <span data-product-price>
@@ -107,7 +106,7 @@
             <div class="product-image-wrap">
               <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
             </div>
-          {% else%}
+          {% else %}
             <div class="grid product-images">
               <div class="grid__item medium-up--three-quarters">
                 <div class="product-image-wrap">
@@ -116,17 +115,12 @@
               </div>
               <div class="grid__item medium-up--one-quarter">
                 <ul class="product-image-list">
-                    <!-- {{ product.variants[0].featured_image }} -->
-                    <!-- {% for variant in product.variants %}
-                                {{ variant | json }}
-                          {% endfor %} -->
-
                 {% for image in product.images %}
-                  <li data-product-variant="{{ forloop.index0 }}">
-                    <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
-                      <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
-                    </a>
-                  </li>
+                    <li data-product-variant="{{ forloop.index0 }}">
+                        <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
+                            <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+                        </a>
+                    </li>
                 {% endfor %}
                 </ul>
               </div>
@@ -155,7 +149,7 @@
         </div>
         {% endif %}
     {% endfor %}
-<!--     <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
 
     {% if settings.display_collections or settings.display_tags or settings.display_type %}
         <hr />
@@ -191,7 +185,7 @@
                 </div>
             {% endif %}
         {% endif %}
-    {% endif %} -->
+    {% endif %}
 
   </div>
 </div>

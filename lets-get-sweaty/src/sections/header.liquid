@@ -5,6 +5,11 @@
     }
   {% endif %}
 </style>
+
+<div class="shop-announcement">
+  <p>{{ shop.metafields.shop_announcement.shop_announcement }}</p>
+</div>
+
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <header role="banner" class="site-header">
     <div class="menu-mobile-wrap grid clearfix">
@@ -80,12 +85,6 @@
           {% endif %}
         </nav>
       </div>
-      <div class="wrap">
-        <div class="discount-flag-large">
-          <p>{{ shop.metafields.shop_announcement.shop_announcement }}</p>
-          <p>Free Shipping on all Deodorants!</p>
-        </div>
-      </div>
     </div>
 
 
@@ -104,11 +103,7 @@
         </div>
       {% endif %}
     </div>
-
-
-
   </header>
-
 </div>
 
 {% schema %}

@@ -203,7 +203,7 @@ nav a:hover{
 }
 
 .cart-icon{
-  padding: 0 1.5em;
+  padding: 0 1em;
 }
 
 .searchbar{
@@ -318,6 +318,11 @@ nav a:hover{
   padding:0 0 4em;
 }
 
+.product-card img{
+  display: block;
+  margin: auto;
+}
+
 .product-card-title{
   text-align: center;
   font-family: $font-stack-header;
@@ -329,7 +334,7 @@ nav a:hover{
 
 .product-card-price{
   font-size: 1em;
-  margin: 0;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -482,6 +487,7 @@ nav a:hover{
 #RecoverPasswordForm h2{
   text-transform: uppercase;
   font-size: 3em;
+  line-height: 1em;
 }
 
 #RecoverPasswordForm p{
@@ -497,9 +503,35 @@ nav a:hover{
   margin: 4em auto;
 }
 
-#account p{
+.cart-wrap h3{
+  text-align: left;
+  margin: 2em 0 0;
+}
+
+.cart-wrap h4{
+  text-align: left;
+}
+
+.cart-wrap p{
   width: 100%;
-  margin: 0 0 1em;
+  margin: 0 0 2em;
+}
+
+.cart-wrap input,
+.cart-wrap select{
+  text-align: left;
+  margin:0 0 1em;
+  padding:.5em;
+}
+
+.cart-wrap input[type="submit"]{
+  text-align: center;
+  margin:0;
+  padding:1.25em;
+}
+
+.cart-wrap select{
+  background: $color-body;
 }
 
 .table-width{
@@ -509,19 +541,21 @@ nav a:hover{
   margin:auto;
 }
 
-#addresses p{
-  margin: 0 0 2em;
-}
-
-#addresses h3{
-  text-align: left;
-  margin: 2em 0 0;
+.checkbox input[type="checkbox"]{
+  border:1px solid #000;
 }
 
 .address-new-toggle,
 .address-edit-toggle,
 .address-delete{
   background: #fff;
+}
+
+.address-new-toggle{
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: .5em;
+  text-align: center;
 }
 
 .default-address{
@@ -552,6 +586,10 @@ nav a:hover{
   color: $color-papaya;
 }
 
+.logout{
+  text-align: center;
+}
+
 // ================================================ Our Story
 .our-story{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
@@ -559,7 +597,7 @@ nav a:hover{
   -webkit-background-blend-mode: multiply;
   padding:16em 0;
   height:900px;
-  margin:-7em 0 0;
+  margin:-7em auto 0;
 }
 
 .about-us{
@@ -785,6 +823,12 @@ footer input:focus{
   text-align: center;
 }
 
+.grid__item-right {
+    float: right !important;
+    padding: 0 15px;
+    // width: 100%;
+}
+
 .product-title{
   line-height: 1.2em;
   margin: 0.67em 0 1em
@@ -802,13 +846,20 @@ footer input:focus{
   text-align: center;
 }
 
-.product-details p{
+.product-details p,
+.product-details ul{
+  max-width: 35em;
   padding: 0 2em;
+  margin: auto;
 }
 
-.product-details .grid__item{
-  padding: 0 4.5em;
+.product-details li{
+  margin:0 0 1em;
 }
+
+// .product-details .grid__item{
+//   padding: 0 4.5em;
+// }
 
 
 // ==================== Quantity and Type dropdown
@@ -1029,7 +1080,6 @@ footer input:focus{
   background-size:cover;
 }
 
-
 .blog-categories{
   width:80%;
   margin:auto;
@@ -1213,6 +1263,97 @@ footer input:focus{
   }
 }
 
+@media screen and (max-width:990px){
+
+  // Product Page
+
+  .product{
+    padding: 0 0 5em;
+  }
+
+  .grid__item-right {
+      float: none !important;
+  }
+
+  .product-image-wrap{
+    width:50%;
+    margin:auto;
+  }
+
+  .product-image-list{
+    display: none;
+  }
+
+  .product-size-quantity:nth-of-type(2) {
+    margin-left: auto;
+    margin-top: -1px;
+  }
+
+  .data-price-wrapper{
+    margin:1em 0;
+  }
+
+  .product-details .grid__item {
+    padding: 2em 1em;
+  }
+
+  .product-size-quantity{
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    max-width: 35em;
+  }
+
+  .discount-flag{
+    max-width: 35em;
+    margin: 2em auto;
+  }
+
+  .blog-preview-content {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    margin: 0;
+    position: static;
+  }
+
+  .blog-preview-content:nth-of-type(even) .blog-preview-copy,
+    .blog-preview-content:nth-of-type(odd) .blog-preview-copy,
+      .blog-preview-content:nth-of-type(even) .blog-preview-img,
+        .blog-preview-content:nth-of-type(odd) .blog-preview-img{
+    width:100%;
+    float:none;
+  }
+
+  .blog-preview-content:nth-of-type(even) .blog-preview-img,
+    .blog-preview-content:nth-of-type(odd) .blog-preview-img{
+      margin: 2em auto;
+  }
+
+  .blog-preview-copy {
+    position: static;
+    top: 0;
+    transform: none;
+  }
+
+  .about-us-img{
+    width: 36em;
+  }
+
+  .who-we-are img {
+    margin: 2em auto;
+    width: 50%;
+  }
+
+  #MainContent{
+    padding: 0 0 5em;
+  }
+
+  .online-retailers img {
+    padding: 5em 0 0;
+  }
+}
+
 @media screen and (max-width:850px){
   .buzz li{
     width:50%;
@@ -1228,6 +1369,7 @@ footer input:focus{
 
   .menu-mobile-label{
     display: block !important;
+    padding: 0 1em;
   }
 
   .menu{
@@ -1246,11 +1388,74 @@ footer input:focus{
   .medium-up--five-eighths{
     width:50% !important;
   }
+
+  .product-image-wrap{
+    width:90%;
+  }
+
+  .our-ingredients,
+  .giving-back{
+    padding: 2em 0 0;
+    margin:0 auto;
+  }
+
+  .our-packaging{
+    padding:0;
+  }
+
+  .our-ingredients{
+    height: auto;
+  }
+
+  .giving-back-lists {
+    width: 35em;
+  }
+
+  .giving-back img{
+    position: static;
+    top:0;
+  }
+
+  .grid__item{
+    padding:1em 15px;
+  }
 }
 
 @media screen and (max-width:600px){
+  .collection-header {
+    padding: 1em 0 2em;
+  }
+  .product-image-wrap{
+    width:100%;
+  }
+
+  .grid__item-right {
+      padding:0;
+  }
+
   .buzz li{
     width:100%;
     height: auto;
+  }
+
+  .about-us-img {
+    width: 100%;
+  }
+
+  .buzz-page img {
+    position: static;
+    top: 0;
+    transform: none;
+  }
+
+  #FirstName,
+  #LastName,
+  #Email,
+  #CreatePassword,
+  #CustomerEmail,
+  #CustomerPassword,
+  #CustomerPasswordConfirmation,
+  #RecoverEmail{
+    width:100%;
   }
 }

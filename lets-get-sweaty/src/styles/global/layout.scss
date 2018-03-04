@@ -607,7 +607,7 @@ nav a:hover{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   -webkit-background-blend-mode: multiply;
-  padding:16em 0;
+  padding:16em 1em;
   height:900px;
   margin:-7em auto 0;
 }
@@ -1382,6 +1382,8 @@ footer input:focus{
     position: relative;
     top: 50%;
   }
+
+
 }
 
 @media screen and (max-width:850px){
@@ -1404,6 +1406,14 @@ footer input:focus{
 
   .menu{
     display: none;
+  }
+
+  .site-navigation,
+  .top-navigation,
+  .top-nav,
+  .site-nav li,
+  .top-nav li{
+    float: none;
   }
 
   #menu-mobile-checkbox:checked + .menu{
@@ -1490,6 +1500,19 @@ footer input:focus{
     transform: none;
   }
 
+  .our-story{
+    height: 1090px;
+  }
+
+  .about-us{
+    max-width: 35em;
+    padding: 0 1em;
+  }
+
+  .who-we-are h3{
+    max-width: 35em;
+  }
+
   #FirstName,
   #LastName,
   #Email,
@@ -1499,5 +1522,9 @@ footer input:focus{
   #CustomerPasswordConfirmation,
   #RecoverEmail{
     width:100%;
+  }
+
+  .giving-back-lists {
+    width: 100%;
   }
 }

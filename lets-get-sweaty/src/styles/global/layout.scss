@@ -157,8 +157,7 @@ nav a:hover{
   // background: $color-barley;
 }
 
-.site-nav a,
-.top-nav a{
+.site-nav a{
   border-bottom: none;
   padding: 0 1em;
   display: block;
@@ -200,7 +199,6 @@ nav a:hover{
 }
 
 .top-nav li{
-  position: relative;
   float: left;
 }
 
@@ -541,16 +539,17 @@ nav a:hover{
   border:1px solid #000;
 }
 
-// #addresses p{
-//   margin: 0 0 2em;
-// }
-
-
-
 .address-new-toggle,
 .address-edit-toggle,
 .address-delete{
   background: #fff;
+}
+
+.address-new-toggle{
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: .5em;
+  text-align: center;
 }
 
 .default-address{
@@ -579,6 +578,10 @@ nav a:hover{
 .errors li{
   text-align: center;
   color: $color-papaya;
+}
+
+.logout{
+  text-align: center;
 }
 
 // ================================================ Our Story

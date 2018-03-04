@@ -46,34 +46,22 @@
           <ul class="top-nav clearfix">
             {% if shop.customer_accounts_enabled %}
                 {% if customer %}
-                  <li class="site-nav--has-submenu">
-                    <a href="/account" class="site-nav__link">
-                     Account
-                      {% include 'icon-arrow-down' %}
-                    </a>
-                    <ul class="site-nav__submenu">
-                      <li class="site-nav--active">
-                        {% if customer.first_name != blank %}
-                          {% capture first_name %}<a href="/account">{{ customer.first_name }}'s Account</a>{% endcapture %}
-                          <!-- {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }} -->
-                          {{ first_name }}
-                        {% else %}
-                          <a href="/account"> {{ 'layout.customer.account' | t }}</a>
-                        {% endif %}
-                      </li>
-                      <li class="site-nav--active">
-                         {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                      </li>
+                  <li>
+                    {% if customer.first_name != blank %}
+                      {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                      {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
                     {% else %}
-                      <li class="site-nav--active">
-                        {{ 'layout.customer.log_in' | t | customer_login_link }}
-                      </li>
+                      <a href="/account"> {{ 'layout.customer.account' | t }}</a>
                     {% endif %}
-                  </ul>
-              </li>
-
-
-
+                  </li>
+                  <!-- <li>
+                     {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                  </li> -->
+                {% else %}
+                  <li>
+                    {{ 'layout.customer.log_in' | t | customer_login_link }}
+                  </li>
+                {% endif %}
               <li class="cart-icon">
                 <a href="/cart">
                   {% include 'icon-cart' %}

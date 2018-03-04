@@ -58,7 +58,7 @@
                   {% endfor %}
                 {% endif %}
 
-                <p>
+                <!-- <p>
                   {% if item.original_line_price != item.line_price %}
                     <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
                     {{ item.price | money }}
@@ -67,7 +67,7 @@
                   {% else %}
                     {{ item.price | money }}
                   {% endif %}
-              </p>
+              </p> -->
               </td>
               <td data-label="{{ 'cart.label.quantity' | t }}">
                 <input type="number"

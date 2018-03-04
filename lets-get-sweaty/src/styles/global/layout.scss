@@ -503,6 +503,18 @@ nav a:hover{
   margin: 4em auto;
 }
 
+.account-wrap{
+  width:100%;
+  max-width: 901px;
+  margin: 3em auto;
+  padding:2em 2em 4em;
+  background: #fff;
+}
+
+.account-wrap p{
+  margin: 0;
+}
+
 .cart-wrap h3{
   text-align: left;
   margin: 2em 0 0;
@@ -514,19 +526,19 @@ nav a:hover{
 
 .cart-wrap p{
   width: 100%;
-  margin: 0 0 2em;
+  margin: 0 0 2em auto;
 }
 
 .cart-wrap input,
 .cart-wrap select{
   text-align: left;
-  margin:0 0 1em;
+  // margin:0 0 1em;
   padding:.5em;
 }
 
 .cart-wrap input[type="submit"]{
   text-align: center;
-  margin:0;
+  margin:0 auto;
   padding:1.25em;
 }
 
@@ -1174,12 +1186,13 @@ footer input:focus{
 }
 
 .cart{
-
+  margin: auto;
 }
 
 .cart input{
   background: #fff;
   font-size: 1em;
+  text-align: center;
 }
 
 .cart thead th{
@@ -1356,6 +1369,19 @@ footer input:focus{
   .online-retailers img {
     padding: 5em 0 0;
   }
+
+  .cart-wrap p{
+      margin-left: auto;
+  }
+
+  .subtotal{
+    padding-right: 1em;
+  }
+
+  .responsive-table td::before {
+    position: relative;
+    top: 50%;
+  }
 }
 
 @media screen and (max-width:850px){
@@ -1422,6 +1448,18 @@ footer input:focus{
 
   .grid__item{
     padding:1em 15px;
+  }
+
+  .cart-wrap{
+    padding:1em;
+  }
+
+  .cart-remove {
+    padding: 0 2em 0;
+  }
+
+  .note-to-seller{
+    padding:1em;
   }
 }
 

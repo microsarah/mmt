@@ -2,40 +2,40 @@
   Responsive tables, defined with .responsive-table on table element.
 ==============================================================================*/
 @include media-query($small) {
-  .responsive-table {
-    width: 100%;
-
-    thead {
-      display: none;
-    }
-
-    tr {
-      display: block;
-    }
-
-    // IE9 table layout fixes
-    tr,
-    td {
-      float: left;
-      clear: both;
-      width: 100%;
-    }
-
-    th,
-    td {
-      display: block;
-      text-align: right;
-      padding: $gutter / 2;
-      margin: 0;
-    }
-
-    td::before {
-      content: attr(data-label);
-      float: left;
-      text-align: center;
-      padding-right: 10px;
-    }
-  }
+  // .responsive-table {
+  //   width: 100%;
+  //
+  //   thead {
+  //     display: none;
+  //   }
+  //
+  //   tr {
+  //     display: block;
+  //   }
+  //
+  //   // IE9 table layout fixes
+  //   tr,
+  //   td {
+  //     float: left;
+  //     clear: both;
+  //     width: 100%;
+  //   }
+  //
+  //   th,
+  //   td {
+  //     display: block;
+  //     text-align: right;
+  //     padding: $gutter / 2;
+  //     margin: 0;
+  //   }
+  //
+  //   td::before {
+  //     content: attr(data-label);
+  //     float: left;
+  //     text-align: center;
+  //     padding-right: 10px;
+  //   }
+  // }
 
   // Add a keyline between rows
   .responsive-table-row + .responsive-table-row,

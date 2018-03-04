@@ -51,11 +51,11 @@
                       {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
                       {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
                     {% else %}
-                      <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                      <a href="/account"> {{ 'layout.customer.account' | t }}</a>
                     {% endif %} /
                   </li>
                   <li>
-                    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                     {{ 'layout.customer.log_out' | t | customer_logout_link }}
                   </li>
                 {% else %}
                   <li>

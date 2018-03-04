@@ -497,9 +497,35 @@ nav a:hover{
   margin: 4em auto;
 }
 
-#account p{
+.cart-wrap h3{
+  text-align: left;
+  margin: 2em 0 0;
+}
+
+.cart-wrap h4{
+  text-align: left;
+}
+
+.cart-wrap p{
   width: 100%;
-  margin: 0 0 1em;
+  margin: 0 0 2em;
+}
+
+.cart-wrap input,
+.cart-wrap select{
+  text-align: left;
+  margin:0 0 1em;
+  padding:.5em;
+}
+
+.cart-wrap input[type="submit"]{
+  text-align: center;
+  margin:0;
+  padding:1.25em;
+}
+
+.cart-wrap select{
+  background: $color-body;
 }
 
 .table-width{
@@ -509,14 +535,15 @@ nav a:hover{
   margin:auto;
 }
 
-#addresses p{
-  margin: 0 0 2em;
+.checkbox input[type="checkbox"]{
+  border:1px solid #000;
 }
 
-#addresses h3{
-  text-align: left;
-  margin: 2em 0 0;
-}
+// #addresses p{
+//   margin: 0 0 2em;
+// }
+
+
 
 .address-new-toggle,
 .address-edit-toggle,
@@ -1228,6 +1255,7 @@ footer input:focus{
 
   .menu-mobile-label{
     display: block !important;
+    padding: 0 1em;
   }
 
   .menu{

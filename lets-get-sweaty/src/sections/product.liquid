@@ -19,7 +19,35 @@
     <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
     <div class="grid wrap">
-      <div class="grid__item medium-up--one-third">
+      <div class="grid__item-right medium-up--two-thirds">
+        {% if featured_image != blank %}
+          {% if product.images.size == 1 %}
+            <div class="product-image-wrap">
+              <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+            </div>
+          {% else %}
+            <div class="grid product-images">
+              <div class="grid__item medium-up--three-quarters">
+                <div class="product-image-wrap">
+                  <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+              </div>
+              </div>
+              <div class="grid__item medium-up--one-quarter">
+                <ul class="product-image-list">
+                {% for image in product.images %}
+                    <li data-product-variant="{{ forloop.index0 }}">
+                        <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
+                            <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="grid__item-right medium-up--one-third">
         <h1 class="product-title">{{ product.title }}</h1>
         <div class="rte">
           {{ product.description }}
@@ -99,34 +127,6 @@
             {{ product | json }}
           </script>
         {% endunless %}
-      </div>
-      <div class="grid__item medium-up--two-thirds">
-        {% if featured_image != blank %}
-          {% if product.images.size == 1 %}
-            <div class="product-image-wrap">
-              <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
-            </div>
-          {% else %}
-            <div class="grid product-images">
-              <div class="grid__item medium-up--three-quarters">
-                <div class="product-image-wrap">
-                  <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
-              </div>
-              </div>
-              <div class="grid__item medium-up--one-quarter">
-                <ul class="product-image-list">
-                {% for image in product.images %}
-                    <li data-product-variant="{{ forloop.index0 }}">
-                        <a href="{{ image.src | img_url: '1024x1024' }}" data-product-single-thumbnail>
-                            <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
-                        </a>
-                    </li>
-                {% endfor %}
-                </ul>
-              </div>
-            </div>
-          {% endif %}
-        {% endif %}
       </div>
     </div>
     {% for variant in product.variants %}

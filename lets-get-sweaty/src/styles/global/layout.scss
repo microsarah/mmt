@@ -1427,9 +1427,25 @@ footer input:focus{
     float: none;
   }
 
+  .site-nav,
+  .top-nav{
+    padding:0;
+    margin: 0;
+  }
+
+  .top-nav li{
+    padding: 0 1em;
+  }
+
   #menu-mobile-checkbox:checked + .menu{
     display: block !important;
   }
+
+  .site-nav__submenu {
+    position: static;
+    top: 0;
+    width: 100%;
+}
 
   .wrap{
     padding:0 1em;

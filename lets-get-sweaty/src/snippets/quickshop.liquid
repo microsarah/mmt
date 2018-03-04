@@ -1,5 +1,6 @@
 <div
     class="quickshop"
+    style="display:none;"
     data-quickshop-product-id="{{ product_id }}"
     data-enable-history-state="true"
     data-quickshop-id="{{ forloop.index0 }}"
@@ -9,15 +10,6 @@
 >
     {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-    <script type="text/javascript">
-        // var quickshop_variants = {};
-        var product_id = {{ product_id | json }};
-
-        // {% for variant in product.variants %}
-        //     quickshop_variants[{{variant.id}}] = {{ variant | json }};
-        // {% endfor %}
-
-    </script>
 
     {% unless product == empty %}
       <script type="application/json" data-product-json>
@@ -25,7 +17,7 @@
       </script>
     {% endunless %}
 
-    <form id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
+    <form class="quickshop-form" id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
         {% unless product.has_only_default_variant %}
             {% for option in product.options_with_values %}
                 <select

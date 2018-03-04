@@ -15,6 +15,7 @@
         originalSelectorId: '[data-product-select]',
         productJson: '[data-product-json]',
         productPrice: '[data-product-price]',
+        quantity: 'input#Quantity',
         quickAddToCart: '[data-quickadd-to-cart]',
         singleOptionSelectorQuickshop: '[data-single-option-selector-quickshop]',
     };
@@ -47,7 +48,7 @@
         this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
 
         // this.$quickAddButton = $(selectors.quickAddToCart, this.$container);
-        // this.$quickAddButton.click(this.submitCart.bind(this));
+        $(selectors.quickAddToCart, this.$container).click(this.submitCart.bind(this));
 
     };
 
@@ -55,11 +56,16 @@
 
         submitCart: function(evt){
             evt.preventDefault();
-            console.log(evt);
+            var variant_id = this.variants.currentVariant;
+            var q = $(selectors.quantity, this.$container).val();
+
+            $.get('/cart.js', function(d){
+                console.log(d)
+            })
 
             // $.post('/cart/add.js', {
             //     quantity : q,
-            //     id: variant.id
+            //     id: variant_id
             // })
         },
 

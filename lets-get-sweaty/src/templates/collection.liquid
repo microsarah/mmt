@@ -9,6 +9,16 @@
 
     <main class="grid">
         {% for product in collection.products %}
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("div[data-collection-item='{{ forloop.index0 }}']")
+                    .hover(function () {
+                        $("div[data-quickshop-id='{{ forloop.index0 }}']").toggle();
+                });
+            });
+        </script>
+
         <div class="grid__item medium-up--one-third one-whole product-card-wrap" data-collection-item="{{ forloop.index0 }}">
           <div class="product-card">
             {% if product.featured_image != blank %}

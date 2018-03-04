@@ -3,7 +3,7 @@
 
 {% paginate customer.orders by 20 %}
   {% if customer.orders.size != 0 %}
-    <div class="cart-wrap">
+    <div class="account-wrap">
 
       <h2>{{ 'customer.orders.title' | t }}</h2>
       <table class="responsive-table order-history">
@@ -191,7 +191,7 @@
   {% endpaginate %}
 
 
-  
+
   <button type="button" class="address-new-toggle">{{ 'customer.addresses.add_new' | t }}</button>
   <div id="AddressNewForm" class="hide">
     {% form 'customer_address', customer.new_address %}

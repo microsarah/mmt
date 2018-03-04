@@ -114,6 +114,7 @@ a:visited{
 }
 
 #menu-mobile-checkbox{
+  text-align: left;
   display: none !important;
 }
 
@@ -503,6 +504,18 @@ nav a:hover{
   margin: 4em auto;
 }
 
+.account-wrap{
+  width:100%;
+  max-width: 901px;
+  margin: 3em auto;
+  padding:2em 2em 4em;
+  background: #fff;
+}
+
+.account-wrap p{
+  margin: 0;
+}
+
 .cart-wrap h3{
   text-align: left;
   margin: 2em 0 0;
@@ -514,19 +527,19 @@ nav a:hover{
 
 .cart-wrap p{
   width: 100%;
-  margin: 0 0 2em;
+  margin: 0 0 2em auto;
 }
 
 .cart-wrap input,
 .cart-wrap select{
   text-align: left;
-  margin:0 0 1em;
+  // margin:0 0 1em;
   padding:.5em;
 }
 
 .cart-wrap input[type="submit"]{
   text-align: center;
-  margin:0;
+  margin:0 auto;
   padding:1.25em;
 }
 
@@ -595,7 +608,7 @@ nav a:hover{
   background:url('who-we-are-our-story-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   -webkit-background-blend-mode: multiply;
-  padding:16em 0;
+  padding:16em 1em;
   height:900px;
   margin:-7em auto 0;
 }
@@ -1174,12 +1187,13 @@ footer input:focus{
 }
 
 .cart{
-
+  margin: auto;
 }
 
 .cart input{
   background: #fff;
   font-size: 1em;
+  text-align: center;
 }
 
 .cart thead th{
@@ -1336,8 +1350,21 @@ footer input:focus{
     transform: none;
   }
 
+  .blog-article{
+    width: 100%;
+  }
+
   .about-us-img{
     width: 36em;
+  }
+
+  .collection-header{
+    padding: 1em 0 0;
+  }
+
+  .page-hero{
+    width:50%;
+    padding:3em 0 0;
   }
 
   .who-we-are img {
@@ -1352,6 +1379,21 @@ footer input:focus{
   .online-retailers img {
     padding: 5em 0 0;
   }
+
+  .cart-wrap p{
+      margin-left: auto;
+  }
+
+  .subtotal{
+    padding-right: 1em;
+  }
+
+  .responsive-table td::before {
+    position: relative;
+    top: 50%;
+  }
+
+
 }
 
 @media screen and (max-width:850px){
@@ -1364,6 +1406,7 @@ footer input:focus{
   }
 
   .menu-mobile-wrap{
+    text-align: left;
     padding:2.75em 1em;
   }
 
@@ -1374,6 +1417,14 @@ footer input:focus{
 
   .menu{
     display: none;
+  }
+
+  .site-navigation,
+  .top-navigation,
+  .top-nav,
+  .site-nav li,
+  .top-nav li{
+    float: none;
   }
 
   #menu-mobile-checkbox:checked + .menu{
@@ -1419,9 +1470,40 @@ footer input:focus{
   .grid__item{
     padding:1em 15px;
   }
+
+  .cart-wrap{
+    padding:1em;
+  }
+
+  .cart-remove {
+    padding: 0 2em 0;
+  }
+
+  .note-to-seller{
+    padding:1em;
+  }
+
+  .page-hero{
+    width:90%;
+    padding:1em 0 0;
+  }
 }
 
 @media screen and (max-width:600px){
+
+  p,
+  .who-we-are ul,
+  .online-retailers li,
+  .product-details li{
+    font-size: 1.25em;
+    line-height: 1.675em;
+  }
+
+  .who-we-are img {
+    margin: 2em auto;
+    width: 70%;
+  }
+
   .collection-header {
     padding: 1em 0 2em;
   }
@@ -1431,6 +1513,15 @@ footer input:focus{
 
   .grid__item-right {
       padding:0;
+  }
+
+  .grid__item{
+    padding: 0;
+  }
+
+  input,
+  select{
+    padding: 1em;
   }
 
   .buzz li{
@@ -1448,6 +1539,19 @@ footer input:focus{
     transform: none;
   }
 
+  .our-story{
+    height: 1090px;
+  }
+
+  .about-us{
+    max-width: 35em;
+    padding: 0 1em;
+  }
+
+  .who-we-are h3{
+    max-width: 35em;
+  }
+
   #FirstName,
   #LastName,
   #Email,
@@ -1457,5 +1561,30 @@ footer input:focus{
   #CustomerPasswordConfirmation,
   #RecoverEmail{
     width:100%;
+  }
+
+  #Quantity{
+    height: auto;
+  }
+
+  .giving-back-lists {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width:400px){
+
+  .our-story {
+    height: 1200px;
+    padding: 18em 1em;
+  }
+  .about-us{
+    max-width: 100%;
+    padding: 0 1em;
+  }
+
+  .who-we-are h3{
+    max-width: 100%;
   }
 }

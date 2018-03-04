@@ -1,17 +1,32 @@
 <div
-    class="quickshop-product-container"
-    data-section-type="product"
+    class="quickshop"
+    style="display: none;"
+    data-quickshop-product-id="{{ product_id }}"
+    data-enable-history-state="true"
+    data-quickshop-id="{{ forloop.index0 }}"
+    data-section-type="quickshop"
     itemscope
     itemtype="http://schema.org/Product"
 >
     {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-    <form action="/cart/add" method="post" enctype="multipart/form-data">
+
+    {% unless product == empty %}
+      <script type="application/json" data-product-json>
+        {{ product | json }}
+      </script>
+    {% endunless %}
+
+    <div class="quickshop-flash-message" data-quickshop-flash-message style="display: none;" >
+        <p data-quickshop-flash-message-text>Added to cart!</p>
+    </div>
+
+    <form class="quickshop-form" id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
         {% unless product.has_only_default_variant %}
             {% for option in product.options_with_values %}
                 <select
                     id="SingleOptionSelector-{{ forloop.index0 }}"
-                    data-single-option-selector
+                    data-single-option-selector-quickshop
                     data-index="option{{ option.position }}"
                 >
                     {% for value in option.values %}
@@ -59,11 +74,11 @@
             {% endif %}
         </div>
         <button
-          type="submit"
           name="add"
-          data-add-to-cart
+          data-quickadd-form="{{ forloop.index0 }}"
+          data-quickadd-to-cart
           {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-            <span data-add-to-cart-text>
+            <span data-quickadd-to-cart-text>
               {% if current_variant.available %}
                 {{ 'products.product.add_to_cart' | t }}
               {% else %}

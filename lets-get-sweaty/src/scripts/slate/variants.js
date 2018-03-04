@@ -20,6 +20,7 @@ slate.Variants = (function() {
     this.$container = options.$container;
     this.product = options.product;
     this.singleOptionSelector = options.singleOptionSelector;
+    this.singleOptionSelectorQuick = options.singleOptionSelectorQuick;
     this.originalSelectorId = options.originalSelectorId;
     this.enableHistoryState = options.enableHistoryState;
     this.currentVariant = this._getVariantFromOptions();
@@ -31,6 +32,9 @@ slate.Variants = (function() {
 
     // triggers _onImageSelectChange to change currently selected product
     $(this.productThumbs, this.$container).on('click', this._onImageSelectChange.bind(this));
+
+    // TRIGGERS FOR QUICK SHOP
+    $(this.singleOptionSelectorQuick, this.$container).on('change', this._onSelectChangeQuick.bind(this));
   }
 
   Variants.prototype = $.extend({}, Variants.prototype, {
@@ -42,7 +46,15 @@ slate.Variants = (function() {
      * @return {array} options - Values of currently selected variants
      */
     _getCurrentOptions: function() {
-      var currentOptions = $.map($(this.singleOptionSelector, this.$container), function(element) {
+      var selector;
+
+      if (!this.singleOptionSelector){
+          selector = this.singleOptionSelectorQuick;
+      } else {
+          selector = this.singleOptionSelector;
+      }
+
+      var currentOptions = $.map($(selector, this.$container), function(element) {
         var $element = $(element);
         var type = $element.attr('type');
         var currentOption = {};
@@ -94,7 +106,6 @@ slate.Variants = (function() {
           found = variant;
         }
       });
-
       return found || null;
     },
 
@@ -183,6 +194,31 @@ slate.Variants = (function() {
     },
 
     /**
+     * Event handler for when a Quickshop variant input changes.
+     */
+    _onSelectChangeQuick: function() {
+      var variant = this._getVariantFromOptions();
+
+      this.$container.trigger({
+        type: 'variantChange',
+        variant: variant
+      });
+
+      if (!variant) {
+        return;
+      }
+
+      this._updateMasterSelect(variant);
+      this._updateImages(variant);
+      this._updatePrice(variant);
+      this.currentVariant = variant;
+
+      if (this.enableHistoryState) {
+        this._updateHistoryState(variant);
+      }
+    },
+
+    /**
      * Trigger event when variant image changes
      *
      * @param  {object} variant - Currently selected variant
@@ -192,14 +228,16 @@ slate.Variants = (function() {
       var variantImage = variant.featured_image || {};
       var currentVariantImage = this.currentVariant.featured_image || {};
 
-      if (!variant.featured_image || variantImage.src === currentVariantImage.src) {
-        return;
-      }
+    // TEMP FIX - SOME VARIANTS SHARE SAME IMAGE!
+    //   if (!variant.featured_image || variantImage.src === currentVariantImage.src) {
+    //     return;
+    //   }
 
       this.$container.trigger({
         type: 'variantImageChange',
         variant: variant
       });
+
     },
 
     /**
@@ -240,7 +278,9 @@ slate.Variants = (function() {
      */
     _updateMasterSelect: function(variant) {
       $(this.originalSelectorId, this.$container)[0].value = variant.id;
-    }
+    },
+
+
   });
 
   return Variants;

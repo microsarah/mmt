@@ -19,6 +19,12 @@
 
     </script>
 
+    {% unless product == empty %}
+      <script type="application/json" data-product-json>
+        {{ product | json }}
+      </script>
+    {% endunless %}
+
     <form id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
         {% unless product.has_only_default_variant %}
             {% for option in product.options_with_values %}

@@ -46,6 +46,7 @@
         this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
         this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
         this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
+        this.$container.on('quickProductAddedToCart' + this.namespace, this.hideQuickshop.bind(this));
 
         // this.$quickAddButton = $(selectors.quickAddToCart, this.$container);
         $(selectors.quickAddToCart, this.$container).click(this.submitCart.bind(this));
@@ -56,17 +57,34 @@
 
         submitCart: function(evt){
             evt.preventDefault();
-            var variant_id = this.variants.currentVariant;
+
+            var currentCart;
+            // fetch current cart from Shopify
+            $.getJSON('/cart.js', function(d){
+                if (!d){
+                    return;
+                }
+                currentCart = d;
+            });
+
+            // fetch currently selected variant and quantitiy from scoped input form
+            var variant = this.variants.currentVariant;
             var q = $(selectors.quantity, this.$container).val();
 
-            $.get('/cart.js', function(d){
-                console.log(d)
+            // trigger event listener for quickshop add to cart button
+            this.$container.trigger({
+                type: 'quickProductAddedToCart',
+                variant: variant
             })
+        },
 
-            // $.post('/cart/add.js', {
-            //     quantity : q,
-            //     id: variant_id
-            // })
+        hideQuickshop: function() {
+            // clear out quickshop inner html
+            console.log('CLOSING QUICK SHOP')
+            $('div.quickshop', this.$container).toggle();
+            // replace with success / fail message
+
+            // hide quickshop div
         },
 
         /**

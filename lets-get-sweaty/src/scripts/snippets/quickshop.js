@@ -13,7 +13,6 @@
         comparePrice: '[data-compare-price]',
         comparePriceText: '[data-compare-text]',
         originalSelectorId: '[data-product-select]',
-        productFeaturedImageQuickshop: '[data-collection-product-image]',
         productJson: '[data-product-json]',
         productPrice: '[data-product-price]',
         quickAddToCart: '[data-quickadd-to-cart]',
@@ -32,26 +31,42 @@
         var options = {
             $container : this.$container,
             product: this.productSingleObject,
-            singleOptionSelector: selectors.singleOptionSelectorQuickshop,
+            singleOptionSelectorQuick: selectors.singleOptionSelectorQuickshop,
             originalSelectorId: selectors.originalSelectorId,
             enableHistoryState: this.$container.data('enable-history-state') || false,
-            singleOptionSelector: selectors.singleOptionSelectorQuickshop,
-            productFeaturedImage: selectors.productFeaturedImage, // get from parent obj
-            // productVariantImage: selectors.productVariantImage,
         }
 
+        this.settings = {
+            imageSize : slate.Image.imageSize($('img[data-collection-product-image]').attr('src')),
+        };
         this.namespace = '.quickshop';
         this.variants = new slate.Variants(options);
 
         this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
+        this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
+        this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
+
+        // this.$quickAddButton = $(selectors.quickAddToCart, this.$container);
+        // this.$quickAddButton.click(this.submitCart.bind(this));
 
     };
 
     Quickshop.prototype = $.extend({}, Quickshop.prototype, {
 
+        submitCart: function(evt){
+            evt.preventDefault();
+            console.log(evt);
+
+            // $.post('/cart/add.js', {
+            //     quantity : q,
+            //     id: variant.id
+            // })
+        },
+
         /**
         * Updates the DOM state of the quick add to cart button
         *
+        * @param {Object} event
         * @param {boolean} enabled - Decides whether cart is enabled or disabled
         * @param {string} text - Updates the text notification content of the cart
         */
@@ -67,8 +82,19 @@
           }
         },
 
+
+        updateProductImage: function(evt){
+            var pid = this.productSingleObject.id;
+            var variant = evt.variant;
+            var sizedImgUrl = slate.Image.getSizedImageUrl(variant.featured_image.src, this.settings.imageSize);
+
+            $("img[data-collection-product-image='" + pid + "']").attr('src', sizedImgUrl);
+
+        },
+
         /**
         *    Updates DOM with selected variant product price
+        *     @param {Object} event
         *     @param {string} productPrice - Current Price
         *     @param {string} comparePraice - Original Price
         */
@@ -76,6 +102,34 @@
             var variant = evt.variant;
             var $comparePrice = $(selectors.comparePrice, this.$container);
             var $compareEls = $comparePrice.add(selectors.comparePriceText, this.$container);
+
+            $(selectors.productPrice, this.$container)
+              .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
+
+            if (variant.compare_at_price > variant.price) {
+              $comparePrice.html(slate.Currency.formatMoney(variant.compare_at_price, theme.moneyFormat));
+              $compareEls.removeClass('hide');
+            } else {
+              $comparePrice.html('');
+              $compareEls.addClass('hide');
+            }
+        },
+
+        /**
+        *    Updates DOM with selected variant product price
+        *     @param {Object} event
+        *     @return {number} quantity - Original Price
+        */
+        fetchProductQuantity: function(evt){
+            var variant = evt.variant;
+            var quantity = $('#Quantity').val();
+
+            if (!variant.available) {
+                return;
+            };
+
+            return quantity;
+
         },
 
     });

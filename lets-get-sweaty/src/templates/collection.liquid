@@ -11,12 +11,9 @@
         {% for product in collection.products %}
         <div class="grid__item medium-up--one-third one-whole product-card-wrap" data-collection-item="{{ forloop.index0 }}">
           <div class="product-card">
-              <div class="quickshop-root">
-                  {% include 'quickshop', product_id: product.id %}
-              </div>
             {% if product.featured_image != blank %}
             <a href="{{ product.url | within: collection }}">
-              <img data-collection-product-image src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
+              <img data-collection-product-image="{{ product.id }}" src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
             </a>
             {% endif %}
             <a href="{{ product.url | within: collection }}">
@@ -42,6 +39,9 @@
                 <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
                 <s>{{ product.compare_at_price | money }}</s> {% endif %} {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
             </p>
+            <div class="quickshop-root">
+                {% include 'quickshop', product_id: product.id %}
+            </div>
           </div>
         </div>
         {% else %} {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %} {% for i in (1..8) %}

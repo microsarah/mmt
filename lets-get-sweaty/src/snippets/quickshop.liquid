@@ -77,8 +77,7 @@
               </s>
             {% endif %}
         </div>
-        <input
-          type="submit"
+        <button
           name="add"
           data-quickadd-form="{{ forloop.index0 }}"
           data-quickadd-to-cart
@@ -90,7 +89,7 @@
                 {{ 'products.product.sold_out' | t }}
               {% endif %}
             </span>
-        </input>
+        </button>
     </form>
 </div>
 

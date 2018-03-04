@@ -157,7 +157,8 @@ nav a:hover{
   // background: $color-barley;
 }
 
-.site-nav a{
+.site-nav a,
+.top-nav a{
   border-bottom: none;
   padding: 0 1em;
   display: block;
@@ -199,11 +200,12 @@ nav a:hover{
 }
 
 .top-nav li{
+  position: relative;
   float: left;
 }
 
 .cart-icon{
-  padding: 0 1.5em;
+  padding: 0 1em;
 }
 
 .searchbar{

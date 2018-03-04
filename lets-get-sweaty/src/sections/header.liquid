@@ -46,22 +46,34 @@
           <ul class="top-nav clearfix">
             {% if shop.customer_accounts_enabled %}
                 {% if customer %}
-                  <li>
-                    {% if customer.first_name != blank %}
-                      {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-                      {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                  <li class="site-nav--has-submenu">
+                    <a href="/account" class="site-nav__link">
+                     Account
+                      {% include 'icon-arrow-down' %}
+                    </a>
+                    <ul class="site-nav__submenu">
+                      <li class="site-nav--active">
+                        {% if customer.first_name != blank %}
+                          {% capture first_name %}<a href="/account">{{ customer.first_name }}'s Account</a>{% endcapture %}
+                          <!-- {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }} -->
+                          {{ first_name }}
+                        {% else %}
+                          <a href="/account"> {{ 'layout.customer.account' | t }}</a>
+                        {% endif %}
+                      </li>
+                      <li class="site-nav--active">
+                         {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                      </li>
                     {% else %}
-                      <a href="/account"> {{ 'layout.customer.account' | t }}</a>
-                    {% endif %} /
-                  </li>
-                  <li>
-                     {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                  </li>
-                {% else %}
-                  <li>
-                    {{ 'layout.customer.log_in' | t | customer_login_link }}
-                  </li>
-                {% endif %}
+                      <li class="site-nav--active">
+                        {{ 'layout.customer.log_in' | t | customer_login_link }}
+                      </li>
+                    {% endif %}
+                  </ul>
+              </li>
+
+
+
               <li class="cart-icon">
                 <a href="/cart">
                   {% include 'icon-cart' %}

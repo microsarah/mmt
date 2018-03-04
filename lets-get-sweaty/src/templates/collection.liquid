@@ -10,15 +10,15 @@
     <main class="grid">
         {% for product in collection.products %}
 
-        <div class="grid__item medium-up--one-third one-whole product-card-wrap" data-collection-item="{{ forloop.index0 }}">
-          <div class="product-card">
+        <div class="grid__item medium-up--one-third one-whole product-card-wrap">
+          <div class="product-card" data-collection-item="{{ forloop.index0 }}">
             {% if product.featured_image != blank %}
             <a href="{{ product.url | within: collection }}">
               <img data-collection-product-image="{{ product.id }}" src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
             </a>
             {% endif %}
             <a href="{{ product.url | within: collection }}">
-            <p class="product-card-title">{{ product.title }}</p>
+                <p class="product-card-title">{{ product.title }}</p>
             </a>
             <p class="product-card-price">
                 {% if product.compare_at_price > product.price %}
@@ -40,34 +40,39 @@
                 <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
                 <s>{{ product.compare_at_price | money }}</s> {% endif %} {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
             </p>
+            <div class="quickshop-root">
+                {% include 'quickshop', product_id: product.id %}
+            </div>
           </div>
-          <div class="quickshop-root">
-              {% include 'quickshop', product_id: product.id %}
-          </div>
+            <script type="text/javascript">
+              $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
+                  $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
+              });
+
+              $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
+                  $("div[data-quickshop-id='{{ forloop.index0 }}']").hide();
+              });
+
+            </script>
         </div>
-
-        <script type="text/javascript">
-
-                $("div[data-collection-item='{{ forloop.index0 }}']")
-                    .hover(function () {
-                        $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
-                });
-
-        </script>
-        {% else %} {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %} {% for i in (1..8) %}
-        <a href="#">
-            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-          </a>
-        <p>
-            <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
-        </p>
-        <p>
-            {{ 1999 | money }}
-        </p>
-        {% endfor %} {% else %}
-        <p>{{ 'collections.general.no_matches' | t }}</p>
-        {% endif %} {% endfor %}
+        {% else %}
+            {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+                {% for i in (1..8) %}
+                    <a href="#">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                      </a>
+                    <p>
+                        <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+                    </p>
+                    <p>
+                        {{ 1999 | money }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <p>{{ 'collections.general.no_matches' | t }}</p>
+            {% endif %}
+        {% endfor %}
     </main>
 
     {% if paginate.pages > 1 %} {% include 'pagination' %} {% endif %} {% endpaginate %}

@@ -18,6 +18,8 @@
         quantity: 'input#Quantity',
         quickAddToCart: '[data-quickadd-to-cart]',
         singleOptionSelectorQuickshop: '[data-single-option-selector-quickshop]',
+        quickshopFlashMessage: '[data-quickshop-flash-message]',
+        quickshopFlashMessageText: '[data-quickshop-flash-message-text]',
     };
 
     /**
@@ -46,7 +48,7 @@
         this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
         this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
         this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
-        this.$container.on('quickProductAddedToCart' + this.namespace, this.hideQuickshop.bind(this));
+        this.$container.on('quickProductAddedToCart' + this.namespace, this.addToCart.bind(this));
 
         // this.$quickAddButton = $(selectors.quickAddToCart, this.$container);
         $(selectors.quickAddToCart, this.$container).click(this.submitCart.bind(this));
@@ -55,36 +57,64 @@
 
     Quickshop.prototype = $.extend({}, Quickshop.prototype, {
 
+        addToCart: function(evt){
+
+            $.ajax({
+                type: "POST",
+                url: '/cart/add.js',
+                cache: false,
+                data: {
+                    quantity : evt.quantity,
+                    id: evt.variant.id
+                },
+                complete: function(xhr, status){
+                    if (status === 'error' || !xhr.responseText ) {
+                        console.log('error :' + xhr)
+                    }
+                    else {
+                        console.log('ADDING TO CART');
+                    }
+
+                }
+            })
+
+            this.updateCartQuantity();
+            this.flashMessage(true)
+        },
+
         submitCart: function(evt){
             evt.preventDefault();
 
-            var currentCart;
-            // fetch current cart from Shopify
-            $.getJSON('/cart.js', function(d){
-                if (!d){
-                    return;
-                }
-                currentCart = d;
-            });
-
             // fetch currently selected variant and quantitiy from scoped input form
             var variant = this.variants.currentVariant;
-            var q = $(selectors.quantity, this.$container).val();
+            var quantity = $(selectors.quantity, this.$container).val();
 
             // trigger event listener for quickshop add to cart button
             this.$container.trigger({
                 type: 'quickProductAddedToCart',
-                variant: variant
+                variant: variant,
+                quantity: quantity
             })
         },
 
-        hideQuickshop: function() {
-            // clear out quickshop inner html
-            console.log('CLOSING QUICK SHOP')
-            $('div.quickshop', this.$container).toggle();
-            // replace with success / fail message
+        flashMessage: function(success){
+            if (!success){
+                $(selectors.quickshopFlashMessageText, this.$container).html("Unable to add product to cart.")
+            }
 
-            // hide quickshop div
+            $(selectors.quickshopFlashMessage, this.$container).show();
+            var self = this;
+
+            setTimeout(function(){
+                $(selectors.quickshopFlashMessage, self.$container).hide();
+                self.hideQuickshop();
+            }, 1500);
+        },
+
+        hideQuickshop: function() {
+            $(this.$container).fadeOut("slow");
+            $(this.$container).hide();
+            return;
         },
 
         /**
@@ -106,6 +136,16 @@
           }
         },
 
+        updateCartQuantity: function(evt){
+            // fetch current cart from Shopify
+            $.getJSON('/cart.js')
+                .done(function(d){
+                    if (!d){
+                        return;
+                    }
+                    $("span.cart-item-count").html(d.item_count);
+                })
+        },
 
         updateProductImage: function(evt){
             var pid = this.productSingleObject.id;

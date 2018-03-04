@@ -1,6 +1,6 @@
 <div
     class="quickshop"
-    style="display:none;"
+    style="display: none;"
     data-quickshop-product-id="{{ product_id }}"
     data-enable-history-state="true"
     data-quickshop-id="{{ forloop.index0 }}"
@@ -16,6 +16,10 @@
         {{ product | json }}
       </script>
     {% endunless %}
+
+    <div class="quickshop-flash-message" data-quickshop-flash-message style="display: none;" >
+        <p data-quickshop-flash-message-text>Added to cart!</p>
+    </div>
 
     <form class="quickshop-form" id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
         {% unless product.has_only_default_variant %}

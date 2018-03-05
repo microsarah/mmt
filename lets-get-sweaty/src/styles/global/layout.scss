@@ -1420,7 +1420,7 @@ footer input:focus{
 
   .menu-mobile-wrap{
     text-align: left;
-    padding: 2em 1em 0;
+    padding: 1em;
   }
 
   .menu-mobile-label{
@@ -1430,6 +1430,8 @@ footer input:focus{
 
   .site-navigation{
     display: none;
+    text-align: center;
+    padding:1em 0 0;
   }
 
   .site-navigation,
@@ -1462,27 +1464,29 @@ footer input:focus{
   }
 
   .searchbar{
-    // position: absolute;
-    top:1em;
+    top:5em;
     left:0;
   }
 
   .cart-icon{
-    // position: absolute;
-    top:1em;
+    top:5em;
     right:0;
   }
-
 
   #menu-mobile-checkbox:checked + .site-navigation{
     display: block !important;
   }
 
   .site-nav__submenu {
+    background: rgba(255,255,255,0);
     position: static;
     top: 0;
     width: 100%;
-}
+  }
+
+  .site-nav__submenu li{
+    text-align: center;
+  }
 
   .wrap{
     padding:0 1em;

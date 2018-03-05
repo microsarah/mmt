@@ -46,7 +46,7 @@
         this.variants = new slate.Variants(options);
 
         this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
-        this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
+        this.$container.on('variantPriceChange', this.updateProductPrices.bind(this));
         this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
         this.$container.on('quickProductAddedToCart' + this.namespace, this.addToCart.bind(this));
 
@@ -58,7 +58,6 @@
     Quickshop.prototype = $.extend({}, Quickshop.prototype, {
 
         addToCart: function(evt){
-
             $.ajax({
                 type: "POST",
                 url: '/cart/add.js',
@@ -74,7 +73,6 @@
                     else {
                         console.log('ADDING TO CART');
                     }
-
                 }
             })
 
@@ -164,10 +162,13 @@
         */
         updateProductPrices: function(evt){
             var variant = evt.variant;
-            var $comparePrice = $(selectors.comparePrice, this.$container);
-            var $compareEls = $comparePrice.add(selectors.comparePriceText, this.$container);
+            // to back out into the product card and modify always visible price
+            var container = this.$container.parent().parent();
+            var $comparePrice = $(selectors.comparePrice, container);
+            console.log($comparePrice);
+            var $compareEls = $comparePrice.add(selectors.comparePriceText, container);
 
-            $(selectors.productPrice, this.$container)
+            $(selectors.productPrice, container)
               .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
 
             if (variant.compare_at_price > variant.price) {

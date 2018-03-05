@@ -4,53 +4,56 @@
   {% endif %}
 
   {%- assign collection = collections[section.settings.collection] -%}
+
   <div class="grid clearfix">
     {% for product in collection.products limit: 3 %}
-      <a href="{{ product.url | within: collection }}">
         <div class="grid__item medium-up--one-third one-whole product-card-wrap">
-          <div class="product-card">
+          <div class="product-card" data-collection-item="{{ forloop.index0 }}">
             {% if product.featured_image != blank %}
+            <a href="{{ product.url | within: collection }}">
               {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
+            </a>
             {% endif %}
-            <h2 class="product-card-title">{{ product.title }}</h2>
+            <a href="{{ product.url | within: collection }}">
+                <h2 class="product-card-title">{{ product.title }}</h2>
+            </a>
             <p class="product-card-price">
-              {% if product.compare_at_price > product.price %}
-                {% if product.price_varies %}
-                  {%- assign sale_price = product.price | money -%}
-                  {{ product.price | money | remove: '.00'}}
+                {% if product.compare_at_price > product.price %}
+                    {% if product.price_varies %}
+                    {%- assign sale_price = product.price | money -%}
+                    {{ product.price | money | remove: '.00'}}
                 {% else %}
-                  {{ 'products.product.on_sale' | t }}
-                  {{ product.price | money | remove: '.00'}}
+                    {{ 'products.product.on_sale' | t }}
+                    {{ product.price | money | remove: '.00'}}
                 {% endif %}
 
-              {% else %}
-
-                {% if product.price_varies %}
-                  {%- assign price = product.price | money -%}
-                  {{ product.price_max | money | remove: '.00'}}
                 {% else %}
-                  {{ product.price | money | remove: '.00'}}
+                    {% if product.price_varies %}
+                        {%- assign price = product.price | money -%}
+                        {{ product.price_max | money | remove: '.00'}}
+                    {% else %}
+                        {{ product.price | money | remove: '.00'}}
+                    {% endif %}
                 {% endif %}
-
-              {% endif %}
             </p>
+            <div class="quickshop-root">
+                {% include 'quickshop', product_id: product.id %}
+            </div>
           </div>
+
+          <script type="text/javascript">
+            $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
+                $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
+            });
+
+            $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
+                $("div[data-quickshop-id='{{ forloop.index0 }}']").hide();
+            });
+          </script>
+
         </div>
-      </a>
-    {% else %}
-
-      {% for i in (1..4) %}
-        <a href="#">
-          {% capture current %}{% cycle 1, 2, 3, 4, 5, 4 %}{% endcapture %}
-          {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-
-          <p>{{ 'homepage.onboarding.product_title' | t }}</p>
-        </a>
-
-        <p>{{ 1999 | money }}</p>
-      {% endfor %}
     {% endfor %}
-  </div>
+    </div>
 </div>
 
 {% schema %}

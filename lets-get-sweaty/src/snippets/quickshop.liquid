@@ -10,7 +10,6 @@
 >
     {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-
     {% unless product == empty %}
       <script type="application/json" data-product-json>
         {{ product | json }}
@@ -59,19 +58,6 @@
         </select>
         <div class="grid__item medium-up--one-half">
             <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
-        </div>
-        <div class="data-price-wrapper">
-            <span data-product-price>
-                {{ current_variant.price | money }}
-            </span>
-            {% if product.compare_at_price_max > product.price %}
-              <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-              <s data-compare-price>
-                {% if current_variant.compare_at_price > current_variant.price %}
-                  {{ current_variant.compare_at_price | money }}
-                {% endif %}
-              </s>
-            {% endif %}
         </div>
         <button
           name="add"

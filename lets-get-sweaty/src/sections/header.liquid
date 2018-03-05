@@ -12,10 +12,25 @@
 
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <header role="banner" class="site-header">
+    <div class="logo">
+      {% if template.name == 'index' %}
+        <h1 itemscope itemtype="http://schema.org/Organization" class="h1-logo">
+      {% else %}
+        <div class="h1" itemscope itemtype="http://schema.org/Organization">
+      {% endif %}
+          <a class="logo-svg" href="/" itemprop="url" class="site-logo">
+              {{ 'logo.svg' | asset_url | img_tag }}
+          </a>
+      {% if template.name == 'index' %}
+        </h1>
+      {% else %}
+        </div>
+      {% endif %}
+    </div>
     <div class="menu-mobile-wrap grid clearfix">
       <label for="menu-mobile-checkbox" class="menu-mobile-label">MENU</label>
       <input type="checkbox" id="menu-mobile-checkbox">
-      <div class="menu wrap clearfix">
+      <!-- <div class="menu wrap clearfix"> -->
         <nav role="navigation" class="site-navigation">
           <ul class="site-nav clearfix">
             {% for link in linklists[section.settings.main_linklist].links %}
@@ -46,7 +61,7 @@
           <ul class="top-nav clearfix">
             {% if shop.customer_accounts_enabled %}
                 {% if customer %}
-                  <li>
+                  <li class="login">
                     {% if customer.first_name != blank %}
                       {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
                       {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
@@ -81,24 +96,7 @@
             </ul>
           {% endif %}
         </nav>
-      </div>
-    </div>
-
-
-    <div class="logo">
-      {% if template.name == 'index' %}
-        <h1 itemscope itemtype="http://schema.org/Organization" class="h1-logo">
-      {% else %}
-        <div class="h1" itemscope itemtype="http://schema.org/Organization">
-      {% endif %}
-          <a class="logo-svg" href="/" itemprop="url" class="site-logo">
-              {{ 'logo.svg' | asset_url | img_tag }}
-          </a>
-      {% if template.name == 'index' %}
-        </h1>
-      {% else %}
-        </div>
-      {% endif %}
+      <!-- </div> -->
     </div>
   </header>
 </div>

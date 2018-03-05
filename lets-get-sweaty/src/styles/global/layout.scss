@@ -111,6 +111,7 @@ a:visited{
   display: none;
   font-size: 1em;
   font-family: $font-stack-header;
+  text-align: center;
 }
 
 #menu-mobile-checkbox{
@@ -1392,13 +1393,25 @@ footer input:focus{
     position: relative;
     top: 50%;
   }
-
-
 }
 
 @media screen and (max-width:850px){
   .buzz li{
     width:50%;
+  }
+
+  .logo{
+    margin: 3em auto 0;
+    position: static;
+    top:0;
+    left:0%;
+    // -webkit-transform: none;
+    // -moz-transform: none
+    // -ms-transform: none
+    // -o-transform: none;
+    transform: none;
+    width: 80px;
+    // padding:1em 0 0;
   }
 
   .site-nav{
@@ -1407,7 +1420,7 @@ footer input:focus{
 
   .menu-mobile-wrap{
     text-align: left;
-    padding:2.75em 1em;
+    padding: 2em 1em 0;
   }
 
   .menu-mobile-label{
@@ -1415,7 +1428,7 @@ footer input:focus{
     padding: 0 1em;
   }
 
-  .menu{
+  .site-navigation{
     display: none;
   }
 
@@ -1434,10 +1447,34 @@ footer input:focus{
   }
 
   .top-nav li{
+    position: absolute;
     padding: 0 1em;
   }
 
-  #menu-mobile-checkbox:checked + .menu{
+  .login{
+    top:0;
+    left:50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  .searchbar{
+    // position: absolute;
+    top:1em;
+    left:0;
+  }
+
+  .cart-icon{
+    // position: absolute;
+    top:1em;
+    right:0;
+  }
+
+
+  #menu-mobile-checkbox:checked + .site-navigation{
     display: block !important;
   }
 

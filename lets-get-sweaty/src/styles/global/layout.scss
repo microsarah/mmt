@@ -76,6 +76,8 @@ a:visited{
   // background:url('index-bkgd-1.svg') no-repeat center top fixed $color-body;
   // background-size:cover;
   padding: 1em 0;
+  max-width: 1400px;
+  margin:auto;
 }
 
 // ================================================ Logo
@@ -340,16 +342,64 @@ nav a:hover{
   text-align: center;
 }
 
-// #MainContent{
-//   padding: 0 0 10em;
-// }
-
 .feat-collection-title{
   font-family: $font-stack-body;
   font-style: italic;
   font-size: 1.25em;
   text-align: center;
   margin: 4em 0 2em;
+}
+
+.spr-form-contact-name,
+.spr-form-contact-email,
+.spr-form-contact-location,
+.spr-form-review-rating,
+.spr-form-review-title,
+.spr-form-review-body{
+  margin:0 0 3em 0 !important;
+}
+
+.spr-form-label{
+  font-family: $font-stack-header;
+}
+
+.spr-review-content-body{
+  margin: 0 auto !important;
+}
+
+.spr-summary-actions{
+  margin: 1em 0 0;
+  display: block;
+}
+
+.spr-summary-caption{
+  margin:0 0 1em;
+}
+
+.spr-summary-actions-newreview,
+.spr-review-reportreview,
+.spr-button-primary{
+  display: inline-block;
+  margin: auto;
+  float: none !important;
+  text-align: center;
+}
+.spr-form-label+.spr-form-input{
+  border: 1px solid #000;
+  padding: 1em;
+  margin:0 0 1em;
+}
+
+.spr-starrating{
+  height: 4em;
+}
+
+.spr-starrating a{
+  border-bottom: none !important;
+}
+
+.spr-pagination{
+  border-top: 1px solid #fff !important;
 }
 
 #body-care{

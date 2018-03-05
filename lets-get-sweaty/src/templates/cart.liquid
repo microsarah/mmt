@@ -57,6 +57,8 @@
                     {% endunless %}
                   {% endfor %}
                 {% endif %}
+                <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
+                <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
 
                 <!-- <p>
                   {% if item.original_line_price != item.line_price %}
@@ -79,7 +81,7 @@
 
               </td>
               <td data-label="{{ 'cart.label.total' | t }}">
-                {{ item.line_price | money }}
+                  <span class="saso-cart-item-price" data-key="{{item.key}}">{{ item.price | money }}</span>
               </td>
               <td>
                 <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-remove">{{ 'cart.general.remove' | t }}
@@ -91,7 +93,9 @@
         </tbody>
       </table>
       <div class="subtotal">
-        <p><span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span> {{ cart.total_price | money }}</p>
+          <span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span><span class="subtotal-title saso-cart-original-total">{{ cart.total_price | money_with_currency }}</span>
+          <span class="subtotal-title saso-cart-total"></span>
+        <!-- <p><span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span> {{ cart.total_price | money }}</p> -->
       </div>
       {% if cart.total_discounts > 0 %}
         <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>

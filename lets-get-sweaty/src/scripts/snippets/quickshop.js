@@ -50,9 +50,15 @@
         this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
         this.$container.on('quickProductAddedToCart' + this.namespace, this.addToCart.bind(this));
 
-        // this.$quickAddButton = $(selectors.quickAddToCart, this.$container);
         $(selectors.quickAddToCart, this.$container).click(this.submitCart.bind(this));
+        console.log(this.$container);
 
+        // $(selectors.quickAddToCart, this.$container.parent().parent()).click(
+        //     function(e){
+        //         e.preventDefault();
+        //         console.log('lol kewl')
+        //     }
+        // );
     };
 
     Quickshop.prototype = $.extend({}, Quickshop.prototype, {

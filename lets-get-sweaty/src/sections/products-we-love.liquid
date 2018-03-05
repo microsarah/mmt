@@ -7,51 +7,62 @@
 
   <div class="grid clearfix">
     {% for product in collection.products limit: 3 %}
-        <div class="grid__item medium-up--one-third one-whole product-card-wrap">
-          <div class="product-card" data-collection-item="{{ forloop.index0 }}">
-            {% if product.featured_image != blank %}
-            <a href="{{ product.url | within: collection }}">
-              {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
-            </a>
+
+      <div class="product-card" data-collection-item="{{ forloop.index0 }}">
+        {% if product.featured_image != blank %}
+        <a href="{{ product.url | within: collection }}">
+          <img data-collection-product-image="{{ product.id }}" src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
+        </a>
+        {% endif %}
+        <a href="{{ product.url | within: collection }}">
+            <p class="product-card-title">{{ product.title }}</p>
+        </a>
+        <p class="product-card-price">
+            {% if product.compare_at_price > product.price %}
+              {% if product.price_varies %}
+                {%- assign sale_price = product.price | money -%}
+                <span data-product-price>
+                    {{ product.price | money }}
+                </span>
+              {% else %}
+                {{ 'products.product.on_sale' | t }}
+                <span data-product-price>
+                    {{ product.price | money |}}
+                </span>
+              {% endif %}
+              {% else %}
+              {% if product.price_varies %}
+                {%- assign price = product.price | money -%}
+                <span data-product-price>
+                    {{ product.price_max | money }}
+                </span>
+              {% else %}
+              <span data-product-price>
+                  {{ product.price | money }}
+              </span>
+              {% endif %}
             {% endif %}
-            <a href="{{ product.url | within: collection }}">
-                <h2 class="product-card-title">{{ product.title }}</h2>
-            </a>
-            <p class="product-card-price">
-                {% if product.compare_at_price > product.price %}
-                    {% if product.price_varies %}
-                    {%- assign sale_price = product.price | money -%}
-                    {{ product.price | money | remove: '.00'}}
-                {% else %}
-                    {{ 'products.product.on_sale' | t }}
-                    {{ product.price | money | remove: '.00'}}
-                {% endif %}
-
-                {% else %}
-                    {% if product.price_varies %}
-                        {%- assign price = product.price | money -%}
-                        {{ product.price_max | money | remove: '.00'}}
-                    {% else %}
-                        {{ product.price | money | remove: '.00'}}
-                    {% endif %}
-                {% endif %}
-            </p>
-            <div class="quickshop-root">
-                {% include 'quickshop', product_id: product.id %}
-            </div>
-          </div>
-
-          <script type="text/javascript">
-            $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
-                $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
-            });
-
-            $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
-                $("div[data-quickshop-id='{{ forloop.index0 }}']").hide();
-            });
-          </script>
-
+            {% if product.compare_at_price > product.price %}
+            <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+            <s data-compare-price>{{ product.compare_at_price | money }}</s>
+            {% endif %}
+            {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
+        </p>
+        <div class="quickshop-root">
+            {% include 'quickshop', product_id: product.id %}
         </div>
+      </div>
+        <script type="text/javascript">
+          $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
+              $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
+          });
+
+          $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
+              $("div[data-quickshop-id='{{ forloop.index0 }}']").hide();
+          });
+
+        </script>
+    </div>
     {% endfor %}
     </div>
 </div>

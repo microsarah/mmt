@@ -314,7 +314,7 @@ nav a:hover{
 }
 
 .product-card-wrap{
-  padding:3em;
+  padding:2em 1em;
 }
 
 .product-card{
@@ -331,7 +331,7 @@ nav a:hover{
   text-align: center;
   font-family: $font-stack-header;
   font-size: 1.5em;
-  margin: 2em 0 1em;
+  margin: 2em auto 1em;
   line-height: 1.5em;
   height:2.5em;
 }
@@ -427,9 +427,43 @@ nav a:hover{
   background-size:cover;
 }
 
+.quickshop-form{
+  padding: 2em 1em 1em;
+}
 
+.quickshop-form #Quantity{
+  background: #fff;
+  border: 1px solid #000;
+  font-size: 1em;
+  padding: 1.55em;
+}
 
+.quickshop-form button{
+  display: block;
+  margin: 2em auto 0;
+  background: #fff;
+}
 
+.quickshop-form select{
+  padding:1em;
+  font-size: 1em;
+  border: 1px solid #000;
+}
+.quickshop-form .medium-up--three-quarters{
+  margin-left: -1px;
+}
+
+.quickshop-flash-message{
+  text-align: center;
+}
+
+.quickshop-form .grid__item {
+  padding:0;
+}
+
+.quickshop-select-quantity-only select{
+    margin: auto;
+}
 
 // ============================================================================= Who We Are
 

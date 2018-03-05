@@ -1,6 +1,6 @@
 <div
     class="quickshop"
-    style="display: none;"
+    style="display: block;"
     data-quickshop-product-id="{{ product_id }}"
     data-enable-history-state="true"
     data-quickshop-id="{{ forloop.index0 }}"
@@ -16,32 +16,35 @@
         {{ product | json }}
       </script>
     {% endunless %}
-
-    <div class="quickshop-flash-message" data-quickshop-flash-message style="display: none;" >
-        <p data-quickshop-flash-message-text>Added to cart!</p>
-    </div>
-
     <form class="quickshop-form" id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
-        {% unless product.has_only_default_variant %}
-            {% for option in product.options_with_values %}
-                <select
-                    id="SingleOptionSelector-{{ forloop.index0 }}"
-                    data-single-option-selector-quickshop
-                    data-index="option{{ option.position }}"
-                >
-                    {% for value in option.values %}
-                    <option
-                        value="{{ value | escape}}"
-                        {% if option.selected_value == value %}
-                            selected="selected"
-                        {% endif %}
-                    >
-                        {{ value }}
-                    </option>
-                    {% endfor %}
-                </select>
-            {% endfor %}
-        {% endunless %}
+      <div class="grid clearfix">
+        <div class="grid__item medium-up--one-quarter">
+            <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
+        </div>
+        <div class="grid__item medium-up--three-quarters">
+          {% unless product.has_only_default_variant %}
+              {% for option in product.options_with_values %}
+                  <select
+                      id="SingleOptionSelector-{{ forloop.index0 }}"
+                      data-single-option-selector-quickshop
+                      data-index="option{{ option.position }}"
+                  >
+                      {% for value in option.values %}
+                      <option
+                          value="{{ value | escape}}"
+                          {% if option.selected_value == value %}
+                              selected="selected"
+                          {% endif %}
+                      >
+                          {{ value }}
+                      </option>
+                      {% endfor %}
+                  </select>
+              {% endfor %}
+          {% endunless %}
+        </div>
+      </div>
+
         <select name="id" class="no-js" data-product-select>
             {% for variant in product.variants %}
                 <option
@@ -57,10 +60,7 @@
                 </option>
             {% endfor %}
         </select>
-        <div class="grid__item medium-up--one-half">
-            <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
-        </div>
-        <div class="data-price-wrapper">
+        <!-- <div class="data-price-wrapper">
             <span data-product-price>
                 {{ current_variant.price | money }}
             </span>
@@ -72,7 +72,7 @@
                 {% endif %}
               </s>
             {% endif %}
-        </div>
+        </div> -->
         <button
           name="add"
           data-quickadd-form="{{ forloop.index0 }}"
@@ -87,6 +87,9 @@
             </span>
         </button>
     </form>
+    <div class="quickshop-flash-message" data-quickshop-flash-message style="display: none;" >
+        <p data-quickshop-flash-message-text>Added to cart!</p>
+    </div>
 </div>
 
     {% unless product == empty %}

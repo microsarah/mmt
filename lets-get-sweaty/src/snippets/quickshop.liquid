@@ -17,10 +17,18 @@
     {% endunless %}
     <form class="quickshop-form" id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
       <div class="grid clearfix">
+
+          {% if product.has_only_default_variant %}
+          <div class="grid__item medium-up--one-half">
+              <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
+          </div>
+          {% endif %}
+
         {% unless product.has_only_default_variant %}
             <div class="grid__item medium-up--one-quarter">
                 <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
             </div>
+            
             <div class="grid__item medium-up--three-quarters">
                   {% for option in product.options_with_values %}
                       <select
@@ -44,27 +52,23 @@
         {% endunless %}
       </div>
 
-        <select name="id" class="no-js" data-product-select>
-            {% for variant in product.variants %}
-                <option
-                    {% if variant == current_variant %}
-                        selected="selected"
-                    {% endif %}
-                    {% unless variant.available %}
-                        disabled="disabled"
-                    {% endunless %}
-                    value="{{ variant.id }}"
-                >
-                    {{ variant.title }}
-                </option>
-            {% endfor %}
-        </select>
+<!--     <select name="id" class="no-js" data-product-select>
+    {% for variant in product.variants %}
+        <option
+            {% if variant == current_variant %}
+                selected="selected"
+            {% endif %}
+            {% unless variant.available %}
+                disabled="disabled"
+            {% endunless %}
+            value="{{ variant.id }}"
+        >
+            {{ variant.title }}
+        </option>
+    {% endfor %}
+</select> -->
 
-        {% if product.has_only_default_variant %}
-        <div class="grid__item medium-up--one-half">
-            <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
-        </div>
-        {% endif %}
+
 
         <button
           name="add"

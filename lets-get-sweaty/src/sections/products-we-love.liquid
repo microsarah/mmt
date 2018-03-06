@@ -7,7 +7,7 @@
 
   <div class="grid clearfix">
     {% for product in collection.products limit: 3 %}
-
+    <div class="grid__item medium-up--one-third one-whole product-card-wrap">
       <div class="product-card" data-collection-item="{{ forloop.index0 }}">
         {% if product.featured_image != blank %}
         <a href="{{ product.url | within: collection }}">
@@ -30,6 +30,7 @@
                     {{ product.price | money }}
                 </span>
               {% endif %}
+
               {% else %}
               {% if product.price_varies %}
                 {%- assign price = product.price | money -%}
@@ -66,7 +67,7 @@
         </script>
     </div>
     {% endfor %}
-    </div>
+  </div>
 </div>
 
 {% schema %}

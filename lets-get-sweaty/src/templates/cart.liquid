@@ -73,6 +73,7 @@
               </td>
               <td data-label="{{ 'cart.label.quantity' | t }}">
                 <input type="number"
+                       onchange="this.form.submit();"
                        name="updates[]"
                        id="updates_{{ item.key }}"
                        value="{{ item.quantity }}"
@@ -84,10 +85,13 @@
               </td>
               <td>
                 <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-remove">{{ 'cart.general.remove' | t }}
+
                 </a>
               </td>
             </tr>
-
+            <script type="text/javascript">
+                // console.log($("input[cart-index={{ forloop.index0 }}]").val());
+            </script>
           {% endfor %}
         </tbody>
       </table>

@@ -51,19 +51,13 @@
         this.$container.on('quickProductAddedToCart' + this.namespace, this.addToCart.bind(this));
 
         $(selectors.quickAddToCart, this.$container).click(this.submitCart.bind(this));
-        console.log(this.$container);
 
-        // $(selectors.quickAddToCart, this.$container.parent().parent()).click(
-        //     function(e){
-        //         e.preventDefault();
-        //         console.log('lol kewl')
-        //     }
-        // );
     };
 
     Quickshop.prototype = $.extend({}, Quickshop.prototype, {
 
         addToCart: function(evt){
+            var self = this;
             $.ajax({
                 type: "POST",
                 url: '/cart/add.js',
@@ -74,11 +68,10 @@
                 },
                 complete: function(xhr, status){
                     if (status === 'error' || !xhr.responseText ) {
-                        console.log('error :' + xhr)
+                        // TODO ADD NON-SILENT FAILURE OF ADD TO CART
+                        flashMessage(false);
                     }
-                    else {
-                        console.log('ADDING TO CART');
-                    }
+
                 }
             })
 
@@ -88,11 +81,10 @@
 
         submitCart: function(evt){
             evt.preventDefault();
-
+            console.log('submit cart triggered');
             // fetch currently selected variant and quantitiy from scoped input form
             var variant = this.variants.currentVariant;
             var quantity = $(selectors.quantity, this.$container).val();
-
             // trigger event listener for quickshop add to cart button
             this.$container.trigger({
                 type: 'quickProductAddedToCart',

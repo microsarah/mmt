@@ -1,4 +1,4 @@
-<div class="wrap">
+<div class="wrap" >
   {% if section.settings.title != blank %}
     <h1 class="feat-collection-title">{{ section.settings.title | escape }}</h1>
   {% endif %}
@@ -27,7 +27,7 @@
               {% else %}
                 {{ 'products.product.on_sale' | t }}
                 <span data-product-price>
-                    {{ product.price | money |}}
+                    {{ product.price | money }}
                 </span>
               {% endif %}
               {% else %}
@@ -43,10 +43,12 @@
               {% endif %}
             {% endif %}
             {% if product.compare_at_price > product.price %}
-            <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-            <s data-compare-price>{{ product.compare_at_price | money }}</s>
+                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                <s data-compare-price>{{ product.compare_at_price | money }}</s>
             {% endif %}
-            {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
+            {% unless product.available %}
+                {{ 'products.product.sold_out' | t }}
+            {% endunless %}
         </p>
         <div class="quickshop-root">
             {% include 'quickshop', product_id: product.id %}

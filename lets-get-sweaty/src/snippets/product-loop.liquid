@@ -10,7 +10,7 @@
 
 <div itemtype="http://schema.org/ItemList" class="products">
   {% for product in products limit: limit %}
-  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
   {% if product.template_suffix != 'beans' %}
     {% if product.id == skip_product.id or skip == true %}
       {% assign product_found = true %}
@@ -29,6 +29,6 @@
           {% cycle collection_group: '', '', '', new_row %}
         {% endif %}
       {% endif %}
-    {% endif %}
+
   {% endif %}{% endfor %}
 </div>

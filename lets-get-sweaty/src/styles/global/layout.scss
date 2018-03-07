@@ -1480,6 +1480,12 @@ footer input:focus{
 }
 
 @media screen and (max-width:850px){
+
+  .default-address,
+  .address-new-toggle{
+    margin: 3em auto 0;
+  }
+
   .buzz li{
     width:50%;
   }

@@ -45,24 +45,4 @@
       {% include 'pagination' %}
     {% endif %}
   {% endpaginate %}
-
-  <section class="grid wrap blog-categories">
-    <div class="grid__item one-whole">
-      {% if blog.all_tags.size > 0 %}
-        <h2>{{ 'blogs.general.categories' | t }}</h2>
-
-        <ul>
-          {% for tag in blog.all_tags %}
-
-            {% if current_tags contains tag %}
-              <li class="blog-tags">{{ tag }}</li>
-            {% else %}
-              <li class="blog-tags">{{ tag | link_to_tag: tag }}</li>
-            {% endif %}
-
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
-  </section>
 </div>

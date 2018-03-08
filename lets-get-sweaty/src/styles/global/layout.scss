@@ -601,6 +601,11 @@ nav a:hover{
   margin: 0;
 }
 
+.no-orders{
+    text-align: center;
+    padding:2em 0 1em;
+}
+
 .cart-wrap h3{
   text-align: left;
   margin: 2em 0 0;
@@ -1483,6 +1488,7 @@ footer input:focus{
 
   .default-address,
   .address-new-toggle{
+    display: block;
     margin: 3em auto 0;
   }
 
@@ -1543,6 +1549,35 @@ footer input:focus{
     padding: 0 1em;
   }
 
+  .login-cart{
+    position: absolute;
+    top: 3em;
+    left: 36%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-27%);
+  }
+
+  .searchbar{
+    position: absolute;
+    top:0;
+    left: 1em;
+    // left:50%;
+    // -webkit-transform: translateX(-50%);
+    // -moz-transform: translateX(-50%);
+    // -ms-transform: translateX(-50%);
+    // -o-transform: translateX(-50%);
+    // transform: translateX(-50%);
+
+  }
+
+  .cart-icon{
+    top:0;
+    right:1em;
+  }
+
   .login{
     top:0;
     left:50%;
@@ -1551,17 +1586,8 @@ footer input:focus{
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
-  }
+    }
 
-  .searchbar{
-    top:5em;
-    left:0;
-  }
-
-  .cart-icon{
-    top:5em;
-    right:0;
-  }
 
   #menu-mobile-checkbox:checked + .site-navigation{
     display: block !important;

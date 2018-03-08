@@ -5,11 +5,6 @@
     }
   {% endif %}
 </style>
-
-<div class="shop-announcement">
-  <p>{{ shop.metafields.shop_announcement.shop_announcement }}</p>
-</div>
-
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <header role="banner" class="site-header">
     <div class="logo">
@@ -70,7 +65,7 @@
                     {% endif %}
                   </li>
                 {% else %}
-                  <li>
+                  <li class="login">
                     {{ 'layout.customer.log_in' | t | customer_login_link }}
                   </li>
                 {% endif %}

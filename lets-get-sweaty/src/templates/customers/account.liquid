@@ -30,7 +30,7 @@
           </tbody>
         </table>
       {% else %}
-        <p>{{ 'customer.orders.none' | t }}</p>
+        <p class="no-orders">{{ 'customer.orders.none' | t }}</p>
       {% endif %}
 
       {% if paginate.pages > 1 %}

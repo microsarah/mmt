@@ -14,124 +14,96 @@
       Number of related items per row,
       and number of rows.
     {% endcomment %}
-
     {% assign number_of_related_products_per_row = section.settings.related_grid_num %}
-    {% assign number_of_rows = section.settings.related_grid_row %}
 
-    {% for collection in product.collections %}
-        {{ collection.title | downcase | replace: ' ', '-' }}
+    {% assign current_product_id = product.id %}
 
-    <!-- {% if collection == category %}
-        {{ product.handle }}
-    {% endif %} -->
+    {% comment %}
+        Related collection - specified as the first selected collection on current product
+    {% endcomment %}
+    {% for c in product.collections %}
+        {% if forloop.first == true %}
+            {% assign related_collection_handle = c.handle %}
+        {% endif %}
     {% endfor %}
 
-{% comment %}
-  Looking for a relevant collection.
-{% endcomment %}
+    <h1>{{ section.settings.related_title }}</h1>
 
-{% if product.metafields.c_f['Related Products'] %}
-  {% assign collection = collections[product.metafields.c_f['Related Products']] %}
-{% endif %}
+    {% comment %}
+      Looking for a relevant collection.
+    {% endcomment %}
 
-{% assign found_a_collection = false %}
-{% if collection and collection.all_products_count > 1 %}
-  {% unless exclusions contains collection.handle %}
-    {% assign found_a_collection = true %}
-  {% endunless %}
-{% endif %}
-{% unless found_a_collection %}
-  {% for c in product.collections %}
-    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
-      {% assign found_a_collection = true %}
-      {% assign collection = c %}
-      {% break %}
-    {% endunless %}
-  {% endfor %}
-{% endunless %}
+    {% if product.collections  %}
+      {% assign related_collection = collections[related_collection_handle] %}
+    {% endif %}
 
-{% comment %}
-  If we have a relevant collection.
-{% endcomment %}
+    {% assign found_a_collection = false %}
 
-{% if found_a_collection %}
+    {% if related_collection and related_collection.all_products_count > 1 %}
+        {% assign found_a_collection = true %}
+    {% endif %}
 
-  {% assign counter = 0 %}
-  {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
-  {% assign current_product = product %}
+    {% comment %}
+      If we have a relevant collection.
+    {% endcomment %}
 
-  {% case number_of_related_products_per_row %}
-    {% when '1' %}
-      {% assign grid_item_width = '' %}
-        {%- assign max_height = 700 -%}
-    {% when '2' %}
-      {% assign grid_item_width = 'small--one-half medium-up--one-half' %}
-      {%- assign max_height = 530 -%}
-    {% when '3' %}
-      {% assign grid_item_width = 'small--one-half medium-up--one-third' %}
-      {%- assign max_height = 345 -%}
-    {% when '4' %}
-      {% assign grid_item_width = 'small--one-half medium-up--one-quarter' %}
-      {%- assign max_height = 250 -%}
-    {% when '5' %}
-      {% assign grid_item_width = 'small--one-half medium-up--one-fifth' %}
-      {%- assign max_height = 195 -%}
-    {% when '6' %}
-      {% assign grid_item_width = 'small--one-half medium-up--one-sixth' %}
-      {%- assign max_height = 195 -%}
-    {% else %}
-      {% assign grid_item_width = 'small--one-half medium-up--one-quarter' %}
-      {%- assign max_height = 195 -%}
-  {% endcase %}
+    {% if found_a_collection %}
+        {% for product in related_collection.products %}
+            {% if product.id == current_product_id %}
+                {% assign number_of_related_products_per_row = number_of_related_products_per_row | plus: 1 %}
+            {% endif %}
+        {% endfor %}
 
+        {% for product in related_collection.products limit:number_of_related_products_per_row %}
+            {% if product.id == current_product_id %}
+                {% continue %}
+            {% endif %}
+            <div class="grid__item medium-up--one-third one-whole product-card-wrap">
+                <div class="product-card" data-collection-item="{{ forloop.index0 }}">
+                    {% if product.featured_image != blank %}
+                    <a href="{{ product.url | within: collection }}">
+                        <img data-collection-product-image="{{ product.id }}" src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
+                    </a>
+                    {% endif %}
+                    <a href="{{ product.url | within: collection }}">
+                        <p class="product-card-title">{{ product.title }}</p>
+                    </a>
+                    <p class="product-card-price">
+                    {% if product.compare_at_price > product.price %}
+                        {% if product.price_varies %}
+                            {%- assign sale_price = product.price | money -%}
+                            <span data-product-price>
+                                {{ product.price | money }}
+                            </span>
+                        {% else %}
+                            {{ 'products.product.on_sale' | t }}
+                            <span data-product-price>
+                                {{ product.price | money }}
+                            </span>
+                        {% endif %}
+                    {% else %}
+                        {% if product.price_varies %}
+                            {%- assign price = product.price | money -%}
+                            <span data-product-price>
+                                {{ product.price_max | money }}
+                            </span>
+                        {% else %}
+                            <span data-product-price>
+                                {{ product.price | money }}
+                            </span>
+                        {% endif %}
+                    {% endif %}
+                    {% if product.compare_at_price > product.price %}
+                        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                        <s data-compare-price>{{ product.compare_at_price | money }}</s>
+                    {% endif %}
+                    {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
 
-  {% capture related_items %}
-<div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
-
-  {% for product in collections.all.products %}
-  {% unless product.handle == current_product.handle %}
-  {% unless same_vendor and current_product.vendor != product.vendor %}
-  {% unless same_type and current_product.type != product.type %}
-  {% comment %}
-    Replace 'test' below with prefered tag
-  {% endcomment %}
-  {% if product.tags contains  'test' %}
-  <div class="grid__item {{ grid_item_width }}">
-    {% include 'product-card-grid', max_height: max_height %}
-  </div>
-  {% assign counter = counter | plus: 1 %}
-  {% if counter == break_at %}
-  {% break %}
-  {% endif %}
-  {% endif %}
-  {% endunless %}
-  {% endunless %}
-  {% endunless %}
-  {% endfor %}
-
-</div>
-  {% endcapture %}
-
-  {% assign related_items = related_items | trim %}
-
-  {% unless related_items == blank %}
-
-  <aside class="grid">
-    <div class="grid__item">
-      {% unless heading == blank %}
-      <header class="section-header">
-        <h3>{{ heading }}</h3>
-      </header>
-      {% endunless %}
-      <div class="grid-uniform">
-        {{ related_items }}
-      </div>
-    </div>
-  </aside>
-
-  {% endunless %}
-
-{% endif %}
+    {% endif %}
 
 </div>
 {% endif %}
@@ -144,7 +116,7 @@
       "type": "checkbox",
       "id": "show_related_products",
       "label": "Show related products",
-      "default": false
+      "default": true
     },
     {
       "id": "related_title",
@@ -156,7 +128,7 @@
       "type": "select",
       "id": "related_grid_num",
       "label": "Products per row (Desktop)",
-      "default": "4",
+      "default": "3",
       "options": [
         {
           "value": "2",
@@ -175,31 +147,6 @@
           "label": "5"
         }
       ]
-    },
-    {
-      "type": "select",
-      "id": "related_grid_row",
-      "label": "Number of rows (Desktop)",
-      "default": "1",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        },
-        {
-          "value": "3",
-          "label": "3"
-        }
-      ]
-  },
-    {
-      "type": "collection",
-      "id": "collection_selector",
-      "label": "Related Collection"
     }
   ]
 }

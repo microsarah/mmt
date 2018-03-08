@@ -1008,6 +1008,18 @@ footer input:focus{
   text-align: center;
 }
 
+.saso-cart-item-upsell-notes{
+  font-family: $font-stack-body !important;
+  font-weight: normal !important;
+  font-style: italic !important;
+  font-size: 1em !important;
+  background-color: #ffeee6 !important;
+  color: $color-papaya !important;
+  margin: 2em 0 !important;
+  padding: .5em !important;
+  text-align: center !important;
+}
+
 // ==================== Number buttons
 
 
@@ -1589,11 +1601,13 @@ footer input:focus{
   }
 
   .cart-icon{
+    padding: 1.125em .75em .75em 2em;
     top:0;
     right:1em;
   }
 
   .login{
+    padding: 1.125em .75em .75em 2em;
     top:0;
     left:50%;
     -webkit-transform: translateX(-50%);

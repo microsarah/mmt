@@ -1,6 +1,6 @@
 {% if cart.item_count > 0 %}
-  <h1 class="collection-title">{{ 'cart.general.title' | t }}</h1>
-  <p class="collection-description">The cat's in the bag!</p>
+  <h1>The cat's in the bag!</h1>
+  <p class="collection-description">your cart</p>
   <div class="cart-wrap">
     <form action="/cart" method="post" novalidate>
       <table class="responsive-table cart">
@@ -57,8 +57,10 @@
                     {% endunless %}
                   {% endfor %}
                 {% endif %}
-                <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
-                <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
+                <h4>
+                  <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
+                  <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
+                </h4>
 
                 <!-- <p>
                   {% if item.original_line_price != item.line_price %}
@@ -98,13 +100,10 @@
       <div class="subtotal">
           <span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span><span class="subtotal-title saso-cart-original-total">{{ cart.total_price | money_with_currency }}</span>
           <span class="subtotal-title saso-cart-total"></span>
-        <!-- <p><span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span> {{ cart.total_price | money }}</p> -->
       </div>
       {% if cart.total_discounts > 0 %}
         <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
       {% endif %}
-      <!-- <p>{{ 'cart.general.shipping_at_checkout' | t }}</p> -->
-      <!-- <input type="submit" name="update" value="{{ 'cart.general.update' | t }}"> -->
 
       {% if settings.cart_notes_enable %}
         <div class="note-to-seller">
@@ -119,8 +118,6 @@
     </form>
 </div>
 {% else %}
-  <!-- <h1 class="collection-title">{{ 'cart.general.title' | t }}</h1>
-  <p class="collection-description">The cat's outta the bag!</p> -->
   <h1>The cat's outta the bag!</h1>
 
   {% comment %}

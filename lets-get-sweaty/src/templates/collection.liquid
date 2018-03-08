@@ -24,21 +24,32 @@
                 {% if product.compare_at_price > product.price %}
                   {% if product.price_varies %}
                     {%- assign sale_price = product.price | money -%}
-                    {{ product.price | money | remove: '.00'}}
+                    <span data-product-price>
+                        {{ product.price | money }}
+                    </span>
                   {% else %}
                     {{ 'products.product.on_sale' | t }}
-                    {{ product.price | money | remove: '.00'}}
+                    <span data-product-price>
+                        {{ product.price | money |}}
+                    </span>
                   {% endif %}
                   {% else %}
                   {% if product.price_varies %}
                     {%- assign price = product.price | money -%}
-                    {{ product.price_max | money | remove: '.00'}}
+                    <span data-product-price>
+                        {{ product.price_max | money }}
+                    </span>
                   {% else %}
-                    {{ product.price | money | remove: '.00'}}
+                  <span data-product-price>
+                      {{ product.price | money }}
+                  </span>
                   {% endif %}
-                {% endif %} {% if product.compare_at_price > product.price %}
-                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                <s>{{ product.compare_at_price | money }}</s> {% endif %} {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
+                {% endif %}
+                {% if product.compare_at_price > product.price %}
+                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                <s data-compare-price>{{ product.compare_at_price | money }}</s>
+                {% endif %}
+                {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
             </p>
             <div class="quickshop-root">
                 {% include 'quickshop', product_id: product.id %}

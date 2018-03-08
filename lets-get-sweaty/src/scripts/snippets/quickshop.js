@@ -46,11 +46,10 @@
         this.variants = new slate.Variants(options);
 
         this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
-        this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
+        this.$container.on('variantPriceChange', this.updateProductPrices.bind(this));
         this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
         this.$container.on('quickProductAddedToCart' + this.namespace, this.addToCart.bind(this));
 
-        // this.$quickAddButton = $(selectors.quickAddToCart, this.$container);
         $(selectors.quickAddToCart, this.$container).click(this.submitCart.bind(this));
 
     };
@@ -58,7 +57,7 @@
     Quickshop.prototype = $.extend({}, Quickshop.prototype, {
 
         addToCart: function(evt){
-
+            var self = this;
             $.ajax({
                 type: "POST",
                 url: '/cart/add.js',
@@ -69,10 +68,8 @@
                 },
                 complete: function(xhr, status){
                     if (status === 'error' || !xhr.responseText ) {
-                        console.log('error :' + xhr)
-                    }
-                    else {
-                        console.log('ADDING TO CART');
+                        // TODO ADD NON-SILENT FAILURE OF ADD TO CART
+                        flashMessage(false);
                     }
 
                 }
@@ -84,11 +81,10 @@
 
         submitCart: function(evt){
             evt.preventDefault();
-
+            console.log('submit cart triggered');
             // fetch currently selected variant and quantitiy from scoped input form
             var variant = this.variants.currentVariant;
             var quantity = $(selectors.quantity, this.$container).val();
-
             // trigger event listener for quickshop add to cart button
             this.$container.trigger({
                 type: 'quickProductAddedToCart',
@@ -164,10 +160,13 @@
         */
         updateProductPrices: function(evt){
             var variant = evt.variant;
-            var $comparePrice = $(selectors.comparePrice, this.$container);
-            var $compareEls = $comparePrice.add(selectors.comparePriceText, this.$container);
+            // to back out into the product card and modify always visible price
+            var container = this.$container.parent().parent();
+            var $comparePrice = $(selectors.comparePrice, container);
+            console.log($comparePrice);
+            var $compareEls = $comparePrice.add(selectors.comparePriceText, container);
 
-            $(selectors.productPrice, this.$container)
+            $(selectors.productPrice, container)
               .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
 
             if (variant.compare_at_price > variant.price) {

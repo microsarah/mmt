@@ -134,13 +134,29 @@
         {% endunless %}
       </div>
     </div>
+
     {% for variant in product.variants %}
         {% if variant.id == current_variant.id %}
-        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details" data-variant-background >
+        <div
+        style="background-color:
+        {% if variant.metafields.product_info.color_scent == blank %}
+            {{ product.metafields.product_info.color_no_variants }}
+        {% else %}
+            {{ variant.metafields.product_info.color_scent }}
+        {% endif %}
+        "
+        class="product-details"
+        data-variant-background >
           <div class="grid wrap">
             <div class="grid__item medium-up--one-third one-whole">
               <h2>ingredients</h2>
-                <p data-variant-ingredients >{{ variant.metafields.product_info.product_ingredients }}</p>
+                <p data-variant-ingredients >
+                    {% if variant.metafields.product_info.product_ingredients == blank %}
+                        {{ product.metafields.product_info.ingredients_no_variants }}
+                    {% else %}
+                        {{ variant.metafields.product_info.product_ingredients }}
+                    {% endif %}
+                 </p>
             </div>
             <div class="grid__item medium-up--one-third one-whole">
               <h2>how to</h2>
@@ -154,44 +170,13 @@
         </div>
         {% endif %}
     {% endfor %}
+
     <div class="wrap">
       <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
     </div>
 
     {% if settings.display_collections or settings.display_tags or settings.display_type %}
         <hr />
-    {% endif %}
-
-    {% if settings.display_related_products %}
-        {% capture limit %}{{ settings.products_per_row | plus: 1 }}{% endcapture %}
-
-        {% if collection and collection.all_products_count > 1 %}
-            {% assign col = collection.handle %}
-        {% else %}
-            {% assign col = product.collections.last.handle %}
-        {% endif %}
-
-
-        {% for tag in product.tags %}
-            {% if tag contains 'meta-related-collection-' %}
-                {% assign col = tag | remove: 'meta-related-collection-' %}
-                {% assign collection = collections[col] %}
-                {% capture limit %}{{ collection.products_count | plus: 1 }}{% endcapture %}
-            {% endif %}
-        {% endfor %}
-
-        {% if col and collections[col].all_products_count > 0 %}
-            {% if collections[col].all_products_count != 1 or collections[col].products.first.id != product.id %}
-                <h2>{{ 'products.product.related_items' | t }}</h2>
-
-                {% assign skip_product = product %}
-                {% assign products = collections[col].products %}
-                {% assign products_per_row = settings.products_per_row %}
-                <div>
-                    {% include 'product-loop' %}
-                </div>
-            {% endif %}
-        {% endif %}
     {% endif %}
 
   </div>

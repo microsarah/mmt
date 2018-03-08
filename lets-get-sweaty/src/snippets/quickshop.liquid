@@ -10,7 +10,6 @@
 >
     {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-
     {% unless product == empty %}
       <script type="application/json" data-product-json>
         {{ product | json }}
@@ -18,61 +17,59 @@
     {% endunless %}
     <form class="quickshop-form" id="quickshop-form-{{ forloop.index0 }}" enctype="multipart/form-data">
       <div class="grid clearfix">
-        <div class="grid__item medium-up--one-quarter">
-            <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
-        </div>
-        <div class="grid__item medium-up--three-quarters">
-          {% unless product.has_only_default_variant %}
-              {% for option in product.options_with_values %}
-                  <select
-                      id="SingleOptionSelector-{{ forloop.index0 }}"
-                      data-single-option-selector-quickshop
-                      data-index="option{{ option.position }}"
-                  >
-                      {% for value in option.values %}
-                      <option
-                          value="{{ value | escape}}"
-                          {% if option.selected_value == value %}
-                              selected="selected"
-                          {% endif %}
+
+          {% if product.has_only_default_variant %}
+          <div class="grid__item medium-up--one-half">
+              <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
+          </div>
+          {% endif %}
+
+        {% unless product.has_only_default_variant %}
+            <div class="grid__item medium-up--one-quarter">
+                <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
+            </div>
+            
+            <div class="grid__item medium-up--three-quarters">
+                  {% for option in product.options_with_values %}
+                      <select
+                          id="SingleOptionSelector-{{ forloop.index0 }}"
+                          data-single-option-selector-quickshop
+                          data-index="option{{ option.position }}"
                       >
-                          {{ value }}
-                      </option>
-                      {% endfor %}
-                  </select>
-              {% endfor %}
-          {% endunless %}
-        </div>
+                          {% for value in option.values %}
+                          <option
+                              value="{{ value | escape}}"
+                              {% if option.selected_value == value %}
+                                  selected="selected"
+                              {% endif %}
+                          >
+                              {{ value }}
+                          </option>
+                          {% endfor %}
+                      </select>
+                    {% endfor %}
+            </div>
+        {% endunless %}
       </div>
 
-        <select name="id" class="no-js" data-product-select>
-            {% for variant in product.variants %}
-                <option
-                    {% if variant == current_variant %}
-                        selected="selected"
-                    {% endif %}
-                    {% unless variant.available %}
-                        disabled="disabled"
-                    {% endunless %}
-                    value="{{ variant.id }}"
-                >
-                    {{ variant.title }}
-                </option>
-            {% endfor %}
-        </select>
-        <!-- <div class="data-price-wrapper">
-            <span data-product-price>
-                {{ current_variant.price | money }}
-            </span>
-            {% if product.compare_at_price_max > product.price %}
-              <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-              <s data-compare-price>
-                {% if current_variant.compare_at_price > current_variant.price %}
-                  {{ current_variant.compare_at_price | money }}
-                {% endif %}
-              </s>
+<!--     <select name="id" class="no-js" data-product-select>
+    {% for variant in product.variants %}
+        <option
+            {% if variant == current_variant %}
+                selected="selected"
             {% endif %}
-        </div> -->
+            {% unless variant.available %}
+                disabled="disabled"
+            {% endunless %}
+            value="{{ variant.id }}"
+        >
+            {{ variant.title }}
+        </option>
+    {% endfor %}
+</select> -->
+
+
+
         <button
           name="add"
           data-quickadd-form="{{ forloop.index0 }}"

@@ -367,6 +367,11 @@ nav a:hover{
   margin: 0 auto !important;
 }
 
+.spr-review-reply{
+  max-width: 35em;
+  margin: auto !important;
+}
+
 .spr-summary-actions{
   margin: 1em 0 0;
   display: block;
@@ -461,7 +466,8 @@ nav a:hover{
   padding:0;
 }
 
-.quickshop-select-quantity-only select{
+.quickshop-select-quantity-only{
+    width: 50%;
     margin: auto;
 }
 
@@ -721,7 +727,7 @@ nav a:hover{
   background:url('who-we-are-our-ingredients-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   padding:10em 0 5em;
-  height:840px;
+  height:875px;
 }
 
 
@@ -1000,6 +1006,18 @@ footer input:focus{
   margin: 2em 0;
   padding: .5em 0;
   text-align: center;
+}
+
+.saso-cart-item-upsell-notes{
+  font-family: $font-stack-body !important;
+  font-weight: normal !important;
+  font-style: italic !important;
+  font-size: 1em !important;
+  background-color: #ffeee6 !important;
+  color: $color-papaya !important;
+  margin: 2em 0 !important;
+  padding: .5em !important;
+  text-align: center !important;
 }
 
 // ==================== Number buttons
@@ -1375,6 +1393,12 @@ footer input:focus{
     padding: 0 0 5em;
   }
 
+  .product-card-wrap{
+    width: 50%;
+    float: none;
+    margin: auto;
+  }
+
   .grid__item-right {
       float: none !important;
   }
@@ -1485,6 +1509,9 @@ footer input:focus{
 }
 
 @media screen and (max-width:850px){
+  .product-card-wrap{
+    width: 80%;
+  }
 
   .default-address,
   .address-new-toggle{
@@ -1574,11 +1601,13 @@ footer input:focus{
   }
 
   .cart-icon{
+    padding: 1.125em .75em .75em 2em;
     top:0;
     right:1em;
   }
 
   .login{
+    padding: 1.125em .75em .75em 2em;
     top:0;
     left:50%;
     -webkit-transform: translateX(-50%);
@@ -1625,6 +1654,7 @@ footer input:focus{
 
   .our-packaging{
     padding:0;
+    margin: 0;
   }
 
   .our-ingredients{
@@ -1663,6 +1693,11 @@ footer input:focus{
 }
 
 @media screen and (max-width:600px){
+
+  .product-card-wrap{
+    width: 100%;
+    margin: 0 auto 2em;
+  }
 
   p,
   .who-we-are ul,

@@ -367,6 +367,11 @@ nav a:hover{
   margin: 0 auto !important;
 }
 
+.spr-review-reply{
+  max-width: 35em;
+  margin: auto !important;
+}
+
 .spr-summary-actions{
   margin: 1em 0 0;
   display: block;
@@ -722,7 +727,7 @@ nav a:hover{
   background:url('who-we-are-our-ingredients-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   padding:10em 0 5em;
-  height:840px;
+  height:875px;
 }
 
 
@@ -1635,6 +1640,7 @@ footer input:focus{
 
   .our-packaging{
     padding:0;
+    margin: 0;
   }
 
   .our-ingredients{

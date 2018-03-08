@@ -137,11 +137,26 @@
 
     {% for variant in product.variants %}
         {% if variant.id == current_variant.id %}
-        <div style="background-color: {{ variant.metafields.product_info.color_scent }}" class="product-details" data-variant-background >
+        <div
+        style="background-color:
+        {% if variant.metafields.product_info.color_scent == blank %}
+            {{ product.metafields.product_info.color_no_variants }}
+        {% else %}
+            {{ variant.metafields.product_info.color_scent }}
+        {% endif %}
+        "
+        class="product-details"
+        data-variant-background >
           <div class="grid wrap">
             <div class="grid__item medium-up--one-third one-whole">
               <h2>ingredients</h2>
-                <p data-variant-ingredients >{{ variant.metafields.product_info.product_ingredients }}</p>
+                <p data-variant-ingredients >
+                    {% if variant.metafields.product_info.product_ingredients == blank %}
+                        {{ product.metafields.product_info.ingredients_no_variants }}
+                    {% else %}
+                        {{ variant.metafields.product_info.product_ingredients }}
+                    {% endif %}
+                 </p>
             </div>
             <div class="grid__item medium-up--one-third one-whole">
               <h2>how to</h2>

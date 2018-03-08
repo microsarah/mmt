@@ -461,7 +461,8 @@ nav a:hover{
   padding:0;
 }
 
-.quickshop-select-quantity-only select{
+.quickshop-select-quantity-only{
+    width: 50%;
     margin: auto;
 }
 
@@ -1375,6 +1376,12 @@ footer input:focus{
     padding: 0 0 5em;
   }
 
+  .product-card-wrap{
+    width: 50%;
+    float: none;
+    margin: auto;
+  }
+
   .grid__item-right {
       float: none !important;
   }
@@ -1485,6 +1492,9 @@ footer input:focus{
 }
 
 @media screen and (max-width:850px){
+  .product-card-wrap{
+    width: 80%;
+  }
 
   .default-address,
   .address-new-toggle{
@@ -1663,6 +1673,11 @@ footer input:focus{
 }
 
 @media screen and (max-width:600px){
+
+  .product-card-wrap{
+    width: 100%;
+    margin: 0 auto 2em;
+  }
 
   p,
   .who-we-are ul,

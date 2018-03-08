@@ -19,7 +19,7 @@
       <div class="grid clearfix">
 
           {% if product.has_only_default_variant %}
-          <div class="grid__item medium-up--one-half">
+          <div class="quickshop-select-quantity-only">
               <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
           </div>
           {% endif %}
@@ -28,7 +28,7 @@
             <div class="grid__item medium-up--one-quarter">
                 <input type="number" class="mod" id="Quantity" name="quantity" value="1" min="1">
             </div>
-            
+
             <div class="grid__item medium-up--three-quarters">
                   {% for option in product.options_with_values %}
                       <select

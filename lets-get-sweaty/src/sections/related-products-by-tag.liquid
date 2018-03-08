@@ -1,7 +1,5 @@
 {% if section.settings.show_related_products == true %}
 
-<hr>
-
 <div class="product-template__container page-width"
     itemscope itemtype="http://schema.org/Product"
     id="ProductSection-{{ section.id }}"
@@ -27,7 +25,7 @@
         {% endif %}
     {% endfor %}
 
-    <h1>{{ section.settings.related_title }}</h1>
+    <h1 class="feat-collection-title">{{ section.settings.related_title }}</h1>
 
     {% comment %}
       Looking for a relevant collection.
@@ -58,7 +56,7 @@
             {% if product.id == current_product_id %}
                 {% continue %}
             {% endif %}
-            <div class="grid__item medium-up--one-third one-whole product-card-wrap">
+            <div class="grid__item medium-up--one-third one-whole related-product-card-wrap">
                 <div class="product-card" data-collection-item="{{ forloop.index0 }}">
                     {% if product.featured_image != blank %}
                     <a href="{{ product.url | within: collection }}">
@@ -122,7 +120,7 @@
       "id": "related_title",
       "type": "text",
       "label": "Section title",
-      "default": "RELATED PRODUCTS"
+      "default": "a perfect match"
     },
     {
       "type": "select",

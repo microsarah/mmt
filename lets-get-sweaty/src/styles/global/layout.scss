@@ -317,6 +317,10 @@ nav a:hover{
   padding:2em 1em;
 }
 
+.related-product-card-wrap{
+  padding: 2em 4em;
+}
+
 .product-card{
   background: #fff;
   padding:0 0 4em;
@@ -367,7 +371,34 @@ nav a:hover{
   margin: 0 auto !important;
 }
 
+// .spr-review{
+//   margin: 0 0 2em;
+//   border: 1px solid $color-powder !important;
+// }
+
+.spr-review:after,
+.spr-reviews:after{
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.spr-review-header-title{
+  margin: 1em auto 2em !important;
+}
+
+// .spr-review-header{
+//   width: 50%;
+//   float: left;
+// }
+//
+// .spr-review-content{
+//   width: 50%;
+//   float: right;
+// }
+//
 .spr-review-reply{
+  clear: both;
   max-width: 35em;
   margin: auto !important;
 }
@@ -1393,6 +1424,7 @@ footer input:focus{
     padding: 0 0 5em;
   }
 
+  .related-product-card-wrap,
   .product-card-wrap{
     width: 50%;
     float: none;
@@ -1509,6 +1541,7 @@ footer input:focus{
 }
 
 @media screen and (max-width:850px){
+  .related-product-card-wrap,
   .product-card-wrap{
     width: 80%;
   }
@@ -1693,7 +1726,7 @@ footer input:focus{
 }
 
 @media screen and (max-width:600px){
-
+  .related-product-card-wrap,
   .product-card-wrap{
     width: 100%;
     margin: 0 auto 2em;

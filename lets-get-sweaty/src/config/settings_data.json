@@ -3,14 +3,14 @@
     "type_base_size": "16px",
     "color_primary": "#000",
     "color_body_text": "#000",
-    "social_sharing_blog": true,
-    "share_facebook": true,
-    "share_twitter": true,
-    "share_pinterest": true,
-    "social_twitter_link": "",
-    "social_facebook_link": "",
+    "social_sharing_blog": false,
+    "share_facebook": false,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "social_twitter_link": "https:\/\/twitter.com\/meowmeowtweetny",
+    "social_facebook_link": "https:\/\/www.facebook.com\/meowmeowtweet",
     "social_pinterest_link": "",
-    "social_instagram_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/meowmeowtweet\/",
     "social_snapchat_link": "",
     "social_tumblr_link": "",
     "social_youtube_link": "",
@@ -35,7 +35,7 @@
       "products-we-love": {
         "type": "products-we-love",
         "settings": {
-          "title": "products we love",
+          "title": "Products We Love",
           "collection": "featured-products"
         }
       },

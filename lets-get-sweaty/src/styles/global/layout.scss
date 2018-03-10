@@ -347,11 +347,15 @@ nav a:hover{
 }
 
 .feat-collection-title{
-  font-family: $font-stack-body;
-  font-style: italic;
-  font-size: 1.25em;
+  font-family: $font-stack-header;
+  // font-style: italic;
+  font-size: 1.5em;
   text-align: center;
   margin: 4em 0 2em;
+}
+
+.spr-container{
+  border:none !important;
 }
 
 .spr-form-contact-name,
@@ -375,6 +379,11 @@ nav a:hover{
 //   margin: 0 0 2em;
 //   border: 1px solid $color-powder !important;
 // }
+
+.spr-review,
+.spr-form{
+  border: none !important;
+}
 
 .spr-review:after,
 .spr-reviews:after{
@@ -435,7 +444,7 @@ nav a:hover{
 }
 
 .spr-pagination{
-  border-top: 1px solid #fff !important;
+  border-top: none !important;
 }
 
 #body-care{
@@ -1162,7 +1171,7 @@ footer input:focus{
 
 // ================================================ Retailers Page
 
-#store-locator{
+#where-to-buy{
   background:url('retailers-page.svg') no-repeat center top fixed;
   background-size:cover;
 }
@@ -1205,7 +1214,7 @@ footer input:focus{
 
 // ================================================ Contact Page
 
-#contact{
+#get-in-touch{
   background:url('contact-page-1.svg') no-repeat center top fixed;
   background-size:cover;
   text-align: center;
@@ -1335,6 +1344,7 @@ footer input:focus{
 
 .blog-article p{
   max-width: 45em;
+  margin: 0 auto 1em;
 }
 
 .page{
@@ -1887,6 +1897,9 @@ footer input:focus{
     margin: 3em 0 0;
   }
 
+  .scent-selector{
+      height: auto;
+  }
 
   .our-story,
   .our-ingredients,
@@ -1914,6 +1927,11 @@ footer input:focus{
   #your-shopping-cart{
     background-size: 300%;
     background-repeat: repeat-y;
+  }
+
+  .product-details p,
+  .product-details ul{
+    padding: 0;
   }
 }
 

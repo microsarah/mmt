@@ -1358,9 +1358,9 @@ footer input:focus{
 }
 
 .cart-row img{
-  display: block;
-  margin-left: auto;
-  padding: 0 2em 0 0;
+  // display: block;
+  // margin-left: auto;
+  // padding: 0 2em 0 0;
 }
 
 .cart-product-title{
@@ -1368,12 +1368,12 @@ footer input:focus{
 }
 
 .cart-row td{
-  padding: 0 0 4em;
+  padding: 0 0 1em;
 }
 
 .cart-remove{
   font-family: Arial, sans-serif;
-  padding: 0 6em 0;
+  padding: 0 0 0 3em;
   color: $color-papaya;
 }
 
@@ -1730,7 +1730,6 @@ footer input:focus{
   }
 
   .cart-remove {
-    padding: 0;
     text-align: right;
   }
 

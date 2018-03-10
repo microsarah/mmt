@@ -25,7 +25,7 @@
           {% endcomment %}
 
             <tr class="responsive-table-row cart-row">
-              <td data-label="{{ 'customer.order.product' | t }}">
+              <td colspan="5" data-label="{{ 'customer.order.product' | t }}">
 
                 {% if item.image != blank %}
                   <a href="{{ item.url | within: collections.all }}">
@@ -34,6 +34,8 @@
                 {% endif %}
 
               </td>
+            </tr>
+            <tr class="responsive-table-row cart-row">
               <td>
                 <a href="{{ item.url }}" class="cart-product-title">{{ item.product.title }}</a>
 
@@ -73,7 +75,7 @@
                   {% endif %}
               </p> -->
               </td>
-              <td data-label="{{ 'cart.label.quantity' | t }}">
+              <td valign="top" data-label="{{ 'cart.label.quantity' | t }}">
                 <input type="number"
                        onchange="this.form.submit();"
                        name="updates[]"
@@ -82,10 +84,10 @@
                        min="0"
                        aria-label="{{ 'cart.general.item_quantity' | t }}">
               </td>
-              <td data-label="{{ 'cart.label.total' | t }}">
+              <td valign="top" data-label="{{ 'cart.label.total' | t }}">
                   <span class="saso-cart-item-price" data-key="{{item.key}}">{{ item.price | money }}</span>
               </td>
-              <td>
+              <td valign="top">
                 <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-remove">{{ 'cart.general.remove' | t }}
 
                 </a>

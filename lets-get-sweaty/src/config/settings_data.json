@@ -36,7 +36,7 @@
         "type": "products-we-love",
         "settings": {
           "title": "products we love",
-          "collection": "frontpage"
+          "collection": "featured-products"
         }
       },
       "featured-posts": {
@@ -45,13 +45,13 @@
           "1515977560074": {
             "type": "select",
             "settings": {
-              "featured_post": "blog\/our-super-easy-super-thoughtful-gift-guide"
+              "featured_post": "blog\/86201796-natural-deodorant-101"
             }
           },
           "1515977566197": {
             "type": "select",
             "settings": {
-              "featured_post": "blog\/night-routine"
+              "featured_post": "blog\/116646852-plant-power-essential-oil-safety-primer"
             }
           },
           "1515977570601": {

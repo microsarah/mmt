@@ -912,12 +912,6 @@ footer input:focus{
   text-align: center;
 }
 
-// .blog-preview-img{
-//   position: absolute;
-//   top:50%;
-//
-// }
-
 .blog-preview-img img{
   display: block;
   margin: auto;
@@ -1548,6 +1542,10 @@ footer input:focus{
 }
 
 @media screen and (max-width:850px){
+  footer .grid__item{
+    margin: 2em 0 0;
+  }
+
   .related-product-card-wrap,
   .product-card-wrap{
     width: 80%;
@@ -1730,6 +1728,11 @@ footer input:focus{
     width:90%;
     padding:1em 0 0;
   }
+
+  #etc .medium-up--one-half{
+    margin: 1em 0 0;
+  }
+
 }
 
 @media screen and (max-width:600px){
@@ -1817,6 +1820,10 @@ footer input:focus{
 
   .giving-back-lists {
     width: 100%;
+  }
+
+  #etc .medium-up--one-half{
+    margin: 3em 0 0;
   }
 }
 

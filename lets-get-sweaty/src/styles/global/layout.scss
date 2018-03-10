@@ -1487,12 +1487,18 @@ footer input:focus{
     margin: 2em auto;
   }
 
-  .blog-preview-content {
+  .blog-preview-content{
     width: 100%;
     height: auto;
     overflow: auto;
     margin: 0;
     position: static;
+  }
+
+  .blog-preview-img{
+    position: static;
+    top:0;
+    transform: translateY(0);
   }
 
   .blog-preview-content:nth-of-type(even) .blog-preview-copy,
@@ -1851,6 +1857,35 @@ footer input:focus{
 
   #etc .medium-up--one-half{
     margin: 3em 0 0;
+  }
+
+
+  .our-story,
+  .our-ingredients,
+  .our-packaging,
+  .giving-back{
+    // background-size: 300%;
+    // background-repeat: repeat-y;
+  }
+
+  .template-search,
+  .template-blog,
+  #made-with-spirit-meow-meow-tweet,
+  #body-care,
+  #deodorant,
+  #facial-care,
+  #gifts-kits,
+  #soap,
+  #etc,
+  #where-to-buy,
+  #get-in-touch,
+  #buzz-of-the-bees,
+  #create-account,
+  #account,
+  #addresses,
+  #your-shopping-cart{
+    background-size: 300%;
+    background-repeat: repeat-y;
   }
 }
 

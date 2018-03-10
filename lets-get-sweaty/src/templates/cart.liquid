@@ -98,7 +98,8 @@
         </tbody>
       </table>
       <div class="subtotal">
-          <span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span><span class="subtotal-title saso-cart-original-total">{{ cart.total_price | money_with_currency }}</span>
+          <span class="subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+          <span class="subtotal-title saso-cart-original-total">{{ cart.total_price | money }}</span>
           <span class="subtotal-title saso-cart-total"></span>
       </div>
       {% if cart.total_discounts > 0 %}

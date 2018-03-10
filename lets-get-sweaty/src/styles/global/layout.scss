@@ -1045,11 +1045,24 @@ footer input:focus{
   font-weight: normal !important;
   font-style: italic !important;
   font-size: 1em !important;
-  background-color: #ffeee6 !important;
+  // background-color: #ffeee6 !important;
   color: $color-papaya !important;
   margin: 2em 0 !important;
   padding: .5em !important;
   text-align: center !important;
+}
+
+.saso-use-discount-code-cart-container{
+  display: none;
+}
+
+.saso-cart-total{
+  display: block;
+  margin: 1em 0 0;
+  font-weight: normal !important;
+  font-size: 1.5em;
+  text-align: right;
+  padding-right: 1.175em !important;
 }
 
 // ==================== Number buttons
@@ -1717,7 +1730,18 @@ footer input:focus{
   }
 
   .cart-remove {
-    padding: 0 2em 0;
+    padding: 0;
+    text-align: right;
+  }
+
+  .cart-row img{
+    padding: 0;
+  }
+  .cart-row a{
+    font-size: 1em;
+  }
+  .cart-row td{
+    padding:0 0 1em;
   }
 
   .note-to-seller{

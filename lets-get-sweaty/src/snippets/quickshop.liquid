@@ -32,6 +32,7 @@
             <div class="grid__item medium-up--three-quarters">
                   {% for option in product.options_with_values %}
                       <select
+                          class="scent-selector"
                           id="SingleOptionSelector-{{ forloop.index0 }}"
                           data-single-option-selector-quickshop
                           data-index="option{{ option.position }}"

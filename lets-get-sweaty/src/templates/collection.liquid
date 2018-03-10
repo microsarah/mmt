@@ -11,7 +11,7 @@
         {% for product in collection.products %}
         {% assign divisible_by_three = forloop.index | modulo: 3 %}
         {% if divisible_by_three == 1 %}
-        <div class="grid_row">
+        <div class="grid_row clearfix">
         {% endif %}
             <div class="grid__item medium-up--one-third one-whole product-card-wrap">
                 <div class="product-card" data-collection-item="{{ forloop.index0 }}">

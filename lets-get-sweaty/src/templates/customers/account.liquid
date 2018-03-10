@@ -12,8 +12,8 @@
             <tr>
               <th>{{ 'customer.orders.order_number' | t }}</th>
               <th>{{ 'customer.orders.date' | t }}</th>
-              <th>{{ 'customer.orders.payment_status' | t }}</th>
-              <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+              <!-- <th>{{ 'customer.orders.payment_status' | t }}</th>
+              <th>{{ 'customer.orders.fulfillment_status' | t }}</th> -->
               <th>{{ 'customer.orders.total' | t }}</th>
             </tr>
           </thead>
@@ -22,8 +22,11 @@
               <tr class="responsive-table-row">
                 <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
                 <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
-                <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
-                <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                <!-- <td>
+                  <div data-label=" {{ 'customer.orders.payment_status' | t }}">{{ 'customer.orders.payment_status' | t }}: {{ order.financial_status_label }}</div>
+                  <div data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ 'customer.orders.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}
+                  </div>
+                </td> -->
                 <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
               </tr>
             {% endfor %}
@@ -196,7 +199,7 @@
     <button type="button" class="address-new-toggle">{{ 'customer.addresses.add_new' | t }}</button>
     <div id="AddressNewForm" class="hide">
       {% form 'customer_address', customer.new_address %}
-      <h2>{{ 'customer.addresses.add_new' | t }}</h2>
+      <!-- <h2>{{ 'customer.addresses.add_new' | t }}</h2> -->
 
       <label for="AddressFirstNameNew">
         {{ 'customer.addresses.first_name' | t }}
@@ -291,10 +294,12 @@
              value="{{ form.phone }}"
              pattern="[0-9\-]*">
 
-      <div class="checkbox">{{ form.set_as_default_checkbox }}</div>
-      <label for="address_default_address_new">
+      <div class="checkbox">
+        {{ form.set_as_default_checkbox }}
+        <label id="label-address-new-default" for="address_default_address_new">
         {{ 'customer.addresses.set_default' | t }}
       </label>
+      </div>
 
       <!-- <button type="button" class="address-new-toggle">
         {{ 'customer.addresses.cancel' | t }}

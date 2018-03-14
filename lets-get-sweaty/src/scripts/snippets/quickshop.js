@@ -71,17 +71,14 @@
                         // TODO ADD NON-SILENT FAILURE OF ADD TO CART
                         flashMessage(false);
                     }
-
+                    self.updateCartQuantity();
+                    self.flashMessage(true)
                 }
             })
-
-            this.updateCartQuantity();
-            this.flashMessage(true)
         },
 
         submitCart: function(evt){
             evt.preventDefault();
-            console.log('submit cart triggered');
             // fetch currently selected variant and quantitiy from scoped input form
             var variant = this.variants.currentVariant;
             var quantity = $(selectors.quantity, this.$container).val();

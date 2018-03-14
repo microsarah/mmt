@@ -108,14 +108,13 @@
         <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
       {% endif %}
 
-      {% if settings.cart_notes_enable %}
-        <div class="note-to-seller">
-          <label for="CartSpecialInstructions">
-            <!-- <span class="bold">Anything you need to tell us?</span>  -->
-            {{ 'cart.general.note' | t }}</label>
-          <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
-        </div>
-      {% endif %}
+<!--       {% if settings.cart_notes_enable %}
+  <div class="note-to-seller">
+    <label for="CartSpecialInstructions">
+      {{ 'cart.general.note' | t }}</label>
+    <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+  </div>
+{% endif %} -->
 
       <input type="submit" name="checkout" class="btn checkout-btn" value="{{ 'cart.general.checkout' | t }}">
     </form>

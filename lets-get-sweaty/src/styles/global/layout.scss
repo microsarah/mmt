@@ -798,11 +798,11 @@ nav a:hover{
 
 // ================================================ Our Ingredients
 .our-ingredients{
-  margin: -2em 0 0;
-  background:url('who-we-are-our-ingredients-bkgd.svg') no-repeat center center scroll;
+  margin: -8em 0 0;
+  background:url('who-we-are-ouringredients-bkgd-06.svg') no-repeat center center scroll;
   background-size:cover;
-  padding:10em 0 5em;
-  height:875px;
+  padding:20em 0 5em;
+  height:1000px;
 }
 
 
@@ -817,7 +817,7 @@ nav a:hover{
 
 // ================================================ Giving Back
 .giving-back{
-  background:url('who-we-are-giving-back-bkgd.svg') no-repeat center center scroll;
+  background:url('who-we-are-givingback-bkgd.svg') no-repeat center center scroll;
   background-size:cover;
   padding:5em 0;
 }
@@ -1585,6 +1585,11 @@ footer input:focus{
     width: 50%;
   }
 
+  .giving-back img{
+    position: static;
+    top:0;
+  }
+
   #MainContent{
     padding: 0 0 5em;
   }
@@ -1767,11 +1772,6 @@ footer input:focus{
 
   .giving-back-lists {
     width: 35em;
-  }
-
-  .giving-back img{
-    position: static;
-    top:0;
   }
 
   .grid__item{

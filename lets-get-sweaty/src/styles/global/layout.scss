@@ -1098,7 +1098,23 @@ footer input:focus{
 }
 
 .saso-use-discount-code-cart-container{
-  display: none;
+  margin: 2em 0 !important;
+  font-size: .875em;
+}
+
+.saso-use-discount-code-cart-container::after{
+  margin-top: 1em !important;
+}
+
+.saso-use-discount-code-cart-code{
+  background: #fff !important;
+  border:1px solid #000;
+  font-size: 1em !important;
+  padding:1.25em !important;
+}
+
+.saso-use-discount-code-cart-container input:focus{
+  border:1px solid #000;
 }
 
 .saso-cart-total{

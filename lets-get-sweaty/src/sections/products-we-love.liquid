@@ -51,9 +51,6 @@
                 {{ 'products.product.sold_out' | t }}
             {% endunless %}
         </p>
-        <div class="quickshop-root">
-            {% include 'quickshop', product_id: product.id %}
-        </div>
       </div>
         <script type="text/javascript">
           $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {

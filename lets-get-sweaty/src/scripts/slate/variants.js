@@ -208,7 +208,7 @@ slate.Variants = (function() {
         return;
       }
 
-      this._updateMasterSelect(variant);
+      this._updateMasterSelectQuickshop(variant);
       this._updateImages(variant);
       this._updatePrice(variant);
       this.currentVariant = variant;
@@ -278,6 +278,16 @@ slate.Variants = (function() {
      */
     _updateMasterSelect: function(variant) {
       $(this.originalSelectorId, this.$container)[0].value = variant.id;
+    },
+
+
+    /**
+     * Update hidden master select of variant change
+     *
+     * @param {object} variant - Currently selected variant
+     */
+    _updateMasterSelectQuickshop: function(variant) {
+      $(this.originalSelectorId, this.$container).value = variant.id;
     },
 
 

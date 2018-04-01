@@ -68,8 +68,7 @@
                 },
                 complete: function(xhr, status){
                     if (status === 'error' || !xhr.responseText ) {
-                        // TODO ADD NON-SILENT FAILURE OF ADD TO CART
-                        flashMessage(false);
+                        self.flashMessage(false);
                     }
                     self.updateCartQuantity();
                     self.flashMessage(true)
@@ -81,6 +80,7 @@
             evt.preventDefault();
             // fetch currently selected variant and quantitiy from scoped input form
             var variant = this.variants.currentVariant;
+            console.log(variant);
             var quantity = $(selectors.quantity, this.$container).val();
             // trigger event listener for quickshop add to cart button
             this.$container.trigger({

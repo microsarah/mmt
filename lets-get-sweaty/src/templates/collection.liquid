@@ -54,13 +54,16 @@
                     {% endif %}
                     {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
                     </p>
+                    <div class="quickshop-root">
+                        {% include 'quickshop', product_id: product.id %}
+                    </div>
                     <script type="text/javascript">
-                      $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
-                          $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
-                      });
-                      $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
-                          $("div[data-quickshop-id='{{ forloop.index0 }}']").hide();
-                      });
+                        $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
+                            $("div[data-quickshop-id='{{ forloop.index0 }}']").css("display", "inline-block");
+                        });
+                        $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
+                            $("div[data-quickshop-id='{{ forloop.index0 }}']").css("display", "none");
+                        });
                     </script>
                 </div>
             </div>

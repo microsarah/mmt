@@ -11,7 +11,10 @@
       <div class="product-card" data-collection-item="{{ forloop.index0 }}">
         {% if product.featured_image != blank %}
         <a href="{{ product.url | within: collection }}">
-          <img data-collection-product-image="{{ product.id }}" src="{{product.featured_image.src | img_url : '480x480'}}" alt="{{ product.featured_image.alt }}">
+          <img data-collection-product-image="{{ product.id }}"
+               src="{{product.featured_image.src | img_url : '480x480'}}"
+               alt="{{ product.featured_image.alt }}"
+          >
         </a>
         {% endif %}
         <a href="{{ product.url | within: collection }}">
@@ -50,21 +53,26 @@
             {% unless product.available %}
                 {{ 'products.product.sold_out' | t }}
             {% endunless %}
-        </p>
-      </div>
-        <script type="text/javascript">
-          $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
-              $("div[data-quickshop-id='{{ forloop.index0 }}']").show();
-          });
-
-          $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
-              $("div[data-quickshop-id='{{ forloop.index0 }}']").hide();
-          });
-
-        </script>
+            </p>
+            {% include 'quickshop', product_id: product.id %}
+        </div>
     </div>
+
+    <script type="text/javascript">
+
+        $("div[data-collection-item='{{ forloop.index0 }}']").mouseenter(function () {
+            $("div[data-quickshop-id='{{ forloop.index0 }}']").css("display", "inline-block");
+        });
+
+        $("div[data-collection-item='{{ forloop.index0 }}']").mouseleave(function () {
+            $("div[data-quickshop-id='{{ forloop.index0 }}']").css("display", "none");
+        });
+
+    </script>
+
     {% endfor %}
   </div>
+
 </div>
 
 {% schema %}

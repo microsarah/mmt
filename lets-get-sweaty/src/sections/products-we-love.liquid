@@ -21,39 +21,28 @@
             <p class="product-card-title">{{ product.title }}</p>
         </a>
         <p class="product-card-price">
-            {% if product.compare_at_price > product.price %}
-              {% if product.price_varies %}
-                {%- assign sale_price = product.price | money -%}
+            {%- assign current_variant = product.first_available_variant -%}
+            {% if product.compare_at_price %}
+                
+                {% if current_variant.compare_at_price %}
+                    <span data-compare-price>{{ current_variant.compare_at_price | money }}</span>
+                    <span class="price-reduced" data-product-price>
+                        {{ current_variant.price | money }}
+                    </span>  
+                {% else %}
+                    <span data-compare-price></span>
+                    <span data-product-price>
+                        {{ current_variant.price | money }}
+                    </span>
+                {% endif %}                   
+            {% else %}
                 <span data-product-price>
-                    {{ product.price | money }}
+                    {{ current_variant.price | money }}
                 </span>
-              {% else %}
-                {{ 'products.product.on_sale' | t }}
-                <span data-product-price>
-                    {{ product.price | money }}
-                </span>
-              {% endif %}
+            {% endif %}
 
-              {% else %}
-              {% if product.price_varies %}
-                {%- assign price = product.price | money -%}
-                <span data-product-price>
-                    {{ product.price_max | money }}
-                </span>
-              {% else %}
-              <span data-product-price>
-                  {{ product.price | money }}
-              </span>
-              {% endif %}
-            {% endif %}
-            {% if product.compare_at_price > product.price %}
-                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-                <s data-compare-price>{{ product.compare_at_price | money }}</s>
-            {% endif %}
-            {% unless product.available %}
-                {{ 'products.product.sold_out' | t }}
-            {% endunless %}
-            </p>
+            {% unless product.available %} {{ 'products.product.sold_out' | t }} {% endunless %}
+        </p>
             {% include 'quickshop', product_id: product.id %}
         </div>
     </div>

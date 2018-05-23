@@ -114,18 +114,21 @@ theme.Product = (function() {
      */
     updateProductPrices: function(evt) {
       var variant = evt.variant;
+      var $productPrice = $(selectors.productPrice, this.$container);
       var $comparePrice = $(selectors.comparePrice, this.$container);
-      var $compareEls = $comparePrice.add(selectors.comparePriceText, this.$container);
+      // var $compareEls = $comparePrice.add(selectors.comparePriceText, this.$container);
 
       $(selectors.productPrice, this.$container)
         .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
 
-      if (variant.compare_at_price > variant.price) {
+      if (variant.compare_at_price < variant.price && variant.compare_at_price > 0) {
         $comparePrice.html(slate.Currency.formatMoney(variant.compare_at_price, theme.moneyFormat));
-        $compareEls.removeClass('hide');
+        $productPrice.addClass('price-reduced');
+        // $compareEls.removeClass('hide');
       } else {
         $comparePrice.html('');
-        $compareEls.addClass('hide');
+        $productPrice.removeClass('price-reduced');
+        // $compareEls.addClass('hide');
       }
     },
 

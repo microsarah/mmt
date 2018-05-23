@@ -101,16 +101,18 @@
                 <div class="saso-bundle"></div>
                 <div class="data-price-wrapper">
                     <div data-price-wrapper>
-                        <span data-product-price>
-                            {{ current_variant.price | money }}
-                        </span>
-                        {% if product.compare_at_price_max > product.price %}
-                        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-                        <s data-compare-price>
-                            {% if current_variant.compare_at_price > current_variant.price %}
+                        {% if current_variant.compare_at_price < current_variant.price %}
+                            <span data-compare-price>
                                 {{ current_variant.compare_at_price | money }}
-                            {% endif %}
-                        </s>
+                            </span>
+                            <span class="price-reduced" data-product-price>
+                                {{ current_variant.price | money }}
+                            </span>
+                        {% else %}
+                            <span data-compare-price></span>
+                            <span data-product-price>
+                                {{ current_variant.price | money }}
+                            </span>
                         {% endif %}
                     </div>
                 </div>

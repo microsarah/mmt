@@ -42,6 +42,7 @@
         this.settings = {
             imageSize : slate.Image.imageSize($('img[data-collection-product-image]').attr('src')),
         };
+        
         this.namespace = '.quickshop';
         this.variants = new slate.Variants(options);
 
@@ -80,7 +81,6 @@
             evt.preventDefault();
             // fetch currently selected variant and quantitiy from scoped input form
             var variant = this.variants.currentVariant;
-            console.log(variant);
             var quantity = $(selectors.quantity, this.$container).val();
             // trigger event listener for quickshop add to cart button
             this.$container.trigger({
@@ -159,19 +159,21 @@
             var variant = evt.variant;
             // to back out into the product card and modify always visible price
             var container = this.$container.parent().parent();
+            var $productPrice = $(selectors.productPrice, container);
             var $comparePrice = $(selectors.comparePrice, container);
-            console.log($comparePrice);
-            var $compareEls = $comparePrice.add(selectors.comparePriceText, container);
+            // var $compareEls = $comparePrice.add(selectors.comparePriceText, container);
 
             $(selectors.productPrice, container)
               .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
 
-            if (variant.compare_at_price > variant.price) {
+            if (variant.compare_at_price < variant.price && variant.compare_at_price > 0) {
               $comparePrice.html(slate.Currency.formatMoney(variant.compare_at_price, theme.moneyFormat));
-              $compareEls.removeClass('hide');
+              $productPrice.addClass('price-reduced');
+            //   $compareEls.removeClass('hide');
             } else {
               $comparePrice.html('');
-              $compareEls.addClass('hide');
+              $productPrice.removeClass('price-reduced');
+            //   $compareEls.addClass('hide');
             }
         },
 

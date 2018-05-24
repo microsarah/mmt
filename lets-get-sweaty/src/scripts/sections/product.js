@@ -121,13 +121,13 @@ theme.Product = (function() {
       $(selectors.productPrice, this.$container)
         .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
 
-      if (variant.compare_at_price < variant.price && variant.compare_at_price > 0) {
+      if (variant.compare_at_price > variant.price && variant.compare_at_price > 0) {
         $comparePrice.html(slate.Currency.formatMoney(variant.compare_at_price, theme.moneyFormat));
-        $productPrice.addClass('price-reduced');
+        $comparePrice.addClass('price-reduced');
         // $compareEls.removeClass('hide');
       } else {
         $comparePrice.html('');
-        $productPrice.removeClass('price-reduced');
+        $comparePrice.removeClass('price-reduced');
         // $compareEls.addClass('hide');
       }
     },

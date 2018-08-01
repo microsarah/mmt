@@ -5,6 +5,7 @@
     }
   {% endif %}
 </style>
+
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <header role="banner" class="site-header">
     <div class="logo">
@@ -25,9 +26,8 @@
     <div class="menu-mobile-wrap grid clearfix">
       <label for="menu-mobile-checkbox" class="menu-mobile-label">MENU</label>
       <input type="checkbox" id="menu-mobile-checkbox">
-      <!-- <div class="menu wrap clearfix"> -->
-        <nav role="navigation" class="site-navigation">
-          <ul class="site-nav clearfix">
+      <nav role="navigation" class="site-navigation">
+        <ul class="site-nav clearfix">
             {% for link in linklists[section.settings.main_linklist].links %}
               {%- assign child_list_handle = link.title | handleize -%}
               {% if menus[child_list_handle].links != blank %}
@@ -50,10 +50,21 @@
                 </li>
               {% endif %}
             {% endfor %}
-          </ul>
-        </nav>
-        <nav class="top-navigation">
+        </ul>
+      </nav>
+      <nav class="top-navigation">
+
           <ul class="top-nav clearfix">
+            {% if section.settings.promo_banner_text_enabled %}
+              <li class="promo">
+                <div class="promoBanner">
+                  {% include 'promo-banner' %}
+                  <p class="promoWord">{{ section.settings.promo_banner_text }}
+                    <span class="promoInfo">{{ section.settings.promo_banner_subtext }}</span>
+                  <p>
+                </div>
+              </li>
+            {% endif %}
             {% if shop.customer_accounts_enabled %}
                 {% if customer %}
                   <li class="login">
@@ -91,7 +102,6 @@
             </ul>
           {% endif %}
         </nav>
-      <!-- </div> -->
     </div>
   </header>
 </div>
@@ -120,6 +130,24 @@
         "id": "main_linklist",
         "label": "Menu",
         "default": "main-menu"
+      },
+      {
+        "type": "textarea",
+        "id": "promo_banner_text",
+        "label": "Promo Banner Heading",
+        "placeholder" : "Free Shipping"
+      },
+      {
+        "type": "textarea",
+        "id": "promo_banner_subtext",
+        "label": "Promo Banner Sub Heading",
+        "placeholder" : "for the month of August"
+      },
+      {
+        "type": "checkbox",
+        "id": "promo_banner_text_enabled",
+        "label": "Promo Banner Text Enabled",
+        "default": true
       }
     ]
   }

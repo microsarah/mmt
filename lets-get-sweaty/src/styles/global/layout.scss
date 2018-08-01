@@ -74,7 +74,7 @@ a:visited{
 // ============================================================================= Header
 
 .site-header{
-  // position: fixed;
+  position: relative;
   // z-index: 3;
   width: 100%;
   // background:url('index-bkgd-1.svg') no-repeat center top fixed $color-body;
@@ -1689,6 +1689,7 @@ footer input:focus{
 
   .menu-mobile-label{
     display: block !important;
+    margin:6em 0 0;
     padding: 0 1em;
   }
 

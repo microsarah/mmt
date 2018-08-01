@@ -1,0 +1,123 @@
+/*================ Site Header ================*/
+
+.promoBanner{
+	width:251px;
+	height:144px;
+	position:absolute;
+    right:15em;
+    top: -2em;
+    cursor: default;
+}
+
+.promoBannerImg{
+	position:absolute;
+	width:251px;
+	height:150px;
+}
+
+#promoPoly,
+#promoLeaf,
+#promoCurl,
+#promoS,
+#promoHand,
+#promoHeart{
+	transition: all ease-in-out .25s;
+	position:absolute;
+}
+
+.promoBanner:hover #promoPoly{
+	transform: translate(-4em, -5em);
+}
+
+.promoBanner:hover #promoS{
+	transform: rotate(-45deg) translate(-3em, 4.5em);
+}
+
+.promoBanner:hover #promoLeaf{
+	transform: rotate(-15deg) translate(1em, 2em);
+}
+
+.promoBanner:hover #promoCurl{
+	transform: rotate(45deg) translate(3em, -10em);
+}
+
+.promoBanner:hover #promoHand{
+	transform: rotate(140deg) translate(-1.5em, -13.5em);
+}
+
+.promoBanner:hover #promoHeart{
+	transform: translate(0em, 1.5em);
+}
+
+// p{
+// 	font-family: 'News Gothic MT';
+// 	color: #000;
+// 	font-weight:bold;
+// 	text-transform: uppercase;
+// 	text-decoration:none;
+// 	font-size: 14px;
+// 	padding:0 1em;
+// }
+
+.promoInfo{
+	font-weight:normal !important;
+	text-transform:none !important;
+	display:block;
+	opacity:0;
+	text-align:center;
+	line-height:1.2em;
+	transition: opacity ease-in-out .25s;
+	padding: .5em 0 0;
+}
+
+// .promoBanner:hover + .top-nav .promoInfo{
+// 	opacity:1;
+// }
+
+// li.promo {
+//     margin-top: 10px;
+//     padding: 0 8px;
+//     width: 251px;
+//     position: absolute;
+//     right: 17em;
+//     text-align: center;
+// }
+
+.promoWord {
+    text-align: center;
+    position: absolute;
+    top: 67px;
+    width: 251px;
+}
+
+@media screen and (max-width:800px){
+
+    .promo{
+        position: absolute;
+        top: 7em;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+	.promoBannerImg{
+		display:none;
+	}
+	
+	.promoBanner{
+		position:static;
+	}
+	
+	.promoWord{
+		color:#ef6c55;
+		margin:auto;
+	}
+
+	.promoInfo{
+		opacity:1;
+		color: #4dbcc3;
+		margin:auto;
+	}
+}

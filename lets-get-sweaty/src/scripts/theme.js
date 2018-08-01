@@ -55,4 +55,19 @@ $(document).ready(function() {
   if (slate.cart.cookiesEnabled()) {
     document.documentElement.className = document.documentElement.className.replace('supports-no-cookies', 'supports-cookies');
   }
+
+  $('.promoBanner').hover(
+    function(){ $('.promoInfo').fadeTo(250, 1) },
+    function(){ $('.promoInfo').fadeTo(250, 0) },
+  );
+
+  window.addEventListener('resize', function(){  
+    if (window.innerWidth < 801) {
+      $('.promoInfo').fadeTo(250, 1)
+    } else {
+      $('.promoInfo').fadeTo(250, 0)
+    }
+
+  })
+
 });

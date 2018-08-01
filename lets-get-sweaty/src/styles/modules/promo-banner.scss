@@ -13,6 +13,7 @@
 	position:absolute;
 	width:251px;
 	height:150px;
+	right: 6em;
 }
 
 #promoPoly,
@@ -38,7 +39,7 @@
 }
 
 .promoBanner:hover #promoCurl{
-	transform: rotate(45deg) translate(3em, -10em);
+	transform: rotate(45deg) translate(3em, -14em);
 }
 
 .promoBanner:hover #promoHand{
@@ -66,7 +67,7 @@
 	opacity:0;
 	text-align:center;
 	line-height:1.2em;
-	transition: opacity ease-in-out .25s;
+	// transition: opacity ease-in-out .25s;
 	padding: .5em 0 0;
 }
 
@@ -90,7 +91,7 @@
     width: 251px;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:850px){
 
     .promo{
         position: absolute;
